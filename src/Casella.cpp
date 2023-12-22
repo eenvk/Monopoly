@@ -1,19 +1,25 @@
 #include "../include/Casella.h"
 
-Casella::Casella(char categoria, char abitazione, int giocatore, char colonna, char riga){
-    categoria_casella = categoria;
-    tipo_abitazione = abitazione;
-    n_giocatore = giocatore;
-    co.row = riga;
-    co.column = colonna;
-    comprato = false;
+Casella::Casella(char categoria) {
+    this->stato = true; //di default una casella è disponibile
+    this->tipo = 1; //è un terreno di default
+    this->categoria = categoria;
 }
 
-void Casella::acquista(){
-    if(!comprato)
-        comprato=true;
+void Casella::acquistaCasella() {
+    if(stato){
+        stato = false;
+    }
 }
 
-void Casella::print() const{
-    std::cout << "|" << categoria_casella << tipo_abitazione << n_giocatore << "|";
+void Casella::acquistaCasa() {
+    if(!stato && tipo == 1){
+        tipo = 2;
+    }
+}
+
+void Casella::miglioraInAlbergo() {
+    if(!stato && tipo == 2){
+        tipo = 3;
+    }
 }
