@@ -15,7 +15,7 @@ private:
     std::vector<Casella> proprieta_possedute;
     bool vivo; //il giocatore è ancora in gioco?
     int conto;
-    Casella ;
+    //Casella ;
 
 };
 
