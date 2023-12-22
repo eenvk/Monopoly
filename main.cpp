@@ -1,6 +1,6 @@
 #include <iostream>
 #include "include/Casella.h"
-
+#include "include/Giocatore.h"
 using namespace std;
 
 int main(){
