@@ -34,6 +34,6 @@ std::ostream& operator<<(std::ostream& os, const Casella& c) {
 }
 
 int call_counter() {
-    static int count = 1;
+    static int count = 0;
     return count++;
 }
