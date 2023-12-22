@@ -23,3 +23,11 @@ void Casella::miglioraInAlbergo() {
         tipo = 3;
     }
 }
+
+char Casella::getCategoria() const{
+    return categoria;
+}
+
+std::ostream& operator<<(std::ostream& os, const Casella& c) {
+    return os<<c.getCategoria();
+}

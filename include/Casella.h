@@ -10,6 +10,8 @@ public:
     void acquistaCasa();
     void miglioraInAlbergo();
 
+    char getCategoria() const;
+
 private:
     bool stato; //true = disponibile
     int tipo; //1=terreno, 2=casa, 3=albergo
@@ -17,6 +19,6 @@ private:
     //char tipo_abitazione; // *-> casa, ^->albergo
     //int n_giocatore; // 1,2,3,4
 };
-
+std::ostream& operator<<(std::ostream&, const Casella&);
 
 #endif //MONOPOLY_CASELLA_H
