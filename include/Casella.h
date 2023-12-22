@@ -1,6 +1,8 @@
 #ifndef MONOPOLY_CASELLA_H
 #define MONOPOLY_CASELLA_H
 
+#include <iostream>
+
 struct Coordinate{
     char row;
     char column;
@@ -8,14 +10,7 @@ struct Coordinate{
 
 class Casella{
 public:
-    Casella(char categoria, char abitazione, int giocatore, char colonna, char riga){
-        categoria_casella = categoria;
-        tipo_abitazione = abitazione;
-        n_giocatore = giocatore;
-        co.row = riga;
-        co.column = colonna;
-    }
-
+    Casella(char categoria, char abitazione, int giocatore, char colonna, char riga);
     void acquista();
     void print() const;
 
