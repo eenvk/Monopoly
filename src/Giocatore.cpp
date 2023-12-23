@@ -1,7 +1,7 @@
 #include "../include/Giocatore.h"
 
 Giocatore::Giocatore(int tipo) {
-    this->id_giocatore = callCounter2();
+    this->id = callCounter2();
     this->budget = 100;
     this->is_alive = true;
     this->tipo = tipo; //1=human, 2=computer
@@ -9,19 +9,19 @@ Giocatore::Giocatore(int tipo) {
 }
 
 int Giocatore::getId() const{
-    return id_giocatore;
+    return id;
 }
 
-std::vector<Casella> Giocatore::getProprietaPossedute() {
-    return proprieta_possedute;
+std::string Giocatore::getProprietaPossedute() const{
+    std::string s = "";
+    for(int i=0;i<proprieta_possedute.size();i++){
+        s = s + std::to_string(proprieta_possedute[i].getId()) + " ";
+    }
+    return s;
 }
 
 int Giocatore::getBudget() const{
     return budget;
-}
-
-void Giocatore::aggiungiProprieta(Casella c) {
-    proprieta_possedute.push_back(c);
 }
 
 bool Giocatore::isAlive() const{
@@ -36,12 +36,21 @@ int Giocatore::getPosizione() const {
     return posizione;
 }
 
-void Giocatore::aggiornaPosizione(int spostamento) {
-    if((posizione + spostamento) > 27){
-        posizione = spostamento - (27 - posizione) - 1;
-    }else{
-        posizione += spostamento;
-    }
+void Giocatore::acquistaCasella(Casella &c) {
+    proprieta_possedute.push_back(c);
+    c.acquistaCasella();
+}
+
+void Giocatore::acquistaCasa(Casella &c) {
+    c.acquistaCasa();
+}
+
+void Giocatore::miglioraInAlbergo(Casella &c) {
+    c.miglioraInAlbergo();
+}
+
+void Giocatore::eliminaProprieta() {
+    proprieta_possedute.clear();
 }
 
 void Giocatore::paga(int quantita) {
@@ -61,13 +70,8 @@ int Giocatore::tiroDadi() {
     return numero;
 }
 
-
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {
-    std::vector<Casella> copy = g.getProprietaPossedute();
-    for (int i = 0; i < copy.size(); ++i) {
-        os << "|" << copy[i] << "|";
-    }
-    return os;
+    return os<<g.getId();
 }
 
 int callCounter2() {
