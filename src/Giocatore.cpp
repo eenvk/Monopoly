@@ -37,25 +37,25 @@ int Giocatore::getPosizione() const {
 }
 
 void Giocatore::acquistaCasella(Casella &c) {
-    if(c.getCategoria()=='E' && budget>=6){
+    if(c.getCategoria()=='E' && budget>=PREZZO_ECO_TERRENO){
         if(c.acquistaCasella()){
             proprieta_possedute.push_back(c);
             c.setGiocatore(this->getId());
-            paga(6);
+            paga(PREZZO_ECO_TERRENO);
         }
     }
-    else if(c.getCategoria()=='S' && budget>=10){
+    else if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_TERRENO){
         if(c.acquistaCasella()){
             proprieta_possedute.push_back(c);
             c.setGiocatore(this->getId());
-            paga(10);
+            paga(PREZZO_STANDARD_TERRENO);
         }
     }
-    else if(c.getCategoria()=='L' && budget>=20){
+    else if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_TERRENO){
         if(c.acquistaCasella()){
             proprieta_possedute.push_back(c);
             c.setGiocatore(this->getId());
-            paga(20);
+            paga(PREZZO_LUSSO_TERRENO);
         }
     }
 }
