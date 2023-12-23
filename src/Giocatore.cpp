@@ -1,41 +1,56 @@
 #include "../include/Giocatore.h"
 
-Giocatore::Giocatore() {
+Giocatore::Giocatore(int tipo) {
     this->id_giocatore = callCounter2();
     this->budget = 100;
     this->is_alive = true;
+    this->tipo = tipo; //1=human, 2=computer
+    this->posizione = 0;
 }
 
-void Giocatore::aggiungiProprieta(Casella c) {
-    proprieta_possedute.push_back(c);
+int Giocatore::getId() const{
+    return id_giocatore;
 }
 
 std::vector<Casella> Giocatore::getProprietaPossedute() {
     return proprieta_possedute;
 }
 
-int Giocatore::getId() {
-    return id_giocatore;
+int Giocatore::getBudget() const{
+    return budget;
+}
+
+void Giocatore::aggiungiProprieta(Casella c) {
+    proprieta_possedute.push_back(c);
+}
+
+bool Giocatore::isAlive() const{
+    return is_alive;
+}
+
+int Giocatore::getTipo() const {
+    return tipo;
+}
+
+int Giocatore::getPosizione() const {
+    return posizione;
 }
 
 void Giocatore::paga(int quantita) {
     budget -= quantita;
 }
 
-void Giocatore::riceve(int quantita) {
+void Giocatore::incassa(int quantita) {
     budget += quantita;
-}
-
-int Giocatore::getBudget() {
-    return budget;
 }
 
 void Giocatore::setDead() {
     is_alive = false;
 }
 
-bool Giocatore::isAlive() {
-    return is_alive;
+int Giocatore::tiroDadi() {
+    int numero = rand()%12+2; //con 2 dadi il minimo numero che può uscire è 2 e il massimo è 12
+    return numero;
 }
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {

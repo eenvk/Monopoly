@@ -6,16 +6,19 @@
 
 class Giocatore{
 public:
-    Giocatore();
-    void aggiungiProprieta(Casella);
+    Giocatore(int);
     std::vector<Casella> getProprietaPossedute();
-    int getId();
-    void paga(int); //Il giocatore paga tot soldi
-    void riceve(int); //Il giocatore riceve tot soldi
-    int getBudget();
-    void setDead();
-    bool isAlive();
+    int getId() const;
+    bool isAlive() const;
+    int getBudget() const;
+    int getTipo() const;
+    int getPosizione() const;
 
+    void aggiungiProprieta(Casella);
+    void paga(int); //Il giocatore paga tot soldi
+    void incassa(int); //Il giocatore riceve tot soldi
+    void setDead();
+    int tiroDadi();
     void muovi(); //?
 
 
@@ -24,10 +27,11 @@ private:
     std::vector<Casella> proprieta_possedute;
     bool is_alive; //il giocatore è ancora in gioco?
     int budget;
+    int tipo; //1=umano 2=computer
+    int posizione;
 };
 
 std::ostream& operator<<(std::ostream&, Giocatore&);
 int callCounter2();
-
 
 #endif //MONOPOLY_GIOCATORE_H
