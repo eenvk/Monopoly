@@ -8,19 +8,24 @@ int main(){
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             if(i==0){
-                cout<<array[i+j]<<"  ";
+                cout<<array[14+j]<<" ";
             }
             else if(i==7){
-                cout<<array[21-j]<<" ";
+                cout<<array[7-j]<<"  ";
             }
             else if(j==0 && (i!=0 && i!=7)){
-                cout<<array[28-i]<<" ";
+                if(i==6){
+                    cout<<array[14-i]<<"  ";
+                }
+                else {
+                    cout << array[14 - i] << " ";
+                }
             }
             else if(j==7 && (i!=0 && i!=7)){
-                cout<<array[j+i];
+                cout<<array[21+i];
             }
             else{
-                cout<<"   ";
+                cout << "   ";
             }
         }
         cout<<endl;
