@@ -39,7 +39,7 @@ void Tabellone::setCaselleTabellone() {
         }
     }
 
-    // Riempie le posizioni mancanti
+    //Riempie le posizioni mancanti dovute al fatto che l'inserimento precendente è random e quindi potrebbero rimanere vuote delle caselle
     std::random_shuffle(pos_disponibili.begin(), pos_disponibili.end()); //E' una funzione di algorithm della lib_std quindi dovrebbe andare bene perchè non saprei come rimischiarle in altri modi, altrimenti non le rimischiamo proprio
     for (int i = 0; i < pos_disponibili.size(); i++) {
         int index = pos_disponibili[i];
