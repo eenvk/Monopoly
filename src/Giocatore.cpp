@@ -1,12 +1,12 @@
 #include "../include/Giocatore.h"
 
-Giocatore::Giocatore(int numero_giocatore) {
-    this->id_giocatore = numero_giocatore;
-    this->conto = 100;
-    this->alive = true;
+Giocatore::Giocatore() {
+    this->id_giocatore = call_counter();
+    this->budget = 100;
+    this->is_alive = true;
 }
 
-void Giocatore::pushProprieta(Casella c) {
+void Giocatore::aggiungiProprieta(Casella c) {
     proprieta_possedute.push_back(c);
 }
 
@@ -19,23 +19,23 @@ int Giocatore::getIdGiocatore() {
 }
 
 void Giocatore::paga(int quantita) {
-    conto -= quantita;
+    budget -= quantita;
 }
 
 void Giocatore::riceve(int quantita) {
-    conto += quantita;
+    budget += quantita;
 }
 
 int Giocatore::getConto() {
-    return conto;
+    return budget;
 }
 
 void Giocatore::setDead() {
-    alive = false;
+    is_alive = false;
 }
 
 bool Giocatore::isAlive() {
-    return alive;
+    return is_alive;
 }
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {
@@ -44,4 +44,9 @@ std::ostream& operator<<(std::ostream& os, Giocatore& g) {
         os << "|" << copy[i] << "|";
     }
     return os;
+}
+
+int call_counter() {
+    static int count = 1;
+    return count++;
 }

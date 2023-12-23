@@ -37,6 +37,11 @@ int Casella::getId() const {
     return id;
 }
 
+void Casella::reset() {
+    tipo = 1;
+    stato = true;
+}
+
 std::ostream& operator<<(std::ostream& os, const Casella& c) {
     char tipo;
     switch (c.getTipo()) {

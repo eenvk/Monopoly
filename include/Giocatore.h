@@ -4,11 +4,10 @@
 #include <vector>
 #include "../include/Casella.h"
 
-
 class Giocatore{
 public:
-    Giocatore(int);
-    void pushProprieta(Casella);
+    Giocatore();
+    void aggiungiProprieta(Casella);
     std::vector<Casella> getProprietaPossedute();
     int getIdGiocatore();
     void paga(int); //Il giocatore paga tot soldi
@@ -21,13 +20,14 @@ public:
 
 
 private:
-    std::vector<Casella> proprieta_possedute;
     int id_giocatore;
-    bool alive; //il giocatore è ancora in gioco?
-    int conto;
+    std::vector<Casella> proprieta_possedute;
+    bool is_alive; //il giocatore è ancora in gioco?
+    int budget;
 };
 
 std::ostream& operator<<(std::ostream&, Giocatore&);
+int call_counter();
 
 
 #endif //MONOPOLY_GIOCATORE_H

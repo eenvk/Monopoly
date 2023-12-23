@@ -9,16 +9,17 @@ public:
     void acquistaCasella();
     void acquistaCasa();
     void miglioraInAlbergo();
+    void reset();
 
     char getCategoria() const;
     int getTipo() const;
     int getId() const;
 
 private:
+    int id;
     bool stato; //true = disponibile
     int tipo; //1=terreno, 2=casa, 3=albergo
     char categoria; // 'spazio'-> angolare, P->partenza, E->economica, S->standard, L->lusso
-    int id;
 };
 std::ostream& operator<<(std::ostream&, const Casella&);
 
