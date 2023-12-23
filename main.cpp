@@ -14,13 +14,13 @@ int main(){
                 cout<<array[21-j]<<" ";
             }
             else if(j==0 && (i!=0 && i!=7)){
-                cout<<array[28-i];
+                cout<<array[28-i]<<" ";
             }
             else if(j==7 && (i!=0 && i!=7)){
                 cout<<array[j+i];
             }
             else{
-                cout<<" ";
+                cout<<"   ";
             }
         }
         cout<<endl;
