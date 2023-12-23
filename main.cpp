@@ -40,7 +40,7 @@ int main(){
 
 
     cout<<tab[1]<<" "<<tab[9]<<" "<< tab[15] <<endl;
-    //supponiamo giocatore eliminato: prima elimino le caselle sul tab poi nell'array
+    //supponiamo giocatore eliminato: prima elimino le caselle sul tab poi nel vector
     t.resetCaselle(g);
     g.eliminaProprieta();
     cout<<"Giocatore "<< g <<": "<<g.getProprietaPossedute()<<endl;
