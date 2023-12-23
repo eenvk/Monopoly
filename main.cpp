@@ -32,6 +32,7 @@ int main(){
     g.acquistaCasella(tab[1]);
     g.acquistaCasa(tab[1]);
     g.muovi(g.tiroDadi());
+    cout<<"Posizione "<<g.getPosizione()<<endl;
     g.acquistaCasella(tab[g.getPosizione()]);
     g.acquistaCasa(tab[g.getPosizione()]);
     g.miglioraInAlbergo(tab[g.getPosizione()]);

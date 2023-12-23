@@ -15,10 +15,12 @@ Casella::Casella(char categoria) {
     this->giocatore = ' ';
 }
 
-void Casella::acquistaCasella() {
+bool Casella::acquistaCasella() {
     if(stato && categoria!=' '){
         stato = false;
+        return true;
     }
+    return false;
 }
 
 void Casella::acquistaCasa() {

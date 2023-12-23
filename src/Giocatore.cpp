@@ -37,10 +37,26 @@ int Giocatore::getPosizione() const {
 }
 
 void Giocatore::acquistaCasella(Casella &c) {
-    if(c.getCategoria()!=' '){
-        proprieta_possedute.push_back(c);
-        c.acquistaCasella();
-        c.setGiocatore(this->getId());
+    if(c.getCategoria()=='E' && budget>=6){
+        if(c.acquistaCasella()){
+            proprieta_possedute.push_back(c);
+            c.setGiocatore(this->getId());
+            paga(6);
+        }
+    }
+    else if(c.getCategoria()=='S' && budget>=10){
+        if(c.acquistaCasella()){
+            proprieta_possedute.push_back(c);
+            c.setGiocatore(this->getId());
+            paga(10);
+        }
+    }
+    else if(c.getCategoria()=='L' && budget>=20){
+        if(c.acquistaCasella()){
+            proprieta_possedute.push_back(c);
+            c.setGiocatore(this->getId());
+            paga(20);
+        }
     }
 }
 

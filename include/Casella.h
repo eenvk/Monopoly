@@ -7,7 +7,7 @@ class Casella{
 public:
     Casella();
     Casella(char);
-    void acquistaCasella();
+    bool acquistaCasella();
     void acquistaCasa();
     void miglioraInAlbergo();
     void reset();
