@@ -7,24 +7,26 @@
 class Giocatore{
 public:
     Giocatore(int);
-    std::vector<Casella> getProprietaPossedute();
     int getId() const;
+    std::string getProprietaPossedute()const;
     bool isAlive() const;
     int getBudget() const;
     int getTipo() const;
     int getPosizione() const;
-    void aggiornaPosizione(int);
 
-    void aggiungiProprieta(Casella);
+    void acquistaCasella(Casella& c);
+    void acquistaCasa(Casella& c);
+    void miglioraInAlbergo(Casella& c);
+
+    void eliminaProprieta();
     void paga(int); //Il giocatore paga tot soldi
     void incassa(int); //Il giocatore riceve tot soldi
     void setDead();
     int tiroDadi();
-    void muovi(); //?
-
+    void muovi();
 
 private:
-    int id_giocatore;
+    int id;
     std::vector<Casella> proprieta_possedute;
     bool is_alive; //il giocatore è ancora in gioco?
     int budget;
