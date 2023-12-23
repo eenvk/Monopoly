@@ -13,7 +13,7 @@ int main(){
             else if(i==7){
                 cout<<array[7-j]<<"  ";
             }
-            else if(j==0 && (i!=0 && i!=7)){
+            else if(j==0 && i!=0 && i!=7){
                 if(i==6){
                     cout<<array[14-i]<<"  ";
                 }
@@ -21,7 +21,7 @@ int main(){
                     cout << array[14 - i] << " ";
                 }
             }
-            else if(j==7 && (i!=0 && i!=7)){
+            else if(j==7 && i!=0 && i!=7){
                 cout<<array[21+i];
             }
             else{
