@@ -15,7 +15,7 @@ void Tabellone::setCaselleTabellone() {
     // seme sempre diverso per evitare di avere tabelloni sempre uguali, altrimenti glielo mettiamo così il tabellone è sempre lo stesso
     srand(static_cast<unsigned>(time(0)));
 
-    for (int i = 0; i < 28; ++i) {
+    for (int i = 0; i < 28; i++) {
         //Caselle angolari
         if (i == 0) {
             tabellone[i] = Casella('P');
@@ -41,7 +41,7 @@ void Tabellone::setCaselleTabellone() {
 
     // Riempie le posizioni mancanti
     std::random_shuffle(pos_disponibili.begin(), pos_disponibili.end()); //E' una funzione di algorithm della lib_std quindi dovrebbe andare bene perchè non saprei come rimischiarle in altri modi, altrimenti non le rimischiamo proprio
-    for (int i = 0; i < pos_disponibili.size(); ++i) {
+    for (int i = 0; i < pos_disponibili.size(); i++) {
         int index = pos_disponibili[i];
         if (max_economiche > 0 ) {
             tabellone[index] = Casella('E');
