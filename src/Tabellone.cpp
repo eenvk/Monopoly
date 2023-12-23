@@ -56,12 +56,12 @@ void Tabellone::setCaselleTabellone() {
     }
 }
 
-Casella* Tabellone::get() {
+Casella* Tabellone::getTabellone() {
     return tabellone;
 }
 
 std::ostream& operator<<(std::ostream& os, Tabellone& t){
-    Casella* copy = t.get(); //non serve gestire il memory leak dato che l'array non è dinamico
+    Casella* copy = t.getTabellone(); //non serve gestire il memory leak dato che l'array non è dinamico
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if (i == 0) {

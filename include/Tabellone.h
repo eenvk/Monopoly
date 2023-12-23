@@ -10,7 +10,7 @@ class Tabellone{
 public:
         Tabellone();
         void setCaselleTabellone();
-        Casella* get();
+        Casella* getTabellone();
 
 private:
     Casella tabellone[28];
