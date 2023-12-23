@@ -15,7 +15,7 @@ int Giocatore::getId() const{
 std::string Giocatore::getProprietaPossedute() const{
     std::string s = "";
     for(int i=0;i<proprieta_possedute.size();i++){
-        s = s + std::to_string(proprieta_possedute[i].getId()) + " ";
+        s = s + std::to_string(proprieta_possedute[i].getId() - 28) + " ";
     }
     return s;
 }
@@ -79,6 +79,10 @@ void Giocatore::muovi(int spostamento) {
     else{
         posizione+=spostamento;
     }
+}
+
+std::vector<Casella> Giocatore::getVector() {
+    return proprieta_possedute;
 }
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {

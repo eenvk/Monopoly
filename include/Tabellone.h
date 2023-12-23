@@ -1,4 +1,5 @@
 #include "Casella.h"
+#include "Giocatore.h"
 #include <iostream>
 #include <algorithm>
 #include <random>
@@ -11,6 +12,7 @@ public:
         Tabellone();
         void setCaselleTabellone();
         Casella* getTabellone();
+        void resetCaselle(Giocatore);
 
 private:
     Casella tabellone[28];

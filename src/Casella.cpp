@@ -3,6 +3,7 @@
 Casella::Casella() {
     this->stato = true; //di default una casella è disponibile
     this->tipo = 1; //è un terreno di default
+    this->categoria = ' ';
     this->id = callCounter();
 }
 
@@ -46,6 +47,10 @@ int Casella::getId() const {
 void Casella::reset() {
     tipo = 1;
     stato = true;
+}
+
+void Casella::setCategoria(char c) {
+    categoria = c;
 }
 
 std::ostream& operator<<(std::ostream& os, const Casella& c) {

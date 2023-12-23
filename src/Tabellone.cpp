@@ -11,7 +11,7 @@ void Tabellone::setCaselleTabellone() {
     int max_lusso = 6;
     std::vector<int> pos_disponibili;
 
-    // seme sempre diverso per evitare di avere tabelloni sempre uguali, altrimenti glielo mettiamo così il tabellone è sempre lo stesso
+    // seme sempre diverso per evitare di avere tabelloni sempre uguali, altrimenti basta commentarlo così il tabellone è sempre lo stesso
     srand(static_cast<unsigned>(time(0)));
 
     for (int i = 0; i < 28; i++) {
@@ -33,6 +33,7 @@ void Tabellone::setCaselleTabellone() {
                 tabellone[i] = Casella('L'); // Categoria lusso
                 max_lusso--;
             } else {
+                tabellone[i] = Casella(' ');
                 pos_disponibili.push_back(i);
             }
         }
@@ -43,13 +44,13 @@ void Tabellone::setCaselleTabellone() {
     for (int i = 0; i < pos_disponibili.size(); i++) {
         int index = pos_disponibili[i];
         if (max_economiche > 0 ) {
-            tabellone[index] = Casella('E');
+            tabellone[index].setCategoria('E');
             max_economiche--;
         } else if (max_standard > 0) {
-            tabellone[index] = Casella('S');
+            tabellone[index].setCategoria('S');
             max_standard--;
         } else if (max_lusso > 0 ) {
-            tabellone[index] = Casella('L');
+            tabellone[index].setCategoria('L');
             max_lusso--;
         }
     }
@@ -57,6 +58,17 @@ void Tabellone::setCaselleTabellone() {
 
 Casella* Tabellone::getTabellone() {
     return tabellone;
+}
+
+void Tabellone::resetCaselle(Giocatore g) {
+    std::vector<Casella> copy = g.getVector();
+    int j = 0;
+    for (int i = 0; i < 28 && j < copy.size(); ++i) {
+        if(tabellone[i].getId()==copy[j].getId()){
+            tabellone[i].reset();
+            j++;
+        }
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, Tabellone& t){

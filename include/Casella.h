@@ -13,6 +13,7 @@ public:
     void reset();
 
     char getCategoria() const;
+    void setCategoria(char c); // mi serve per tabellone
     int getTipo() const;
     int getId() const;
 
