@@ -23,6 +23,6 @@ private:
 };
 std::ostream& operator<<(std::ostream&, const Casella&);
 
-int call_counter();
+int callCounter();
 
 #endif //MONOPOLY_CASELLA_H

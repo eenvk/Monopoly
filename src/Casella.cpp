@@ -4,7 +4,7 @@ Casella::Casella(char categoria) {
     this->stato = true; //di default una casella è disponibile
     this->tipo = 1; //è un terreno di default
     this->categoria = categoria;
-    this->id = call_counter();
+    this->id = callCounter();
 }
 
 void Casella::acquistaCasella() {
@@ -60,7 +60,7 @@ std::ostream& operator<<(std::ostream& os, const Casella& c) {
     return os<<c.getCategoria()<<" "<<tipo;
 }
 
-int call_counter() {
+int callCounter() {
     static int count = 0;
     return count++;
 }

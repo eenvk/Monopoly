@@ -1,7 +1,7 @@
 #include "../include/Giocatore.h"
 
 Giocatore::Giocatore() {
-    this->id_giocatore = call_counter();
+    this->id_giocatore = callCounter2();
     this->budget = 100;
     this->is_alive = true;
 }
@@ -14,7 +14,7 @@ std::vector<Casella> Giocatore::getProprietaPossedute() {
     return proprieta_possedute;
 }
 
-int Giocatore::getIdGiocatore() {
+int Giocatore::getId() {
     return id_giocatore;
 }
 
@@ -26,7 +26,7 @@ void Giocatore::riceve(int quantita) {
     budget += quantita;
 }
 
-int Giocatore::getConto() {
+int Giocatore::getBudget() {
     return budget;
 }
 
@@ -46,7 +46,7 @@ std::ostream& operator<<(std::ostream& os, Giocatore& g) {
     return os;
 }
 
-int call_counter() {
+int callCounter2() {
     static int count = 1;
     return count++;
 }

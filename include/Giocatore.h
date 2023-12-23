@@ -9,10 +9,10 @@ public:
     Giocatore();
     void aggiungiProprieta(Casella);
     std::vector<Casella> getProprietaPossedute();
-    int getIdGiocatore();
+    int getId();
     void paga(int); //Il giocatore paga tot soldi
     void riceve(int); //Il giocatore riceve tot soldi
-    int getConto();
+    int getBudget();
     void setDead();
     bool isAlive();
 
@@ -27,7 +27,7 @@ private:
 };
 
 std::ostream& operator<<(std::ostream&, Giocatore&);
-int call_counter();
+int callCounter2();
 
 
 #endif //MONOPOLY_GIOCATORE_H
