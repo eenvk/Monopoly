@@ -6,11 +6,10 @@
 class Casella{
 public:
     Casella(char);
+    void reset();
     void acquistaCasella();
     void acquistaCasa();
     void miglioraInAlbergo();
-    void reset();
-
     char getCategoria() const;
     int getTipo() const;
     int getId() const;
