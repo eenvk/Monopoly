@@ -29,8 +29,30 @@ char Casella::getCategoria() const{
     return categoria;
 }
 
+int Casella::getTipo() const {
+    return tipo;
+}
+
+int Casella::getId() const {
+    return id;
+}
+
 std::ostream& operator<<(std::ostream& os, const Casella& c) {
-    return os<<c.getCategoria();
+    char tipo;
+    switch (c.getTipo()) {
+        case 1:
+            tipo = ' ';
+            break;
+        case 2:
+            tipo = '*';
+            break;
+        case 3:
+            tipo = '^';
+            break;
+        default: tipo = ' ';
+        break;
+    }
+    return os<<c.getCategoria()<<" "<<tipo;
 }
 
 int call_counter() {

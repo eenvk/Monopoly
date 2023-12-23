@@ -11,6 +11,8 @@ public:
     void miglioraInAlbergo();
 
     char getCategoria() const;
+    int getTipo() const;
+    int getId() const;
 
 private:
     bool stato; //true = disponibile
