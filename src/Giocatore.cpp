@@ -37,9 +37,11 @@ int Giocatore::getPosizione() const {
 }
 
 void Giocatore::acquistaCasella(Casella &c) {
-    proprieta_possedute.push_back(c);
-    c.acquistaCasella();
-    c.setGiocatore(this->getId());
+    if(c.getCategoria()!=' '){
+        proprieta_possedute.push_back(c);
+        c.acquistaCasella();
+        c.setGiocatore(this->getId());
+    }
 }
 
 void Giocatore::acquistaCasa(Casella &c) {
@@ -82,7 +84,7 @@ void Giocatore::muovi(int spostamento) {
     }
 }
 
-std::vector<Casella> Giocatore::getVector() {
+std::vector<Casella> Giocatore::getProprietàPossedute() {
     return proprieta_possedute;
 }
 

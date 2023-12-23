@@ -24,11 +24,11 @@ int main(){
     Tabellone t = Tabellone();
     Casella* tab = t.getTabellone();
     Giocatore g = Giocatore(0);
-
-    for (int i = 0; i <28 ; ++i) {
+    cout<<t<<endl;
+    /*for (int i = 0; i <28 ; ++i) {
         cout<<tab[i];
     }
-    cout << endl;
+    cout << endl;*/
     g.acquistaCasella(tab[1]);
     g.acquistaCasa(tab[1]);
     g.muovi(g.tiroDadi());
@@ -38,14 +38,11 @@ int main(){
     cout<<"Giocatore "<< g <<": "<<g.getProprietaPossedute()<<endl;
     cout<<t;
 
-
-    cout<<tab[1]<<" "<<tab[9]<<" "<< tab[15] <<endl;
     //supponiamo giocatore eliminato: prima elimino le caselle sul tab poi nel vector
     t.resetCaselle(g);
     g.eliminaProprieta();
     cout<<"Giocatore "<< g <<": "<<g.getProprietaPossedute()<<endl;
-    cout<<t;
-
+    cout<<t<<endl;
 
     return 0;
 }

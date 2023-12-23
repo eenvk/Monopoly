@@ -16,7 +16,7 @@ Casella::Casella(char categoria) {
 }
 
 void Casella::acquistaCasella() {
-    if(stato){
+    if(stato && categoria!=' '){
         stato = false;
     }
 }
