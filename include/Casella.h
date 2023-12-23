@@ -5,6 +5,7 @@
 
 class Casella{
 public:
+    Casella();
     Casella(char);
     void acquistaCasella();
     void acquistaCasa();
