@@ -4,7 +4,6 @@ Casella::Casella() {
     this->stato = true; //di default una casella è disponibile
     this->tipo = 1; //è un terreno di default
     this->categoria = ' ';
-    this->id = callCounter();
 }
 
 Casella::Casella(char categoria) {

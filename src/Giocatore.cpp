@@ -15,7 +15,7 @@ int Giocatore::getId() const{
 std::string Giocatore::getProprietaPossedute() const{
     std::string s = "";
     for(int i=0;i<proprieta_possedute.size();i++){
-        s = s + std::to_string(proprieta_possedute[i].getId() - 28) + " ";
+        s = s + std::to_string(proprieta_possedute[i].getId()) + " ";
     }
     return s;
 }
