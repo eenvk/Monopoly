@@ -36,11 +36,11 @@ int Giocatore::getPosizione() const {
     return posizione;
 }
 
-void Giocatore::aggiornaPosizione(int scostamento) {
-    if((posizione + scostamento)>28){
-        posizione = scostamento - (28-posizione);
+void Giocatore::aggiornaPosizione(int spostamento) {
+    if((posizione + spostamento) > 27){
+        posizione = spostamento - (27 - posizione) - 1;
     }else{
-        posizione += scostamento;
+        posizione += spostamento;
     }
 }
 
