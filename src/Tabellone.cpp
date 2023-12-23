@@ -9,7 +9,6 @@ void Tabellone::setCaselleTabellone() {
     int max_economiche = 8;
     int max_standard = 10;
     int max_lusso = 6;
-
     std::vector<int> pos_disponibili;
 
     // seme sempre diverso per evitare di avere tabelloni sempre uguali, altrimenti glielo mettiamo così il tabellone è sempre lo stesso
