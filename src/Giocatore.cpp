@@ -70,6 +70,17 @@ int Giocatore::tiroDadi() {
     return numero;
 }
 
+void Giocatore::muovi(int spostamento) {
+    if(posizione + spostamento > 27){
+        int diff = 28-posizione;
+        posizione = 0; //avviso che è passato per la partenza
+        posizione += spostamento-diff;
+    }
+    else{
+        posizione+=spostamento;
+    }
+}
+
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {
     return os<<g.getId();
 }

@@ -8,7 +8,7 @@ class Giocatore{
 public:
     Giocatore(int);
     int getId() const;
-    std::string getProprietaPossedute()const;
+    std::string getProprietaPossedute() const;
     bool isAlive() const;
     int getBudget() const;
     int getTipo() const;
@@ -23,7 +23,7 @@ public:
     void incassa(int); //Il giocatore riceve tot soldi
     void setDead();
     int tiroDadi();
-    void muovi();
+    void muovi(int);
 
 private:
     int id;
