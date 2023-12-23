@@ -39,6 +39,7 @@ int Giocatore::getPosizione() const {
 void Giocatore::acquistaCasella(Casella &c) {
     proprieta_possedute.push_back(c);
     c.acquistaCasella();
+    c.setGiocatore(this->getId());
 }
 
 void Giocatore::acquistaCasa(Casella &c) {

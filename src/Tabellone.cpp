@@ -88,7 +88,7 @@ std::ostream& operator<<(std::ostream& os, Tabellone& t){
             } else if (j == 7 && i != 0 && i != 7) {
                 os << "|" << copy[21 + i] << "|";
             } else {
-                os << "       ";
+                os << "         ";
             }
         }
         os << std::endl;
