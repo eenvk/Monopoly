@@ -36,6 +36,14 @@ int Giocatore::getPosizione() const {
     return posizione;
 }
 
+void Giocatore::aggiornaPosizione(int scostamento) {
+    if((posizione + scostamento)>28){
+        posizione = scostamento - (28-posizione);
+    }else{
+        posizione += scostamento;
+    }
+}
+
 void Giocatore::paga(int quantita) {
     budget -= quantita;
 }
@@ -52,6 +60,7 @@ int Giocatore::tiroDadi() {
     int numero = rand()%12+2; //con 2 dadi il minimo numero che può uscire è 2 e il massimo è 12
     return numero;
 }
+
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {
     std::vector<Casella> copy = g.getProprietaPossedute();

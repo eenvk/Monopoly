@@ -13,6 +13,7 @@ public:
     int getBudget() const;
     int getTipo() const;
     int getPosizione() const;
+    void aggiornaPosizione(int);
 
     void aggiungiProprieta(Casella);
     void paga(int); //Il giocatore paga tot soldi
