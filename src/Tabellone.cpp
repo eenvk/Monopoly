@@ -53,7 +53,7 @@ Casella* Tabellone::getTabellone() {
 }
 
 void Tabellone::resetCaselle(Giocatore g) {
-    std::vector<Casella> proprietà_possedute = g.getProprietàPossedute();
+    std::vector<Casella> proprietà_possedute = g.proprietaPossedute();
     int j = 0;
     for (int i = 0; i < 28 && j < proprietà_possedute.size(); ++i) {
         if(tabellone[i].getId() == proprietà_possedute[j].getId()){

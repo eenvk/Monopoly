@@ -14,7 +14,7 @@ public:
     int getBudget() const;
     int getTipo() const;
     int getPosizione() const;
-    std::vector<Casella> getProprietàPossedute();
+    std::vector<Casella> proprietaPossedute();
 
     void acquistaCasella(Casella& c);
     void acquistaCasa(Casella& c);

@@ -6,7 +6,7 @@
 
 class Partita {
 protected:
-    Partita();
+    //Partita();
 public:
 
 };

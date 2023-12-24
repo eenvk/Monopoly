@@ -20,7 +20,7 @@ std::string Giocatore::getProprietaPossedute() const{
     return s;
 }
 
-std::vector<Casella> Giocatore::getProprietàPossedute() {
+std::vector<Casella> Giocatore::proprietaPossedute() {
     return proprieta_possedute;
 }
 
