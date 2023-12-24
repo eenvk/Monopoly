@@ -70,18 +70,21 @@ void Tabellone::printTabellone(std::vector<Giocatore> giocatori) {
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[14+j].getId()){
-                        s = s + std::to_string(giocatori[k].getId());
+                        s = std::to_string(giocatori[k].getId());
+                        break;
                     }
                     else{
                         s = " ";
                     }
                 }
                 std::cout << "|" << tabellone[14 + j].toString() + s << "|" << "  ";
-            } else if (i == 7) {
+            }
+            else if (i == 7) {
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[7-j].getId()){
-                        s = s + std::to_string(giocatori[k].getId());
+                        s = std::to_string(giocatori[k].getId());
+                        break;
                     }
                     else{
                         s = " ";
@@ -93,7 +96,8 @@ void Tabellone::printTabellone(std::vector<Giocatore> giocatori) {
                     std::string s;
                     for(int k=0; k<giocatori.size(); k++){
                         if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
-                            s = s + std::to_string(giocatori[k].getId());
+                            s = std::to_string(giocatori[k].getId());
+                            break;
                         }
                         else{
                             s = " ";
@@ -105,7 +109,8 @@ void Tabellone::printTabellone(std::vector<Giocatore> giocatori) {
                     std::string s;
                     for(int k=0; k<giocatori.size(); k++){
                         if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
-                            s = s + std::to_string(giocatori[k].getId());
+                            s = std::to_string(giocatori[k].getId());
+                            break;
                         }
                         else{
                             s = " ";
@@ -117,7 +122,8 @@ void Tabellone::printTabellone(std::vector<Giocatore> giocatori) {
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[21+i].getId()){
-                        s = s + std::to_string(giocatori[k].getId());
+                        s = std::to_string(giocatori[k].getId());
+                        break;
                     }
                     else{
                         s = " ";
