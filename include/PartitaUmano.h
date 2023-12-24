@@ -5,6 +5,5 @@
 class PartitaUmano : public Partita{
 public:
     PartitaUmano();
-
 };
 #endif //MONOPOLY_PARTITAUMANO_H

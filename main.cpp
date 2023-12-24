@@ -36,6 +36,5 @@ int main(){
     t.printTabellone(giocatori);*/
 
     PartitaUmano pu = PartitaUmano();
-
     return 0;
 }
