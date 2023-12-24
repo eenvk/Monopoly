@@ -58,10 +58,6 @@ char Casella::getGiocatore() const {
     return giocatore;
 }
 
-void Casella::setCategoria(char c) {
-    categoria = c;
-}
-
 void Casella::setGiocatore(int id_giocatore) {
     giocatore = id_giocatore + 48;
 }

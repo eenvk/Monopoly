@@ -24,7 +24,6 @@ public:
     void reset();
 
     char getCategoria() const;
-    void setCategoria(char); // mi serve per tabellone
     void setGiocatore(int);
     void deleteGiocatore();
     int getTipo() const;
