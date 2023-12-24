@@ -2,7 +2,6 @@
 #define MONOPOLY_TABELLONE_H
 #include "Casella.h"
 #include "Giocatore.h"
-#include <algorithm>
 #include <random>
 
 class Tabellone{

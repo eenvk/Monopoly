@@ -10,7 +10,6 @@ int main(){
     Tabellone t = Tabellone();
     Casella* tab = t.getTabellone();
     Giocatore g = Giocatore(0);
-
     tab[0].setGiocatore(g.getId());
     cout<<t<<endl;
     tab[0].deleteGiocatore();
