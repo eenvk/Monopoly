@@ -151,7 +151,7 @@ void Giocatore::setDead() {
 }
 
 int Giocatore::tiroDadi() {
-    int numero = rand()%12+2; //con 2 dadi il minimo numero che può uscire è 2 e il massimo è 12
+    int numero = rand()%10+2; //con 2 dadi il minimo numero che può uscire è 2 e il massimo è 12
     return numero;
 }
 

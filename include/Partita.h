@@ -5,11 +5,11 @@
 #include "map"
 
 class Partita {
-protected:
-    //Partita();
 public:
-
+    Partita();
+public:
+    Tabellone t;
+    std::vector<Giocatore> giocatori;
 };
-
 
 #endif //MONOPOLY_PARTITA_H
