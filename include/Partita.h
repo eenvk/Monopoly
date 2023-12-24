@@ -7,7 +7,7 @@
 class Partita {
 protected:
     Partita();
-    Tabellone t;
+    Tabellone t = Tabellone();
     std::vector<Giocatore> giocatori;
 };
 

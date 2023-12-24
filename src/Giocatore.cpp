@@ -167,7 +167,14 @@ void Giocatore::muovi(int spostamento) {
 }
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {
-    return os<<g.getId();
+    std::string tipo;
+    if(g.getTipo()==1){
+        tipo = "Umano";
+    }
+    else if(g.getTipo()==2){
+        tipo = "Computer";
+    }
+    return os<<g.getId()<<" "<<tipo<<" "<<g.getBudget()<<" "<<" Pos: "<<g.getPosizione();
 }
 
 int callCounter2() {
