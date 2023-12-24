@@ -10,7 +10,6 @@
 class Tabellone{
 public:
         Tabellone();
-        void setCaselleTabellone();
         Casella* getTabellone();
         void resetCaselle(Giocatore);
 

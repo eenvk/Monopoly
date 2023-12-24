@@ -1,11 +1,6 @@
 #include "../include/Tabellone.h"
 
 Tabellone::Tabellone() {
-    setCaselleTabellone();
-}
-
-void Tabellone::setCaselleTabellone() {
-
     int max_economiche = 8;
     int max_standard = 10;
     int max_lusso = 6;
@@ -61,10 +56,10 @@ Casella* Tabellone::getTabellone() {
 }
 
 void Tabellone::resetCaselle(Giocatore g) {
-    std::vector<Casella> copy = g.getProprietàPossedute();
+    std::vector<Casella> proprietà_possedute = g.getProprietàPossedute();
     int j = 0;
-    for (int i = 0; i < 28 && j < copy.size(); ++i) {
-        if(tabellone[i].getId()==copy[j].getId()){
+    for (int i = 0; i < 28 && j < proprietà_possedute.size(); ++i) {
+        if(tabellone[i].getId() == proprietà_possedute[j].getId()){
             tabellone[i].reset();
             j++;
         }

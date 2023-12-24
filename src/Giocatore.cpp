@@ -20,6 +20,10 @@ std::string Giocatore::getProprietaPossedute() const{
     return s;
 }
 
+std::vector<Casella> Giocatore::getProprietàPossedute() {
+    return proprieta_possedute;
+}
+
 int Giocatore::getBudget() const{
     return budget;
 }
@@ -37,80 +41,99 @@ int Giocatore::getPosizione() const {
 }
 
 void Giocatore::acquistaCasella(Casella &c) {
-    if(c.getCategoria()=='E' && budget>=PREZZO_ECO_TERRENO){
-        c.acquistaTerreno();
-        proprieta_possedute.push_back(c);
-        c.setGiocatore(this->getId());
-        paga(PREZZO_ECO_TERRENO);
+    if(c.getCategoria()=='E'){
+        if(budget>=PREZZO_ECO_TERRENO){
+            c.acquistaTerreno();
+            proprieta_possedute.push_back(c);
+            c.setGiocatore(this->getId());
+            paga(PREZZO_ECO_TERRENO);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
-    else{
-        throw BudgetInsufficiente();
+
+    if(c.getCategoria()=='S'){
+        if(budget>=PREZZO_STANDARD_TERRENO){
+            c.acquistaTerreno();
+            proprieta_possedute.push_back(c);
+            c.setGiocatore(this->getId());
+            paga(PREZZO_STANDARD_TERRENO);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
-    if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_TERRENO){
-        c.acquistaTerreno();
-        proprieta_possedute.push_back(c);
-        c.setGiocatore(this->getId());
-        paga(PREZZO_STANDARD_TERRENO);
-    }
-    else{
-        throw BudgetInsufficiente();
-    }
-    if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_TERRENO){
-        c.acquistaTerreno();
-        proprieta_possedute.push_back(c);
-        c.setGiocatore(this->getId());
-        paga(PREZZO_LUSSO_TERRENO);
-    }
-    else{
-        throw BudgetInsufficiente();
+    if(c.getCategoria()=='L'){
+        if(budget>=PREZZO_LUSSO_TERRENO){
+            c.acquistaTerreno();
+            proprieta_possedute.push_back(c);
+            c.setGiocatore(this->getId());
+            paga(PREZZO_LUSSO_TERRENO);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
 }
 
 void Giocatore::acquistaCasa(Casella &c) {
-    if(c.getCategoria()=='E' && budget>=PREZZO_ECO_CASA){
-        c.acquistaCasa();
-        paga(PREZZO_ECO_CASA);
+    if(c.getCategoria()=='E'){
+        if(budget>=PREZZO_ECO_CASA){
+            c.acquistaCasa();
+            paga(PREZZO_ECO_CASA);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
-    else{
-        throw BudgetInsufficiente();
+    if(c.getCategoria()=='S'){
+        if(budget>=PREZZO_STANDARD_CASA){
+            c.acquistaCasa();
+            paga(PREZZO_STANDARD_CASA);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
-    if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_CASA){
-        c.acquistaCasa();
-        paga(PREZZO_STANDARD_CASA);
-    }
-    else{
-        throw BudgetInsufficiente();
-    }
-    if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_CASA){
-        c.acquistaCasa();
-        paga(PREZZO_LUSSO_CASA);
-    }
-    else{
-        throw BudgetInsufficiente();
+    if(c.getCategoria()=='L'){
+        if(budget>=PREZZO_LUSSO_CASA){
+            c.acquistaCasa();
+            paga(PREZZO_LUSSO_CASA);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
 }
 
 void Giocatore::miglioraInAlbergo(Casella &c) {
-    if(c.getCategoria()=='E' && budget>=PREZZO_ECO_ALBERGO){
-        c.miglioraInAlbergo();
-        paga(PREZZO_ECO_ALBERGO);
+    if(c.getCategoria()=='E'){
+        if(budget>=PREZZO_ECO_ALBERGO){
+            c.miglioraInAlbergo();
+            paga(PREZZO_ECO_ALBERGO);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
-    else{
-        throw BudgetInsufficiente();
+    if(c.getCategoria()=='S'){
+        if(budget>=PREZZO_STANDARD_ALBERGO){
+            c.miglioraInAlbergo();
+            paga(PREZZO_STANDARD_ALBERGO);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
-    if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_ALBERGO){
-        c.miglioraInAlbergo();
-        paga(PREZZO_STANDARD_ALBERGO);
-    }
-    else{
-        throw BudgetInsufficiente();
-    }
-    if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_ALBERGO){
-        c.miglioraInAlbergo();
-        paga(PREZZO_LUSSO_ALBERGO);
-    }
-    else{
-        throw BudgetInsufficiente();
+    if(c.getCategoria()=='L'){
+        if(budget>=PREZZO_LUSSO_ALBERGO){
+            c.miglioraInAlbergo();
+            paga(PREZZO_LUSSO_ALBERGO);
+        }
+        else{
+            throw BudgetInsufficiente();
+        }
     }
 }
 
@@ -144,10 +167,6 @@ void Giocatore::muovi(int spostamento) {
     else{
         posizione+=spostamento;
     }
-}
-
-std::vector<Casella> Giocatore::getProprietàPossedute() {
-    return proprieta_possedute;
 }
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {

@@ -72,7 +72,6 @@ void Casella::reset() {
     giocatore = 32;
 }
 
-
 std::ostream& operator<<(std::ostream& os, const Casella& c) {
     char tipo;
     switch (c.getTipo()) {
