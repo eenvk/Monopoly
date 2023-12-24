@@ -13,7 +13,7 @@ int main(){
     Giocatore g = Giocatore(0);
     g.acquistaCasella(a);
     g.acquistaCasa(a);
-    g.acquistaCasella(c);
+    g.acquistaTerreno(c);
     cout<<a<<" "<<b<<" "<<c<<endl;
     cout<<"Giocatore "<<g.getId()<<": "<<g.getProprietaPossedute()<<endl;
     g.eliminaProprieta();

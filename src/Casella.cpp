@@ -15,23 +15,30 @@ Casella::Casella(char categoria) {
     this->giocatore = ' ';
 }
 
-bool Casella::acquistaCasella() {
-    if(stato && categoria!=' '){
+void Casella::acquistaTerreno() {
+    if(stato && categoria != ' '){
         stato = false;
-        return true;
     }
-    return false;
+    else{
+        throw TerrenoNonAcquistabile();
+    }
 }
 
 void Casella::acquistaCasa() {
     if(!stato && tipo == 1){
         tipo = 2;
     }
+    else{
+        throw CasaNonAcquistabile();
+    }
 }
 
 void Casella::miglioraInAlbergo() {
     if(!stato && tipo == 2){
         tipo = 3;
+    }
+    else{
+        throw CasaNonMigliorabileInAlbergo();
     }
 }
 

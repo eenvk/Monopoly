@@ -38,34 +38,80 @@ int Giocatore::getPosizione() const {
 
 void Giocatore::acquistaCasella(Casella &c) {
     if(c.getCategoria()=='E' && budget>=PREZZO_ECO_TERRENO){
-        if(c.acquistaCasella()){
-            proprieta_possedute.push_back(c);
-            c.setGiocatore(this->getId());
-            paga(PREZZO_ECO_TERRENO);
-        }
+        c.acquistaTerreno();
+        proprieta_possedute.push_back(c);
+        c.setGiocatore(this->getId());
+        paga(PREZZO_ECO_TERRENO);
     }
-    else if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_TERRENO){
-        if(c.acquistaCasella()){
-            proprieta_possedute.push_back(c);
-            c.setGiocatore(this->getId());
-            paga(PREZZO_STANDARD_TERRENO);
-        }
+    else{
+        throw BudgetInsufficiente();
     }
-    else if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_TERRENO){
-        if(c.acquistaCasella()){
-            proprieta_possedute.push_back(c);
-            c.setGiocatore(this->getId());
-            paga(PREZZO_LUSSO_TERRENO);
-        }
+    if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_TERRENO){
+        c.acquistaTerreno();
+        proprieta_possedute.push_back(c);
+        c.setGiocatore(this->getId());
+        paga(PREZZO_STANDARD_TERRENO);
+    }
+    else{
+        throw BudgetInsufficiente();
+    }
+    if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_TERRENO){
+        c.acquistaTerreno();
+        proprieta_possedute.push_back(c);
+        c.setGiocatore(this->getId());
+        paga(PREZZO_LUSSO_TERRENO);
+    }
+    else{
+        throw BudgetInsufficiente();
     }
 }
 
 void Giocatore::acquistaCasa(Casella &c) {
-    c.acquistaCasa();
+    if(c.getCategoria()=='E' && budget>=PREZZO_ECO_CASA){
+        c.acquistaCasa();
+        paga(PREZZO_ECO_CASA);
+    }
+    else{
+        throw BudgetInsufficiente();
+    }
+    if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_CASA){
+        c.acquistaCasa();
+        paga(PREZZO_STANDARD_CASA);
+    }
+    else{
+        throw BudgetInsufficiente();
+    }
+    if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_CASA){
+        c.acquistaCasa();
+        paga(PREZZO_LUSSO_CASA);
+    }
+    else{
+        throw BudgetInsufficiente();
+    }
 }
 
 void Giocatore::miglioraInAlbergo(Casella &c) {
-    c.miglioraInAlbergo();
+    if(c.getCategoria()=='E' && budget>=PREZZO_ECO_ALBERGO){
+        c.miglioraInAlbergo();
+        paga(PREZZO_ECO_ALBERGO);
+    }
+    else{
+        throw BudgetInsufficiente();
+    }
+    if(c.getCategoria()=='S' && budget>=PREZZO_STANDARD_ALBERGO){
+        c.miglioraInAlbergo();
+        paga(PREZZO_STANDARD_ALBERGO);
+    }
+    else{
+        throw BudgetInsufficiente();
+    }
+    if(c.getCategoria()=='L' && budget>=PREZZO_LUSSO_ALBERGO){
+        c.miglioraInAlbergo();
+        paga(PREZZO_LUSSO_ALBERGO);
+    }
+    else{
+        throw BudgetInsufficiente();
+    }
 }
 
 void Giocatore::eliminaProprieta() {

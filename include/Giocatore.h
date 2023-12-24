@@ -6,6 +6,7 @@
 
 class Giocatore{
 public:
+    class BudgetInsufficiente{};
     Giocatore(int);
     int getId() const;
     std::string getProprietaPossedute() const;

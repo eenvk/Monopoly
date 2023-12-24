@@ -13,9 +13,12 @@
 
 class Casella{
 public:
+    class TerrenoNonAcquistabile{};
+    class CasaNonAcquistabile{};
+    class CasaNonMigliorabileInAlbergo{};
     Casella();
     Casella(char);
-    bool acquistaCasella();
+    void acquistaTerreno();
     void acquistaCasa();
     void miglioraInAlbergo();
     void reset();
