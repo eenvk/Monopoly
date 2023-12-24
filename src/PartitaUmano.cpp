@@ -8,3 +8,4 @@ PartitaUmano::PartitaUmano() {
     }
     t.printTabellone(giocatori);
 }
+
