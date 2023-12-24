@@ -37,12 +37,11 @@ int main(){
     cout<<g.getProprietaPossedute()<<endl;
     cout<<g.getBudget()<<endl;
 
-    /*
     //supponiamo giocatore eliminato: prima elimino le caselle sul tab poi nel vector
     t.resetCaselle(g);
     g.eliminaProprieta();
     cout<<"Giocatore "<< g <<": "<<g.getProprietaPossedute()<<endl;
-    cout<<t<<endl;*/
+    cout<<t<<endl;
 
     return 0;
 }
