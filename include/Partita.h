@@ -6,7 +6,6 @@
 class Partita {
 protected:
     Partita();
-public:
     Tabellone t;
     std::vector<Giocatore> giocatori;
 };

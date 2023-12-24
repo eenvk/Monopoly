@@ -7,7 +7,7 @@ using namespace std;
 
 int main(){
 
-    /*Tabellone t = Tabellone();
+    Tabellone t = Tabellone();
     Casella* tab = t.getTabellone();
     vector<Giocatore> giocatori;
     giocatori.push_back(Giocatore(0));
@@ -33,6 +33,6 @@ int main(){
     t.resetCaselle(giocatori[0]);
     giocatori[0].eliminaProprieta();
     giocatori.erase(giocatori.begin());
-    t.printTabellone(giocatori);*/
+    t.printTabellone(giocatori);
     return 0;
 }
