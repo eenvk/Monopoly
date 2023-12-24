@@ -1,11 +1,10 @@
 #ifndef MONOPOLY_PARTITA_H
 #define MONOPOLY_PARTITA_H
-#define NUMERO_GIOCATORI
+#define NUMERO_GIOCATORI 4
 #include "Tabellone.h"
-#include "map"
 
 class Partita {
-public:
+protected:
     Partita();
 public:
     Tabellone t;

@@ -118,7 +118,8 @@ void Tabellone::printTabellone(std::vector<Giocatore> giocatori) {
                     }
                     std::cout << "|" << tabellone[14 - i].toString() + s << "|" << "  ";
                 }
-            } else if (j == 7 && i != 0 && i != 7) {
+            }
+            else if (j == 7 && i != 0 && i != 7) {
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[21+i].getId()){
