@@ -4,7 +4,6 @@ Casella::Casella() {
     this->stato = true; //di default una casella è disponibile
     this->tipo = 1; //è un terreno di default
     this->categoria = ' ';
-    this->giocatore = 32;
 }
 
 Casella::Casella(char categoria) {
@@ -12,7 +11,6 @@ Casella::Casella(char categoria) {
     this->tipo = 1; //è un terreno di default
     this->categoria = categoria;
     this->id = callCounter();
-    this->giocatore = 32;
 }
 
 void Casella::acquistaTerreno() {
@@ -54,21 +52,27 @@ int Casella::getId() const {
     return id;
 }
 
-char Casella::getGiocatore() const {
-    return giocatore;
-}
-
-void Casella::setGiocatore(int id_giocatore) {
-    giocatore = id_giocatore + 48;
-}
-
-void Casella::deleteGiocatore() {
-    giocatore = 32;
-}
-
 void Casella::reset() {
     tipo = 1;
     stato = true;
+}
+
+std::string Casella::toString() const {
+    std::string t;
+    switch (tipo) {
+        case 1:
+            t = " ";
+            break;
+        case 2:
+            t = "*";
+            break;
+        case 3:
+            t = "^";
+            break;
+        default: t = " ";
+            break;
+    }
+    return (categoria + t);
 }
 
 std::ostream& operator<<(std::ostream& os, const Casella& c) {
@@ -86,7 +90,7 @@ std::ostream& operator<<(std::ostream& os, const Casella& c) {
         default: tipo = ' ';
         break;
     }
-    return os<<c.getCategoria()<<" "<<tipo<<" "<< c.getGiocatore();
+    return os<<c.getCategoria()<<" "<<tipo;
 }
 
 int callCounter() {

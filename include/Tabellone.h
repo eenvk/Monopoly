@@ -10,11 +10,10 @@ public:
         void setCaselle();
         Casella* getTabellone();
         void resetCaselle(Giocatore);
+        void printTabellone(std::vector<Giocatore> giocatori);
 
 private:
     Casella tabellone[28];
 };
-
-std::ostream& operator<<(std::ostream&, Tabellone&);
 
 #endif //MONOPOLY_TABELLONE_H

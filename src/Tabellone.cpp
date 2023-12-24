@@ -63,54 +63,71 @@ void Tabellone::resetCaselle(Giocatore g) {
     }
 }
 
-std::ostream& operator<<(std::ostream& os, Tabellone& t){
-    Casella* copy = t.getTabellone(); //non serve gestire il memory leak dato che l'array non è dinamico
+void Tabellone::printTabellone(std::vector<Giocatore> giocatori) {
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if (i == 0) {
-                os << "|" << copy[14 + j] << "|" << "  ";
+                std::string s;
+                for(int k=0; k<giocatori.size(); k++){
+                    if(giocatori[k].getPosizione()==tabellone[14+j].getId()){
+                        s = s + std::to_string(giocatori[k].getId());
+                    }
+                    else{
+                        s = " ";
+                    }
+                }
+                std::cout << "|" << tabellone[14 + j].toString() + s << "|" << "  ";
             } else if (i == 7) {
-                os << "|" << copy[7 - j] << "|" << "  ";
+                std::string s;
+                for(int k=0; k<giocatori.size(); k++){
+                    if(giocatori[k].getPosizione()==tabellone[7-j].getId()){
+                        s = s + std::to_string(giocatori[k].getId());
+                    }
+                    else{
+                        s = " ";
+                    }
+                }
+                std::cout << "|" << tabellone[7 - j].toString() + s << "|" << "  ";
             } else if (j == 0 && i != 0 && i != 7) {
-                if (i == 6) {
-                    os << "|" << copy[14 - i] << "|" << "  ";
-                } else {
-                    os << "|" << copy[14 - i] << "|" << "  ";
+                if(i==6){
+                    std::string s;
+                    for(int k=0; k<giocatori.size(); k++){
+                        if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
+                            s = s + std::to_string(giocatori[k].getId());
+                        }
+                        else{
+                            s = " ";
+                        }
+                    }
+                    std::cout << "|" << tabellone[14 - i].toString() + s << "|" << "  ";
+                }
+                else{
+                    std::string s;
+                    for(int k=0; k<giocatori.size(); k++){
+                        if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
+                            s = s + std::to_string(giocatori[k].getId());
+                        }
+                        else{
+                            s = " ";
+                        }
+                    }
+                    std::cout << "|" << tabellone[14 - i].toString() + s << "|" << "  ";
                 }
             } else if (j == 7 && i != 0 && i != 7) {
-                os << "|" << copy[21 + i] << "|";
+                std::string s;
+                for(int k=0; k<giocatori.size(); k++){
+                    if(giocatori[k].getPosizione()==tabellone[21+i].getId()){
+                        s = s + std::to_string(giocatori[k].getId());
+                    }
+                    else{
+                        s = " ";
+                    }
+                }
+                std::cout << "|" << tabellone[21 + i].toString() + s << "|";
             } else {
-                os << "         ";
+                std::cout << "       ";
             }
         }
-        os << std::endl;
+        std::cout << std::endl;
     }
-    return os;
 }
-
-/*int array[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28};
-    for(int i=0;i<8;i++){
-        for(int j=0;j<8;j++){
-            if(i==0){
-                cout<<array[14+j]<<" ";
-            }
-            else if(i==7){
-                cout<<array[7-j]<<"  ";
-            }
-            else if(j==0 && i!=0 && i!=7){
-                if(i==6){
-                    cout<<array[14-i]<<"  ";
-                }
-                else {
-                    cout << array[14 - i] << " ";
-                }
-            }
-            else if(j==7 && i!=0 && i!=7){
-                cout<<array[21+i];
-            }
-            else{
-                cout << "   ";
-            }
-        }
-        cout<<endl;
-    }*/

@@ -16,6 +16,7 @@ public:
     class TerrenoNonAcquistabile{};
     class CasaNonAcquistabile{};
     class CasaNonMigliorabileInAlbergo{};
+
     Casella();
     Casella(char);
     void acquistaTerreno();
@@ -24,15 +25,14 @@ public:
     void reset();
 
     char getCategoria() const;
-    void setGiocatore(int);
-    void deleteGiocatore();
     int getTipo() const;
     int getId() const;
-    char getGiocatore() const;
+
+    std::string toString() const;
 
 private:
     int id;
-    char giocatore;
+    //char giocatore;
     bool stato; //true = disponibile
     int tipo; //1=terreno, 2=casa, 3=albergo
     char categoria; // 'spazio'-> angolare, P->partenza, E->economica, S->standard, L->lusso
