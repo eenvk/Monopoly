@@ -1,10 +1,9 @@
 #include "../include/PartitaUmano.h"
 
-/*PartitaUmano::PartitaUmano() {
-    Tabellone t = Tabellone();
-    Giocatore g1 = Giocatore(1);
-    Giocatore g2 = Giocatore(2);
-    Giocatore g3 = Giocatore(2);
-    Giocatore g4 = Giocatore(2);
+PartitaUmano::PartitaUmano() {
+    t = Tabellone();
+    giocatori.push_back(Giocatore(1));
+    for(int i=0;i<3;i++){
+        giocatori.push_back(Giocatore(2));
+    }
 }
-*/

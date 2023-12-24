@@ -3,6 +3,9 @@
 #include "Partita.h"
 class PartitaUmano:public Partita{
 public:
-    //PartitaUmano();
+    PartitaUmano();
+private:
+    Tabellone t;
+    std::vector<Giocatore> giocatori;
 };
 #endif //MONOPOLY_PARTITAUMANO_H
