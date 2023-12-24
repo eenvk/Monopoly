@@ -10,12 +10,3 @@ PartitaUmano::PartitaUmano() {
     }
     t.printTabellone(giocatori);
 }
-
-/* t = Tabellone();
-    for(int i=0;i<NUMERO_GIOCATORI;i++){
-        if(i==0)
-            this->giocatori.push_back(Giocatore(1));
-        this->giocatori.push_back(Giocatore(2));
-    }
-    t.printTabellone(giocatori);*/
-
