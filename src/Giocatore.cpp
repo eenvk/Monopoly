@@ -45,7 +45,6 @@ void Giocatore::acquistaCasella(Casella &c) {
         if(budget>=PREZZO_ECO_TERRENO){
             c.acquistaTerreno();
             proprieta_possedute.push_back(c);
-            c.setGiocatore(this->getId());
             paga(PREZZO_ECO_TERRENO);
         }
         else{
@@ -57,7 +56,6 @@ void Giocatore::acquistaCasella(Casella &c) {
         if(budget>=PREZZO_STANDARD_TERRENO){
             c.acquistaTerreno();
             proprieta_possedute.push_back(c);
-            c.setGiocatore(this->getId());
             paga(PREZZO_STANDARD_TERRENO);
         }
         else{
@@ -68,7 +66,6 @@ void Giocatore::acquistaCasella(Casella &c) {
         if(budget>=PREZZO_LUSSO_TERRENO){
             c.acquistaTerreno();
             proprieta_possedute.push_back(c);
-            c.setGiocatore(this->getId());
             paga(PREZZO_LUSSO_TERRENO);
         }
         else{

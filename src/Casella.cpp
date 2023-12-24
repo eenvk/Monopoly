@@ -12,11 +12,11 @@ Casella::Casella(char categoria) {
     this->tipo = 1; //è un terreno di default
     this->categoria = categoria;
     this->id = callCounter();
-    this->giocatore = ' ';
+    this->giocatore = 32;
 }
 
 void Casella::acquistaTerreno() {
-    if(stato && categoria != ' '){
+    if(stato && categoria != ' ' && categoria != 'P'){
         stato = false;
     }
     else{
@@ -62,14 +62,17 @@ void Casella::setCategoria(char c) {
     categoria = c;
 }
 
-void Casella::setGiocatore(int n) {
-    giocatore = n + 48;
+void Casella::setGiocatore(int id_giocatore) {
+    giocatore = id_giocatore + 48;
+}
+
+void Casella::deleteGiocatore() {
+    giocatore = 32;
 }
 
 void Casella::reset() {
     tipo = 1;
     stato = true;
-    giocatore = 32;
 }
 
 std::ostream& operator<<(std::ostream& os, const Casella& c) {

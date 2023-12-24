@@ -1,15 +1,14 @@
-#include "Casella.h"
-#include "Giocatore.h"
-#include <iostream>
-#include <algorithm>
-#include <random>
 #ifndef MONOPOLY_TABELLONE_H
 #define MONOPOLY_TABELLONE_H
-
+#include "Casella.h"
+#include "Giocatore.h"
+#include <algorithm>
+#include <random>
 
 class Tabellone{
 public:
         Tabellone();
+        void setCaselle();
         Casella* getTabellone();
         void resetCaselle(Giocatore);
 
