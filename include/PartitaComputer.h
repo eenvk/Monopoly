@@ -4,7 +4,7 @@
 
 class PartitaComputer: public Partita{
 public:
-    PartitaComputer();
+    //PartitaComputer();
 };
 
 
