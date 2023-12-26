@@ -9,6 +9,9 @@ protected:
     Partita();
     Tabellone t = Tabellone();
     std::vector<Giocatore> giocatori;
+public:
+    void ordineGiocatoriNelTiroDadi();
+    std::vector<Giocatore> getGiocatori();
 };
 
 #endif //MONOPOLY_PARTITA_H

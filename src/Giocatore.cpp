@@ -174,7 +174,7 @@ std::ostream& operator<<(std::ostream& os, Giocatore& g) {
     else if(g.getTipo()==2){
         tipo = "Computer";
     }
-    return os<<g.getId()<<" "<<tipo<<" "<<g.getBudget()<<" "<<" Pos: "<<g.getPosizione();
+    return os<<"Id: "<<g.getId()<<", Tipo: "<<tipo<<", Budget: "<<g.getBudget()<<", Pos: "<<g.getPosizione();
 }
 
 int callCounter2() {

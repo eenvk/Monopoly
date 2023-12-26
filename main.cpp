@@ -36,5 +36,11 @@ int main(){
     t.printTabellone(giocatori);*/
 
     PartitaUmano pu = PartitaUmano();
+    pu.ordineGiocatoriNelTiroDadi();
+
+    std::cout<<"Infatti questo e' il nuovo vector ordinato in base all'ordine di gioco:"<<endl;
+    for(int i=0;i<pu.getGiocatori().size();i++){
+        cout<<pu.getGiocatori()[i]<<endl;
+    }
     return 0;
 }
