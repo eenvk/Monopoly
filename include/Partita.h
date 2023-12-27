@@ -7,10 +7,10 @@
 class Partita {
 protected:
     Partita();
+    void ordinaGiocatori();
     Tabellone t = Tabellone();
     std::vector<Giocatore> giocatori;
 public:
-    void ordineGiocatoriNelTiroDadi();
     std::vector<Giocatore> getGiocatori();
 };
 

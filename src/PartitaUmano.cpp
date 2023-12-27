@@ -5,5 +5,6 @@ PartitaUmano::PartitaUmano() {
     for(int i=1;i<NUMERO_GIOCATORI;i++){
         this->giocatori.push_back(Giocatore(2));
     }
+    ordinaGiocatori();
     t.printTabellone(giocatori);
 }

@@ -7,12 +7,11 @@
 class Tabellone{
 public:
         Tabellone();
-        void setCaselle();
         Casella* getTabellone();
         void resetCaselle(Giocatore);
         void printTabellone(const std::vector<Giocatore> giocatori);
-
 private:
+    void setCaselle();
     Casella tabellone[28];
 };
 
