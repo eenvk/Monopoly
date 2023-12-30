@@ -51,7 +51,6 @@ void Giocatore::acquistaCasella(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
-
     if(c.getCategoria()==STANDARD){
         if(budget>=PREZZO_STANDARD_TERRENO){
             c.acquistaTerreno();
@@ -152,28 +151,24 @@ void Giocatore::setDead() {
 
 int Giocatore::tiroDadi() {
     int numero = rand()%10+2; //con 2 dadi il minimo numero che può uscire è 2 e il massimo è 12
+    std::cout<<"Giocatore "<<id<<" ha tirato i dadi ottenendo un valore di "<<numero<<"\n";
     return numero;
 }
 
 void Giocatore::muovi(int spostamento) {
     if(posizione + spostamento > 27){
         int diff = 28-posizione;
-        posizione = 0; //avviso che è passato per la partenza
-        posizione += spostamento-diff;
+        posizione = spostamento-diff;
+        incassa(20);
+        std::cout<<" Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
     }
     else{
-        posizione+=spostamento;
+        posizione += spostamento;
+        std::cout<<" Giocatore "<<id<<" e' arrivato alla casella "<<posizione<<"\n";
     }
 }
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {
-    /*std::string tipo;
-    if(g.getTipo()==1){
-        tipo = "Umano";
-    }
-    else if(g.getTipo()==2){
-        tipo = "Computer";
-    }*/
     return os<<"Id: "<<g.getId()<<", Tipo: "<<g.getTipo()<<", Budget: "<<g.getBudget()<<", Pos: "<<g.getPosizione();
 }
 

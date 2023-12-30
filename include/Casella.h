@@ -31,6 +31,7 @@ public:
     void acquistaTerreno();
     void acquistaCasa();
     void miglioraInAlbergo();
+    //void setProprietario(int);
     void reset();
 
     char getCategoria() const;
@@ -40,7 +41,7 @@ public:
 
 private:
     int id;
-    //char giocatore;
+    //int proprietario;
     bool stato; //true = disponibile
     char tipo; // ' '=terreno, '*'=casa, '^'=albergo
     char categoria; // ' '-> angolare, P->partenza, E->economica, S->standard, L->lusso

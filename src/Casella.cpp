@@ -4,6 +4,7 @@ Casella::Casella() {
     this->stato = true; //di default una casella è disponibile
     this->tipo = TERRENO; //è un terreno di default
     this->categoria = ' ';
+    //this->proprietario = 0;
 }
 
 Casella::Casella(char categoria) {
@@ -11,6 +12,7 @@ Casella::Casella(char categoria) {
     this->tipo = TERRENO; //è un terreno di default
     this->categoria = categoria;
     this->id = callCounter();
+    //this->proprietario = 0; //0 vuol dire di nessuno
 }
 
 void Casella::acquistaTerreno() {
@@ -40,6 +42,10 @@ void Casella::miglioraInAlbergo() {
     }
 }
 
+/*void Casella::setProprietario(int id_giocatore) {
+    this->proprietario = id_giocatore;
+}*/
+
 char Casella::getCategoria() const{
     return categoria;
 }
@@ -62,20 +68,6 @@ void Casella::reset() {
 }
 
 std::ostream& operator<<(std::ostream& os, const Casella& c) {
-    /*char tipo;
-    switch (c.getTipo()) {
-        case 1:
-            tipo = ' ';
-            break;
-        case 2:
-            tipo = '*';
-            break;
-        case 3:
-            tipo = '^';
-            break;
-        default: tipo = ' ';
-        break;
-    }*/
     return os<<c.getCategoria()<<c.getTipo();
 }
 

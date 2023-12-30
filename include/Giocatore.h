@@ -35,7 +35,7 @@ private:
     std::vector<Casella> proprieta_possedute;
     bool is_alive; //il giocatore è ancora in gioco?
     int budget;
-    char tipo; //1=umano 2=computer
+    char tipo; //U=umano C=computer
     int posizione;
 };
 

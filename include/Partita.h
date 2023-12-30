@@ -11,7 +11,8 @@ protected:
     Tabellone t = Tabellone();
     std::vector<Giocatore> giocatori;
 public:
-    std::vector<Giocatore> getGiocatori();
+    std::vector<Giocatore> getGiocatori() const;
+    void listaPossedimenti() const;
 };
 
 #endif //MONOPOLY_PARTITA_H
