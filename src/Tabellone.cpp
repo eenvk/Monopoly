@@ -71,7 +71,6 @@ void Tabellone::printTabellone(const std::vector<Giocatore> giocatori) {
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[14+j].getId()){
                         s = s+std::to_string(giocatori[k].getId());
-                        //break;
                     }
                     else{
                         s = s+" ";
@@ -84,7 +83,6 @@ void Tabellone::printTabellone(const std::vector<Giocatore> giocatori) {
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[7-j].getId()){
                         s = s+std::to_string(giocatori[k].getId());
-                        //break;
                     }
                     else{
                         s = s+" ";
@@ -97,7 +95,6 @@ void Tabellone::printTabellone(const std::vector<Giocatore> giocatori) {
                     for(int k=0; k<giocatori.size(); k++){
                         if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
                             s = s+std::to_string(giocatori[k].getId());
-                            //break;
                         }
                         else{
                             s = s+" ";
@@ -110,7 +107,6 @@ void Tabellone::printTabellone(const std::vector<Giocatore> giocatori) {
                     for(int k=0; k<giocatori.size(); k++){
                         if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
                             s = s+std::to_string(giocatori[k].getId());
-                            //break;
                         }
                         else{
                             s = s+" ";
@@ -124,7 +120,6 @@ void Tabellone::printTabellone(const std::vector<Giocatore> giocatori) {
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[21+i].getId()){
                         s = s+std::to_string(giocatori[k].getId());
-                        //break;
                     }
                     else{
                         s = s+" ";
