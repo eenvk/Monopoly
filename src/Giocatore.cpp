@@ -1,8 +1,8 @@
 #include "../include/Giocatore.h"
 
-Giocatore::Giocatore(int tipo) {
+Giocatore::Giocatore(char tipo) {
     this->id = callCounter2();
-    this->budget = 100;
+    this->budget = BUDGET_INIZIALE;
     this->is_alive = true;
     this->tipo = tipo; //1=human, 2=computer
     this->posizione = 0;
@@ -32,7 +32,7 @@ bool Giocatore::isAlive() const{
     return is_alive;
 }
 
-int Giocatore::getTipo() const {
+char Giocatore::getTipo() const {
     return tipo;
 }
 
@@ -41,7 +41,7 @@ int Giocatore::getPosizione() const {
 }
 
 void Giocatore::acquistaCasella(Casella &c) {
-    if(c.getCategoria()=='E'){
+    if(c.getCategoria()==ECONOMICA){
         if(budget>=PREZZO_ECO_TERRENO){
             c.acquistaTerreno();
             proprieta_possedute.push_back(c);
@@ -52,7 +52,7 @@ void Giocatore::acquistaCasella(Casella &c) {
         }
     }
 
-    if(c.getCategoria()=='S'){
+    if(c.getCategoria()==STANDARD){
         if(budget>=PREZZO_STANDARD_TERRENO){
             c.acquistaTerreno();
             proprieta_possedute.push_back(c);
@@ -62,7 +62,7 @@ void Giocatore::acquistaCasella(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
-    if(c.getCategoria()=='L'){
+    if(c.getCategoria()==LUSSO){
         if(budget>=PREZZO_LUSSO_TERRENO){
             c.acquistaTerreno();
             proprieta_possedute.push_back(c);
@@ -75,7 +75,7 @@ void Giocatore::acquistaCasella(Casella &c) {
 }
 
 void Giocatore::acquistaCasa(Casella &c) {
-    if(c.getCategoria()=='E'){
+    if(c.getCategoria()==ECONOMICA){
         if(budget>=PREZZO_ECO_CASA){
             c.acquistaCasa();
             paga(PREZZO_ECO_CASA);
@@ -84,7 +84,7 @@ void Giocatore::acquistaCasa(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
-    if(c.getCategoria()=='S'){
+    if(c.getCategoria()==STANDARD){
         if(budget>=PREZZO_STANDARD_CASA){
             c.acquistaCasa();
             paga(PREZZO_STANDARD_CASA);
@@ -93,7 +93,7 @@ void Giocatore::acquistaCasa(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
-    if(c.getCategoria()=='L'){
+    if(c.getCategoria()==LUSSO){
         if(budget>=PREZZO_LUSSO_CASA){
             c.acquistaCasa();
             paga(PREZZO_LUSSO_CASA);
@@ -105,7 +105,7 @@ void Giocatore::acquistaCasa(Casella &c) {
 }
 
 void Giocatore::miglioraInAlbergo(Casella &c) {
-    if(c.getCategoria()=='E'){
+    if(c.getCategoria()==ECONOMICA){
         if(budget>=PREZZO_ECO_ALBERGO){
             c.miglioraInAlbergo();
             paga(PREZZO_ECO_ALBERGO);
@@ -114,7 +114,7 @@ void Giocatore::miglioraInAlbergo(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
-    if(c.getCategoria()=='S'){
+    if(c.getCategoria()==STANDARD){
         if(budget>=PREZZO_STANDARD_ALBERGO){
             c.miglioraInAlbergo();
             paga(PREZZO_STANDARD_ALBERGO);
@@ -123,7 +123,7 @@ void Giocatore::miglioraInAlbergo(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
-    if(c.getCategoria()=='L'){
+    if(c.getCategoria()==LUSSO){
         if(budget>=PREZZO_LUSSO_ALBERGO){
             c.miglioraInAlbergo();
             paga(PREZZO_LUSSO_ALBERGO);
@@ -167,14 +167,14 @@ void Giocatore::muovi(int spostamento) {
 }
 
 std::ostream& operator<<(std::ostream& os, Giocatore& g) {
-    std::string tipo;
+    /*std::string tipo;
     if(g.getTipo()==1){
         tipo = "Umano";
     }
     else if(g.getTipo()==2){
         tipo = "Computer";
-    }
-    return os<<"Id: "<<g.getId()<<", Tipo: "<<tipo<<", Budget: "<<g.getBudget()<<", Pos: "<<g.getPosizione();
+    }*/
+    return os<<"Id: "<<g.getId()<<", Tipo: "<<g.getTipo()<<", Budget: "<<g.getBudget()<<", Pos: "<<g.getPosizione();
 }
 
 int callCounter2() {

@@ -2,19 +2,19 @@
 
 Casella::Casella() {
     this->stato = true; //di default una casella è disponibile
-    this->tipo = 1; //è un terreno di default
+    this->tipo = TERRENO; //è un terreno di default
     this->categoria = ' ';
 }
 
 Casella::Casella(char categoria) {
     this->stato = true; //di default una casella è disponibile
-    this->tipo = 1; //è un terreno di default
+    this->tipo = TERRENO; //è un terreno di default
     this->categoria = categoria;
     this->id = callCounter();
 }
 
 void Casella::acquistaTerreno() {
-    if(stato && categoria != ' ' && categoria != 'P'){
+    if(stato && categoria != ANGOLARE && categoria != PARTENZA){
         stato = false;
     }
     else{
@@ -23,8 +23,8 @@ void Casella::acquistaTerreno() {
 }
 
 void Casella::acquistaCasa() {
-    if(!stato && tipo == 1){
-        tipo = 2;
+    if(!stato && tipo == TERRENO){
+        tipo = CASA;
     }
     else{
         throw CasaNonAcquistabile();
@@ -32,8 +32,8 @@ void Casella::acquistaCasa() {
 }
 
 void Casella::miglioraInAlbergo() {
-    if(!stato && tipo == 2){
-        tipo = 3;
+    if(!stato && tipo == CASA){
+        tipo = ALBERGO;
     }
     else{
         throw CasaNonMigliorabileInAlbergo();
@@ -44,7 +44,7 @@ char Casella::getCategoria() const{
     return categoria;
 }
 
-int Casella::getTipo() const {
+char Casella::getTipo() const {
     return tipo;
 }
 
@@ -52,31 +52,17 @@ int Casella::getId() const {
     return id;
 }
 
+bool Casella::getStato() const {
+    return stato;
+}
+
 void Casella::reset() {
     tipo = 1;
     stato = true;
 }
 
-std::string Casella::toString() const {
-    std::string t;
-    switch (tipo) {
-        case 1:
-            t = " ";
-            break;
-        case 2:
-            t = "*";
-            break;
-        case 3:
-            t = "^";
-            break;
-        default: t = " ";
-            break;
-    }
-    return (categoria + t);
-}
-
 std::ostream& operator<<(std::ostream& os, const Casella& c) {
-    char tipo;
+    /*char tipo;
     switch (c.getTipo()) {
         case 1:
             tipo = ' ';
@@ -89,8 +75,8 @@ std::ostream& operator<<(std::ostream& os, const Casella& c) {
             break;
         default: tipo = ' ';
         break;
-    }
-    return os<<c.getCategoria()<<" "<<tipo;
+    }*/
+    return os<<c.getCategoria()<<c.getTipo();
 }
 
 int callCounter() {

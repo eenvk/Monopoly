@@ -3,16 +3,19 @@
 #include <iostream>
 #include <vector>
 #include "../include/Casella.h"
+#define UMANO 'U'
+#define COMPUTER 'C'
+#define BUDGET_INIZIALE 100
 
 class Giocatore{
 public:
     class BudgetInsufficiente{};
-    Giocatore(int);
+    Giocatore(char);
     int getId() const;
     std::string getProprietaPossedute() const;
     bool isAlive() const;
     int getBudget() const;
-    int getTipo() const;
+    char getTipo() const;
     int getPosizione() const;
     std::vector<Casella> proprietaPossedute();
 
@@ -32,7 +35,7 @@ private:
     std::vector<Casella> proprieta_possedute;
     bool is_alive; //il giocatore è ancora in gioco?
     int budget;
-    int tipo; //1=umano 2=computer
+    char tipo; //1=umano 2=computer
     int posizione;
 };
 

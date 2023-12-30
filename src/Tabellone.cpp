@@ -15,30 +15,30 @@ void Tabellone::setCaselle(){
     for (int i = 0; i < 28; i++) {
         //Caselle angolari
         if (i == 0) {
-            tabellone[i] = Casella('P');
+            tabellone[i] = Casella(PARTENZA);
         } else if (i % 7 == 0) {
-            tabellone[i] = Casella(' ');
+            tabellone[i] = Casella(ANGOLARE);
         } else {
             // Caselle laterali
             while(true){
                 int valore_rand = rand() % 3;
                 if(valore_rand == 0){
                     if(max_economiche>0){
-                        tabellone[i] = Casella('E'); // Categoria economica
+                        tabellone[i] = Casella(ECONOMICA); // Categoria economica
                         max_economiche--;
                         break;
                     }
                 }
                 else if(valore_rand == 1){
                     if(max_standard>0){
-                        tabellone[i] = Casella('S'); // Categoria standard
+                        tabellone[i] = Casella(STANDARD); // Categoria standard
                         max_standard--;
                         break;
                     }
                 }
                 else if(valore_rand == 2){
                     if(max_lusso>0){
-                        tabellone[i] = Casella('L'); // Categoria lusso
+                        tabellone[i] = Casella(LUSSO); // Categoria lusso
                         max_lusso--;
                         break;
                     }
@@ -70,69 +70,69 @@ void Tabellone::printTabellone(const std::vector<Giocatore> giocatori) {
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[14+j].getId()){
-                        s = std::to_string(giocatori[k].getId());
-                        break;
+                        s = s+std::to_string(giocatori[k].getId());
+                        //break;
                     }
                     else{
-                        s = " ";
+                        s = s+" ";
                     }
                 }
-                std::cout << "|" << tabellone[14 + j].toString() + s << "|" << "  ";
+                std::cout << "|" << tabellone[14 + j] << s << "|" << "  ";
             }
             else if (i == 7) {
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[7-j].getId()){
-                        s = std::to_string(giocatori[k].getId());
-                        break;
+                        s = s+std::to_string(giocatori[k].getId());
+                        //break;
                     }
                     else{
-                        s = " ";
+                        s = s+" ";
                     }
                 }
-                std::cout << "|" << tabellone[7 - j].toString() + s << "|" << "  ";
+                std::cout << "|" << tabellone[7 - j]<< s << "|" << "  ";
             } else if (j == 0 && i != 0 && i != 7) {
                 if(i==6){
                     std::string s;
                     for(int k=0; k<giocatori.size(); k++){
                         if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
-                            s = std::to_string(giocatori[k].getId());
-                            break;
+                            s = s+std::to_string(giocatori[k].getId());
+                            //break;
                         }
                         else{
-                            s = " ";
+                            s = s+" ";
                         }
                     }
-                    std::cout << "|" << tabellone[14 - i].toString() + s << "|" << "  ";
+                    std::cout << "|" << tabellone[14 - i] << s << "|" << "  ";
                 }
                 else{
                     std::string s;
                     for(int k=0; k<giocatori.size(); k++){
                         if(giocatori[k].getPosizione()==tabellone[14-i].getId()){
-                            s = std::to_string(giocatori[k].getId());
-                            break;
+                            s = s+std::to_string(giocatori[k].getId());
+                            //break;
                         }
                         else{
-                            s = " ";
+                            s = s+" ";
                         }
                     }
-                    std::cout << "|" << tabellone[14 - i].toString() + s << "|" << "  ";
+                    std::cout << "|" << tabellone[14 - i] << s << "|" << "  ";
                 }
             }
             else if (j == 7 && i != 0 && i != 7) {
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k].getPosizione()==tabellone[21+i].getId()){
-                        s = std::to_string(giocatori[k].getId());
-                        break;
+                        s = s+std::to_string(giocatori[k].getId());
+                        //break;
                     }
                     else{
-                        s = " ";
+                        s = s+" ";
                     }
                 }
-                std::cout << "|" << tabellone[21 + i].toString() + s << "|";
+                std::cout << "|" << tabellone[21 + i] << s << "|";
             } else {
-                std::cout << "       ";
+                std::cout << "          ";
             }
         }
         std::cout << std::endl;

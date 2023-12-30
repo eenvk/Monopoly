@@ -34,7 +34,6 @@ int main(){
     giocatori[0].eliminaProprieta();
     giocatori.erase(giocatori.begin());
     t.printTabellone(giocatori);*/
-
     PartitaUmano pu = PartitaUmano();
 
     std::cout<<"Infatti questo e' il nuovo vector ordinato in base all'ordine di gioco:"<<endl;

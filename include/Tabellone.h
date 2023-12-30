@@ -6,10 +6,10 @@
 
 class Tabellone{
 public:
-        Tabellone();
-        Casella* getTabellone();
-        void resetCaselle(Giocatore);
-        void printTabellone(const std::vector<Giocatore> giocatori);
+    Tabellone();
+    Casella* getTabellone();
+    void resetCaselle(Giocatore);
+    void printTabellone(const std::vector<Giocatore> giocatori);
 private:
     void setCaselle();
     Casella tabellone[28];

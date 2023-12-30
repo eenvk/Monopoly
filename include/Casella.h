@@ -9,6 +9,15 @@
 #define PREZZO_LUSSO_TERRENO 20
 #define PREZZO_LUSSO_CASA 10
 #define PREZZO_LUSSO_ALBERGO 10
+#define TERRENO ' '
+#define CASA '*'
+#define ALBERGO '^'
+#define ECONOMICA 'E'
+#define STANDARD 'S'
+#define LUSSO 'L'
+#define PARTENZA 'P'
+#define ANGOLARE ' '
+
 #include <iostream>
 
 class Casella{
@@ -25,17 +34,16 @@ public:
     void reset();
 
     char getCategoria() const;
-    int getTipo() const;
+    char getTipo() const;
     int getId() const;
-
-    std::string toString() const;
+    bool getStato() const;
 
 private:
     int id;
     //char giocatore;
     bool stato; //true = disponibile
-    int tipo; //1=terreno, 2=casa, 3=albergo
-    char categoria; // 'spazio'-> angolare, P->partenza, E->economica, S->standard, L->lusso
+    char tipo; // ' '=terreno, '*'=casa, '^'=albergo
+    char categoria; // ' '-> angolare, P->partenza, E->economica, S->standard, L->lusso
 };
 std::ostream& operator<<(std::ostream&, const Casella&);
 
