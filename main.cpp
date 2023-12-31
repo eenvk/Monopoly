@@ -36,5 +36,6 @@ int main(){
     giocatori.erase(giocatori.begin());
     t.printTabellone(giocatori);*/
     PartitaComputer pu = PartitaComputer();
+
     return 0;
 }
