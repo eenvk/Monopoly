@@ -15,7 +15,7 @@ int Giocatore::getId() const{
 std::string Giocatore::getProprietaPossedute() const{
     std::string s = "";
     for(int i=0;i<proprieta_possedute.size();i++){
-        s = s + std::to_string(proprieta_possedute[i].getId()) + " ";
+        s = s + (proprieta_possedute[i].getNome()) + " ";
     }
     return s;
 }
@@ -160,11 +160,11 @@ void Giocatore::muovi(int spostamento) {
         int diff = 28-posizione;
         posizione = spostamento-diff;
         incassa(20);
-        std::cout<<" Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
+        std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
     }
     else{
         posizione += spostamento;
-        std::cout<<" Giocatore "<<id<<" e' arrivato alla casella "<<posizione<<"\n";
+        std::cout<<"Giocatore "<<id<<" e' arrivato alla casella "<<posizione<<"\n";
     }
 }
 

@@ -38,9 +38,11 @@ public:
     char getTipo() const;
     int getId() const;
     bool getStato() const;
+    std::string getNome()const;
 
 private:
     int id;
+    std::string nome;
     //int proprietario;
     bool stato; //true = disponibile
     char tipo; // ' '=terreno, '*'=casa, '^'=albergo
@@ -49,5 +51,6 @@ private:
 std::ostream& operator<<(std::ostream&, const Casella&);
 
 int callCounter();
+std::string setNome();
 
 #endif //MONOPOLY_CASELLA_H

@@ -6,17 +6,23 @@ PartitaComputer::PartitaComputer() {
     }
     ordinaGiocatori();
     t.printTabellone(giocatori);
-    Casella* caselle = t.getTabellone();
-    for(int i=0;i<20;i++){
+    /*Casella* caselle = t.getTabellone();
+    for(int i=0;i<1;i++){
         for(int j=0;j<giocatori.size();j++){
-            int n = giocatori[i].tiroDadi();
-            giocatori[i].muovi(n);
-            if(caselle[giocatori[i].getPosizione()].getCategoria()!=ANGOLARE || caselle[giocatori[i].getPosizione()].getCategoria()!=PARTENZA){
-                /*int possibilita = rand()%4+1;
-                if(possibilita==1){
-                    giocatori[i].acquistaCasella(caselle[giocatori[i].getPosizione()]);
-                }*/
+            int n = giocatori[j].tiroDadi();
+            giocatori[j].muovi(n);
+            Casella& pos = caselle[giocatori[j].getPosizione()];
+            if(pos.getCategoria()==ANGOLARE || pos.getCategoria()==PARTENZA){
+                std::cout<<"Giocatore "<<giocatori[j].getId()<<" ha finito il turno"<<"\n";
+            }
+            else{
+                int possibilita = rand()&4+1;
+                giocatori[j].acquistaCasella(pos);
+                std::cout<<"Giocatore "<<giocatori[j].getId()<<" ha acquistato "<<pos.getNome()<<"\n";
             }
         }
+        t.printTabellone(giocatori);
     }
+    std::cout<<"\n";
+    listaPossedimenti();*/
 }

@@ -12,11 +12,12 @@ Casella::Casella(char categoria) {
     this->tipo = TERRENO; //è un terreno di default
     this->categoria = categoria;
     this->id = callCounter();
+    this->nome = setNome();
     //this->proprietario = 0; //0 vuol dire di nessuno
 }
 
 void Casella::acquistaTerreno() {
-    if(stato && categoria != ANGOLARE && categoria != PARTENZA){
+    if(stato && (categoria != ANGOLARE && categoria != PARTENZA)){
         stato = false;
     }
     else{
@@ -58,6 +59,10 @@ int Casella::getId() const {
     return id;
 }
 
+std::string Casella::getNome()const{
+    return nome;
+}
+
 bool Casella::getStato() const {
     return stato;
 }
@@ -74,4 +79,24 @@ std::ostream& operator<<(std::ostream& os, const Casella& c) {
 int callCounter() {
     static int count = 0;
     return count++;
+}
+
+std::string setNome(){
+    static char lettera = 72;
+    static int numero = 9;
+    static int i = 0;
+    if(i<8){
+        i++;
+        return lettera+std::to_string(--numero);
+    }
+    if(i<15){
+        i++;
+        return (--lettera)+std::to_string(numero);
+    }
+    if(i<22){
+        i++;
+        return lettera+std::to_string(++numero);
+    }
+    i++;
+    return (++lettera)+std::to_string(numero);
 }

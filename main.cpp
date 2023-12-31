@@ -3,6 +3,7 @@
 #include "include/Giocatore.h"
 #include "include/Tabellone.h"
 #include "include/PartitaUmano.h"
+#include "include/PartitaComputer.h"
 using namespace std;
 
 int main(){
@@ -34,6 +35,6 @@ int main(){
     giocatori[0].eliminaProprieta();
     giocatori.erase(giocatori.begin());
     t.printTabellone(giocatori);*/
-    PartitaUmano pu = PartitaUmano();
+    PartitaComputer pu = PartitaComputer();
     return 0;
 }
