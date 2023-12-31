@@ -4,23 +4,35 @@ Partita::Partita() {
 }
 
 void Partita::ordinaGiocatori() {
-    std::multimap<int,int,std::greater<int>>ordine;
+    std::multimap<int,int,std::greater<int>> ordine;
     std::cout<<"I giocatori tirano i dadi per decidere l'ordine di gioco"<<"\n";
     for(int i=0;i<4;i++){
         ordine.insert(std::make_pair(giocatori[i].tiroDadi(), giocatori[i].getId()));
     }
-    std::cout<<"L'ordine dei giocatori e' ";
-    for (const auto& coppia : ordine) {
-        std::cout << coppia.second<<" ";
-    }
-    std::cout<<"\n";
     std::vector<Giocatore> temp;
-    for (const auto& coppia : ordine) {
-        temp.push_back(giocatori[coppia.second - 1]);
+    while(!ordine.empty()){
+        int valore = ordine.begin()->first;
+        int count = ordine.count(valore);
+        while(count>=2){
+            for(int i=0;i<count;i++){
+                int id_giocatore = ordine.find(valore)->second;
+                ordine.erase(ordine.find(valore));
+                ordine.insert(std::make_pair(giocatori[id_giocatore-1].tiroDadi(), id_giocatore));
+            }
+            valore = ordine.begin()->first;
+            count = ordine.count(valore);
+        }
+        temp.push_back(giocatori[ordine.begin()->second - 1]);
+        ordine.erase(ordine.begin());
     }
     for(int i=0;i<NUMERO_GIOCATORI;i++){
         giocatori[i] = temp[i];
     }
+    std::cout<<"L'ordine dei giocatori e' ";
+    for (int i=0;i<4;i++){
+        std::cout<<giocatori[i].getId()<<" ";
+    }
+    std::cout<<"\n";
 }
 
 std::vector<Giocatore> Partita::getGiocatori() const{
