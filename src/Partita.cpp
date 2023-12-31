@@ -44,6 +44,3 @@ void Partita::listaPossedimenti() const{
         std::cout<<"Giocatore "<<giocatori[i].getId()<<": "<<giocatori[i].getProprietaPossedute()<<"\n";
     }
 }
-
-//--------
-//------
