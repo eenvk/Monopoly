@@ -6,7 +6,7 @@ Partita::Partita() {
 void Partita::ordinaGiocatori() {
     std::multimap<int,int,std::greater<int>> ordine;
     std::cout<<"I giocatori tirano i dadi per decidere l'ordine di gioco"<<"\n";
-    for(int i=0;i<4;i++){
+    for(int i=0;i<NUMERO_GIOCATORI;i++){
         ordine.insert(std::make_pair(giocatori[i].tiroDadi(), giocatori[i].getId()));
     }
     std::vector<Giocatore> temp;
@@ -29,7 +29,7 @@ void Partita::ordinaGiocatori() {
         giocatori[i] = temp[i];
     }
     std::cout<<"L'ordine dei giocatori e' ";
-    for (int i=0;i<4;i++){
+    for (int i=0;i<NUMERO_GIOCATORI;i++){
         std::cout<<giocatori[i].getId()<<" ";
     }
     std::cout<<"\n";
