@@ -151,7 +151,7 @@ void Giocatore::setDead() {
 
 int Giocatore::tiroDadi() {
     int numero = rand()%11+2; //con 2 dadi il minimo numero che può uscire è 2 e il massimo è 12
-    std::cout<<"Giocatore "<<id<<" ha tirato i dadi ottenendo un valore di "<<numero<<"\n";
+    std::cout<<"Giocatore "<<id<<" ha tirato i dadi ottenendo "<<numero<<"\n";
     return numero;
 }
 
@@ -164,7 +164,6 @@ void Giocatore::muovi(int spostamento) {
     }
     else{
         posizione += spostamento;
-        std::cout<<"Giocatore "<<id<<" e' arrivato alla casella "<<posizione<<"\n";
     }
 }
 
