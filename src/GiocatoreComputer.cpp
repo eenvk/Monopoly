@@ -45,62 +45,66 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
 
 void GiocatoreComputer::acquistaCasa(Casella &c) {
     int probabilita = rand()%4+1;
-    if(c.getCategoria()==ECONOMICA){
-        if(budget>=PREZZO_ECO_CASA){
-            c.acquistaCasa();
-            paga(PREZZO_ECO_CASA);
+    if(probabilita == 1){
+        if(c.getCategoria()==ECONOMICA){
+            if(budget>=PREZZO_ECO_CASA){
+                c.acquistaCasa();
+                paga(PREZZO_ECO_CASA);
+            }
+            else{
+                throw BudgetInsufficiente();
+            }
         }
-        else{
-            throw BudgetInsufficiente();
+        if(c.getCategoria()==STANDARD){
+            if(budget>=PREZZO_STANDARD_CASA){
+                c.acquistaCasa();
+                paga(PREZZO_STANDARD_CASA);
+            }
+            else{
+                throw BudgetInsufficiente();
+            }
         }
-    }
-    if(c.getCategoria()==STANDARD){
-        if(budget>=PREZZO_STANDARD_CASA){
-            c.acquistaCasa();
-            paga(PREZZO_STANDARD_CASA);
-        }
-        else{
-            throw BudgetInsufficiente();
-        }
-    }
-    if(c.getCategoria()==LUSSO){
-        if(budget>=PREZZO_LUSSO_CASA){
-            c.acquistaCasa();
-            paga(PREZZO_LUSSO_CASA);
-        }
-        else{
-            throw BudgetInsufficiente();
+        if(c.getCategoria()==LUSSO){
+            if(budget>=PREZZO_LUSSO_CASA){
+                c.acquistaCasa();
+                paga(PREZZO_LUSSO_CASA);
+            }
+            else{
+                throw BudgetInsufficiente();
+            }
         }
     }
 }
 
 void GiocatoreComputer::miglioraInAlbergo(Casella &c) {
     int probabilita = rand()%4+1;
-    if(c.getCategoria()==ECONOMICA){
-        if(budget>=PREZZO_ECO_ALBERGO){
-            c.miglioraInAlbergo();
-            paga(PREZZO_ECO_ALBERGO);
+    if(probabilita == 1){
+        if(c.getCategoria()==ECONOMICA){
+            if(budget>=PREZZO_ECO_ALBERGO){
+                c.miglioraInAlbergo();
+                paga(PREZZO_ECO_ALBERGO);
+            }
+            else{
+                throw BudgetInsufficiente();
+            }
         }
-        else{
-            throw BudgetInsufficiente();
+        if(c.getCategoria()==STANDARD){
+            if(budget>=PREZZO_STANDARD_ALBERGO){
+                c.miglioraInAlbergo();
+                paga(PREZZO_STANDARD_ALBERGO);
+            }
+            else{
+                throw BudgetInsufficiente();
+            }
         }
-    }
-    if(c.getCategoria()==STANDARD){
-        if(budget>=PREZZO_STANDARD_ALBERGO){
-            c.miglioraInAlbergo();
-            paga(PREZZO_STANDARD_ALBERGO);
-        }
-        else{
-            throw BudgetInsufficiente();
-        }
-    }
-    if(c.getCategoria()==LUSSO){
-        if(budget>=PREZZO_LUSSO_ALBERGO){
-            c.miglioraInAlbergo();
-            paga(PREZZO_LUSSO_ALBERGO);
-        }
-        else{
-            throw BudgetInsufficiente();
+        if(c.getCategoria()==LUSSO){
+            if(budget>=PREZZO_LUSSO_ALBERGO){
+                c.miglioraInAlbergo();
+                paga(PREZZO_LUSSO_ALBERGO);
+            }
+            else{
+                throw BudgetInsufficiente();
+            }
         }
     }
 }

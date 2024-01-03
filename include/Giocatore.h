@@ -23,9 +23,9 @@ public:
     int getPosizione() const;
     std::vector<Casella> proprietaPossedute();
 
-    virtual void acquistaCasella(Casella& c);
-    virtual void acquistaCasa(Casella& c);
-    virtual void miglioraInAlbergo(Casella& c);
+    virtual void acquistaCasella(Casella& c){}
+    virtual void acquistaCasa(Casella& c){}
+    virtual void miglioraInAlbergo(Casella& c){}
 
     void eliminaProprieta();
     void paga(int); //Il giocatore paga tot soldi
@@ -35,7 +35,7 @@ public:
     void muovi(int);
 };
 
-std::ostream& operator<<(std::ostream&, Giocatore&);
+std::ostream& operator<<(std::ostream&, const Giocatore&);
 int callCounter2();
 
 #endif //MONOPOLY_GIOCATORE_H

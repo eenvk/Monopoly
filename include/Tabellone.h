@@ -8,7 +8,7 @@ class Tabellone{
 public:
     Tabellone();
     Casella* getTabellone();
-    void resetCaselle(Giocatore);
+    void resetCaselle(Giocatore&);
     void printTabellone(const std::vector<Giocatore*> giocatori);
 private:
     void setCaselle();

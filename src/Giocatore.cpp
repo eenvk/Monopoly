@@ -159,7 +159,7 @@ void Giocatore::muovi(int spostamento) {
     }
 }
 
-std::ostream& operator<<(std::ostream& os, Giocatore& g) {
+std::ostream& operator<<(std::ostream& os, const Giocatore& g) {
     return os<<"Id: "<<g.getId()<<", Budget: "<<g.getBudget()<<", Pos: "<<g.getPosizione();
 }
 
