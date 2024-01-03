@@ -15,6 +15,7 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
                 c.acquistaTerreno();
                 proprieta_possedute.push_back(c);
                 paga(PREZZO_ECO_TERRENO);
+                std::cout<<"Giocatore "<<id<<" ha acquistato "<<c.getNome()<<"\n";
             }
             else{
                 throw BudgetInsufficiente();
@@ -25,6 +26,7 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
                 c.acquistaTerreno();
                 proprieta_possedute.push_back(c);
                 paga(PREZZO_STANDARD_TERRENO);
+                std::cout<<"Giocatore "<<id<<" ha acquistato "<<c.getNome()<<"\n";
             }
             else{
                 throw BudgetInsufficiente();
@@ -35,6 +37,7 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
                 c.acquistaTerreno();
                 proprieta_possedute.push_back(c);
                 paga(PREZZO_LUSSO_TERRENO);
+                std::cout<<"Giocatore "<<id<<" ha acquistato "<<c.getNome()<<"\n";
             }
             else{
                 throw BudgetInsufficiente();

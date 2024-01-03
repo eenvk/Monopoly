@@ -35,6 +35,10 @@ int main(){
     giocatori[0].eliminaProprieta();
     giocatori.erase(giocatori.begin());
     t.printTabellone(giocatori);*/
-    PartitaComputer pu = PartitaComputer();
+    PartitaComputer pc = PartitaComputer();
+    pc.run();
+
+
+
     return 0;
 }

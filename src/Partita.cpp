@@ -44,3 +44,14 @@ void Partita::listaPossedimenti() const{
         std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<giocatori[i]->getProprietaPossedute()<<"\n";
     }
 }
+
+int Partita::whose(Casella c) {
+    for(int i=0;i<giocatori.size();i++){
+        for(int j=0;j<giocatori[i]->proprietaPossedute().size();j++){
+            if(giocatori[i]->getProprietaPossedute()[j] == c.getId()){
+                return giocatori[i]->getId();
+            }
+        }
+    }
+    return 0;//non è di nessuno
+}

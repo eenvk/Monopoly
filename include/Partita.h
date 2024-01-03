@@ -5,7 +5,7 @@
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
 #include <map>
-#include <memory>
+#include <algorithm>
 
 class Partita {
 protected:
@@ -16,6 +16,8 @@ protected:
 public:
     std::vector<Giocatore*> getGiocatori() const;
     void listaPossedimenti() const;
+    virtual void run(){}
+    int whose(Casella c);
 };
 
 #endif //MONOPOLY_PARTITA_H

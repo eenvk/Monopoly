@@ -5,5 +5,6 @@
 class PartitaUmano : public Partita{
 public:
     PartitaUmano();
+    void run() override;
 };
 #endif //MONOPOLY_PARTITAUMANO_H

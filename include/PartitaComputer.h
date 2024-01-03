@@ -6,6 +6,7 @@
 class PartitaComputer: public Partita{
 public:
     PartitaComputer();
+    void run() override;
 };
 
 
