@@ -33,10 +33,16 @@ int Giocatore::getPosizione() const {
 }
 
 void Giocatore::eliminaProprieta() {
+    for(int j=0;j<proprieta_possedute.size();j++){
+        proprieta_possedute[j].reset();
+    }
     proprieta_possedute.clear();
 }
 
 void Giocatore::paga(int quantita) {
+    if(quantita>budget){
+        throw BudgetInsufficiente();
+    }
     budget -= quantita;
 }
 
@@ -58,7 +64,7 @@ void Giocatore::muovi(int spostamento) {
     if(posizione + spostamento > 27){
         int diff = 28-posizione;
         posizione = spostamento-diff;
-        incassa(20);
+        incassa(2);
         std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
     }
     else{

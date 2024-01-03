@@ -1,11 +1,9 @@
 #ifndef MONOPOLY_PARTITA_H
 #define MONOPOLY_PARTITA_H
-#define NUMERO_GIOCATORI 4
 #include "Tabellone.h"
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
 #include <map>
-#include <algorithm>
 
 class Partita {
 protected:
