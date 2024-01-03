@@ -25,9 +25,9 @@ public:
     int getPosizione() const;
     std::vector<Casella> proprietaPossedute();
 
-    virtual void acquistaCasella(Casella& c);
-    virtual void acquistaCasa(Casella& c);
-    virtual void miglioraInAlbergo(Casella& c);
+    //virtual void acquistaCasella(Casella& c);
+    //virtual void acquistaCasa(Casella& c);
+    //virtual void miglioraInAlbergo(Casella& c);
 
     void eliminaProprieta();
     void paga(int); //Il giocatore paga tot soldi

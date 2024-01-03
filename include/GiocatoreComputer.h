@@ -5,9 +5,9 @@
 class GiocatoreComputer: public Giocatore{
 public:
     GiocatoreComputer();
-    void acquistaCasella(Casella& c) override;
-    void acquistaCasa(Casella& c) override;
-    void miglioraInAlbergo(Casella& c) override;
+    void acquistaCasella(Casella& c) ;
+    void acquistaCasa(Casella& c) ;
+    void miglioraInAlbergo(Casella& c) ;
 };
 
 #endif //MONOPOLY_GIOCATORECOMPUTER_H
