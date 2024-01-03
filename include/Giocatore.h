@@ -3,8 +3,6 @@
 #include <iostream>
 #include <vector>
 #include "../include/Casella.h"
-#define UMANO 'U'
-#define COMPUTER 'C'
 #define BUDGET_INIZIALE 100
 
 class Giocatore{
@@ -25,9 +23,9 @@ public:
     int getPosizione() const;
     std::vector<Casella> proprietaPossedute();
 
-    //virtual void acquistaCasella(Casella& c);
-    //virtual void acquistaCasa(Casella& c);
-    //virtual void miglioraInAlbergo(Casella& c);
+    virtual void acquistaCasella(Casella& c);
+    virtual void acquistaCasa(Casella& c);
+    virtual void miglioraInAlbergo(Casella& c);
 
     void eliminaProprieta();
     void paga(int); //Il giocatore paga tot soldi

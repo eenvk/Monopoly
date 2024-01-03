@@ -44,7 +44,7 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
 }
 
 void GiocatoreComputer::acquistaCasa(Casella &c) {
-    int probabilità = rand()%4+1;
+    int probabilita = rand()%4+1;
     if(c.getCategoria()==ECONOMICA){
         if(budget>=PREZZO_ECO_CASA){
             c.acquistaCasa();

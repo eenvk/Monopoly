@@ -12,10 +12,9 @@ protected:
     Partita();
     void ordinaGiocatori();
     Tabellone t = Tabellone();
-    //std::vector<std::unique_ptr<Giocatore>> giocatori;
-    std::vector<Giocatore> giocatori;
+    std::vector<Giocatore*> giocatori;
 public:
-    std::vector<Giocatore> getGiocatori() const;
+    std::vector<Giocatore*> getGiocatori() const;
     void listaPossedimenti() const;
 };
 
