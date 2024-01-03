@@ -108,6 +108,7 @@ void PartitaComputer::run() {
                         catch(Giocatore::BudgetInsufficiente){
                             int id = giocatori[j]->getId();
                             giocatori[j]->eliminaProprieta();
+                            delete giocatori[j];
                             giocatori.erase(giocatori.begin()+j);
                             std::cout<<"Gicoatore "<<id<<" e' stato eliminato\n";
                             //NON FUNZIONANO

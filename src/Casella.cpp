@@ -68,7 +68,7 @@ bool Casella::getStato() const {
 }
 
 void Casella::reset() {
-    tipo = 1;
+    tipo = TERRENO;
     stato = true;
 }
 
