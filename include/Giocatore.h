@@ -8,20 +8,26 @@
 #define BUDGET_INIZIALE 100
 
 class Giocatore{
+protected:
+    Giocatore();
+    int id;
+    std::vector<Casella> proprieta_possedute;
+    bool is_alive; //il giocatore è ancora in gioco?
+    int budget;
+    int posizione;
+
 public:
     class BudgetInsufficiente{};
-    Giocatore(char);
     int getId() const;
     std::string getProprietaPossedute() const;
     bool isAlive() const;
     int getBudget() const;
-    char getTipo() const;
     int getPosizione() const;
     std::vector<Casella> proprietaPossedute();
 
-    void acquistaCasella(Casella& c);
-    void acquistaCasa(Casella& c);
-    void miglioraInAlbergo(Casella& c);
+    virtual void acquistaCasella(Casella& c);
+    virtual void acquistaCasa(Casella& c);
+    virtual void miglioraInAlbergo(Casella& c);
 
     void eliminaProprieta();
     void paga(int); //Il giocatore paga tot soldi
@@ -29,14 +35,6 @@ public:
     void setDead();
     int tiroDadi();
     void muovi(int);
-
-private:
-    int id;
-    std::vector<Casella> proprieta_possedute;
-    bool is_alive; //il giocatore è ancora in gioco?
-    int budget;
-    char tipo; //U=umano C=computer
-    int posizione;
 };
 
 std::ostream& operator<<(std::ostream&, Giocatore&);
