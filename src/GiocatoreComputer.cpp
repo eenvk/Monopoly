@@ -15,7 +15,6 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
                 c.acquistaTerreno();
                 proprieta_possedute.push_back(c);
                 paga(PREZZO_ECO_TERRENO);
-                std::cout<<"Giocatore "<<id<<" ha acquistato "<<c.getNome()<<"\n";
             }
             else{
                 throw BudgetInsufficiente();
@@ -26,7 +25,6 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
                 c.acquistaTerreno();
                 proprieta_possedute.push_back(c);
                 paga(PREZZO_STANDARD_TERRENO);
-                std::cout<<"Giocatore "<<id<<" ha acquistato "<<c.getNome()<<"\n";
             }
             else{
                 throw BudgetInsufficiente();
@@ -37,12 +35,12 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
                 c.acquistaTerreno();
                 proprieta_possedute.push_back(c);
                 paga(PREZZO_LUSSO_TERRENO);
-                std::cout<<"Giocatore "<<id<<" ha acquistato "<<c.getNome()<<"\n";
             }
             else{
                 throw BudgetInsufficiente();
             }
         }
+        std::cout<<"Giocatore "<<id<<" ha acquistato il terreno "<<c.getNome()<<"\n";
     }
 }
 
@@ -76,6 +74,7 @@ void GiocatoreComputer::acquistaCasa(Casella &c) {
                 throw BudgetInsufficiente();
             }
         }
+        std::cout<<"Giocatore "<<id<<" ha costruito una casa sul terreno "<<c.getNome()<<"\n";
     }
 }
 
@@ -109,5 +108,6 @@ void GiocatoreComputer::miglioraInAlbergo(Casella &c) {
                 throw BudgetInsufficiente();
             }
         }
+        std::cout<<"Giocatore "<<id<<" ha migliorato una casa in albergo sul terreno "<<c.getNome()<<"\n";
     }
 }

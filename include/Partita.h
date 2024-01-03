@@ -14,10 +14,10 @@ protected:
     Tabellone t = Tabellone();
     std::vector<Giocatore*> giocatori;
 public:
+    virtual void run(){}
     std::vector<Giocatore*> getGiocatori() const;
     void listaPossedimenti() const;
-    virtual void run(){}
-    int whose(Casella c);
+    int whose(const Casella&) const;
 };
 
 #endif //MONOPOLY_PARTITA_H

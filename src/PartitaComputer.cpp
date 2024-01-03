@@ -19,29 +19,101 @@ void PartitaComputer::run() {
                 std::cout<<"Giocatore "<<giocatori[j]->getId()<<" ha finito il turno"<<"\n";
             }
             else{
-                try {
-                    //giocatori[j]->acquistaCasella(pos);
-                    int whose = Partita::whose(pos);
-                    if(whose == 0){
-                        giocatori[j]->acquistaCasella(pos);
-                    }
-                    else{
-                        if(whose == giocatori[j]->getId()){
-                            if(pos.getTipo() == TERRENO){
+                int whose = Partita::whose(pos);
+                if(whose == 0){
+                    giocatori[j]->acquistaCasella(pos);
+                }
+                else{
+                    if(whose == giocatori[j]->getId()){
+                        if(pos.getTipo() == TERRENO){
+                            try{
                                 giocatori[j]->acquistaCasa(pos);
                             }
-                            if(pos.getTipo() == CASA){
+                            catch (Giocatore::BudgetInsufficiente){
+                                std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non ha abbastanza soldi per costruire una casa sul terreno "<<pos.getNome()<<"\n";
+                            }
+                        }
+                        if(pos.getTipo() == CASA){
+                            try{
                                 giocatori[j]->miglioraInAlbergo(pos);
+                            }
+                            catch (Giocatore::BudgetInsufficiente){
+                                std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non ha abbastanza soldi per migliorare una casa in albergo sul terreno "<<pos.getNome()<<"\n";
                             }
                         }
                     }
+                    else{
+                        try{
+                            if(pos.getCategoria() == ECONOMICA){
+                                if(pos.getTipo() == CASA){
+                                    giocatori[j]->paga(PERNOTTAMENTO_CASA_ECO);
+                                    for(int k=0;k<giocatori.size();k++){
+                                        if(giocatori[k]->getId() == whose){
+                                            giocatori[k]->incassa(PERNOTTAMENTO_CASA_ECO);
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(pos.getTipo() == ALBERGO){
+                                    giocatori[j]->paga(PERNOTTAMENTO_ALBERGO_ECO);
+                                    for(int k=0;k<giocatori.size();k++){
+                                        if(giocatori[k]->getId() == whose){
+                                            giocatori[k]->incassa(PERNOTTAMENTO_ALBERGO_ECO);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if(pos.getCategoria() == STANDARD){
+                                if(pos.getTipo() == CASA){
+                                    giocatori[j]->paga(PERNOTTAMENTO_CASA_STANDARD);
+                                    for(int k=0;k<giocatori.size();k++){
+                                        if(giocatori[k]->getId() == whose){
+                                            giocatori[k]->incassa(PERNOTTAMENTO_CASA_STANDARD);
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(pos.getTipo() == ALBERGO){
+                                    giocatori[j]->paga(PERNOTTAMENTO_ALBERGO_STANDARD);
+                                    for(int k=0;k<giocatori.size();k++){
+                                        if(giocatori[k]->getId() == whose){
+                                            giocatori[k]->incassa(PERNOTTAMENTO_ALBERGO_STANDARD);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if(pos.getCategoria() == LUSSO){
+                                if(pos.getTipo() == CASA){
+                                    giocatori[j]->paga(PERNOTTAMENTO_CASA_LUSSO);
+                                    for(int k=0;k<giocatori.size();k++){
+                                        if(giocatori[k]->getId() == whose){
+                                            giocatori[k]->incassa(PERNOTTAMENTO_CASA_LUSSO);
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(pos.getTipo() == ALBERGO){
+                                    giocatori[j]->paga(PERNOTTAMENTO_ALBERGO_LUSSO);
+                                    for(int k=0;k<giocatori.size();k++){
+                                        if(giocatori[k]->getId() == whose){
+                                            giocatori[k]->incassa(PERNOTTAMENTO_ALBERGO_LUSSO);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        catch(Giocatore::BudgetInsufficiente){
+                            int id = giocatori[j]->getId();
+                            t.resetCaselle(giocatori[j]);
+                            giocatori[j]->eliminaProprieta();
+                            giocatori.erase(giocatori.begin()+j);
+                            std::cout<<"Gicoatore "<<id<<" e' stato eliminato\n";
+                        }
+                    }
                 }
-                catch(Casella::TerrenoNonAcquistabile){
-                    std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non puo acquistare il terreno perche non e' disponibile\n";
-                }
-            }
-            if(typeid(giocatori[j]) == typeid(GiocatoreUmano)){
-
             }
         }
         t.printTabellone(giocatori);
