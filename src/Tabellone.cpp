@@ -64,9 +64,18 @@ Casella* Tabellone::getTabellone(){
 }*/
 
 void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            if (i == 0) {
+    char lettera = 'A';
+    for (int i = -1; i < 8; i++) {
+        for (int j = -1; j < 8; j++) {
+            if(i == -1){
+                if(j==-1){
+                    std::cout << "      ";
+                }
+                else{
+                    std::cout<<j+1<<"         ";
+                }
+            }
+            else if(i == 0){
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14+j].getId()){
@@ -76,9 +85,14 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) {
                         s = s+" ";
                     }
                 }
-                std::cout << "|" << tabellone[14 + j] << s << "|" << "  ";
+                if(j==-1){
+                    std::cout << lettera++ << "  ";
+                }
+                else {
+                    std::cout << "|" << tabellone[14 + j] << s << "|" << "  ";
+                }
             }
-            else if (i == 7) {
+            else if(i == 7){
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
                     if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[7-j].getId()){
@@ -88,8 +102,17 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) {
                         s = s+" ";
                     }
                 }
-                std::cout << "|" << tabellone[7 - j]<< s << "|" << "  ";
-            } else if (j == 0 && i != 0 && i != 7) {
+                if(j==-1){
+                    std::cout << lettera << "  ";
+                }
+                else {
+                    std::cout << "|" << tabellone[7 - j] << s << "|" << "  ";
+                }
+            }
+            else if(j==-1){
+                std::cout << lettera++ << "  ";
+            }
+            else if(j == 0) {
                 if(i==6){
                     std::string s;
                     for(int k=0; k<giocatori.size(); k++){
@@ -115,18 +138,18 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) {
                     std::cout << "|" << tabellone[14 - i] << s << "|" << "  ";
                 }
             }
-            else if (j == 7 && i != 0 && i != 7) {
+            else if (j == 7) {
                 std::string s;
-                for(int k=0; k<giocatori.size(); k++){
-                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[21+i].getId()){
-                        s = s+std::to_string(giocatori[k]->getId());
-                    }
-                    else{
-                        s = s+" ";
+                for (int k = 0; k < giocatori.size(); k++) {
+                    if (giocatori[k]->isAlive() && giocatori[k]->getPosizione() == tabellone[21 + i].getId()) {
+                        s = s + std::to_string(giocatori[k]->getId());
+                    } else {
+                        s = s + " ";
                     }
                 }
                 std::cout << "|" << tabellone[21 + i] << s << "|";
-            } else {
+            }
+            else{
                 std::cout << "          ";
             }
         }
