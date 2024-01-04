@@ -14,7 +14,7 @@ void PartitaComputer::run() {
     bool is_run_alive = true;
     int n_giocatori = giocatori.size();
 
-    for(int i=0; is_run_alive; i++){ //altrimenti max turni 500 && is_run_alive
+    for(int i=0; is_run_alive && i<MAX_TURNI; i++){ //altrimenti max turni 500 && is_run_alive
 
         std::cout << "Turno: " << i+1 <<"!\n";
 
@@ -122,7 +122,6 @@ void PartitaComputer::run() {
                             catch(Giocatore::BudgetInsufficiente){
                                 int id = giocatori[j]->getId();
                                 std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
-                                //t.resetCaselle(giocatori[j]);
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
                                 n_giocatori--;
@@ -141,7 +140,7 @@ void PartitaComputer::run() {
     //winner
     for (int i=0; i<giocatori.size(); i++) {
         if(giocatori[i]->getProprietaPossedute().size()!=0)
-            std::cout <<"\x1b[38;5;46mGIOCATORE "<< giocatori[i]->getId() << " HA VINTO LA PARTITA\x1b[0m\n";
+            std::cout <<"GIOCATORE "<< giocatori[i]->getId() << " HA VINTO LA PARTITA\n";
     }
     std::cout<<"\n";
 }

@@ -42,7 +42,7 @@ std::vector<Giocatore*> Partita::getGiocatori() const{
 void Partita::listaPossedimenti() const{
     for(int i=0;i<giocatori.size();i++){
         if(!giocatori[i]->isAlive())
-            std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<"\033[31mil giocatore e' stato eliminato\033[0m\n";
+            std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<"Giocatore e' stato eliminato\n";
         else
             std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<giocatori[i]->getProprietaPossedute()<<"\n";
     }
