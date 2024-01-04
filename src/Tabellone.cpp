@@ -9,8 +9,8 @@ void Tabellone::setCaselle(){
     int max_standard = 10;
     int max_lusso = 6;
 
-    // seme sempre diverso per evitare di avere tabelloni sempre uguali, altrimenti basta commentarlo così il tabellone è sempre lo stesso
-    srand(static_cast<unsigned>(time(0)));
+    //seme sempre diverso per evitare di avere tabelloni sempre uguali, altrimenti basta commentarlo così il tabellone è sempre lo stesso
+    srand(static_cast<unsigned int>(time(0)));
 
     for (int i = 0; i < 28; i++) {
         //Caselle angolari

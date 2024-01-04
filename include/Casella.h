@@ -1,30 +1,30 @@
 #ifndef MONOPOLY_CASELLA_H
 #define MONOPOLY_CASELLA_H
-#define PREZZO_ECO_TERRENO 6
-#define PREZZO_ECO_CASA 3
-#define PREZZO_ECO_ALBERGO 3
-#define PREZZO_STANDARD_TERRENO 10
-#define PREZZO_STANDARD_CASA 5
-#define PREZZO_STANDARD_ALBERGO 5
-#define PREZZO_LUSSO_TERRENO 20
-#define PREZZO_LUSSO_CASA 10
-#define PREZZO_LUSSO_ALBERGO 10
-#define PERNOTTAMENTO_CASA_ECO 2
-#define PERNOTTAMENTO_ALBERGO_ECO 4
-#define PERNOTTAMENTO_CASA_STANDARD 4
-#define PERNOTTAMENTO_ALBERGO_STANDARD 8
-#define PERNOTTAMENTO_CASA_LUSSO 7
-#define PERNOTTAMENTO_ALBERGO_LUSSO 14
-#define TERRENO ' '
-#define CASA '*'
-#define ALBERGO '^'
-#define ECONOMICA 'E'
-#define STANDARD 'S'
-#define LUSSO 'L'
-#define PARTENZA 'P'
-#define ANGOLARE ' '
-
 #include <iostream>
+
+constexpr int PREZZO_ECO_TERRENO = 6;
+constexpr int PREZZO_ECO_CASA = 3;
+constexpr int PREZZO_ECO_ALBERGO = 3;
+constexpr int PREZZO_STANDARD_TERRENO = 10;
+constexpr int PREZZO_STANDARD_CASA = 5;
+constexpr int PREZZO_STANDARD_ALBERGO = 5;
+constexpr int PREZZO_LUSSO_TERRENO = 20;
+constexpr int PREZZO_LUSSO_CASA = 10;
+constexpr int PREZZO_LUSSO_ALBERGO = 10;
+constexpr int PERNOTTAMENTO_CASA_ECO = 2;
+constexpr int PERNOTTAMENTO_ALBERGO_ECO = 4;
+constexpr int PERNOTTAMENTO_CASA_STANDARD = 4;
+constexpr int PERNOTTAMENTO_ALBERGO_STANDARD = 8;
+constexpr int PERNOTTAMENTO_CASA_LUSSO = 7;
+constexpr int PERNOTTAMENTO_ALBERGO_LUSSO = 14;
+constexpr char TERRENO = ' ';
+constexpr char CASA = '*';
+constexpr char ALBERGO = '^';
+constexpr char ECONOMICA = 'E';
+constexpr char STANDARD = 'S';
+constexpr char LUSSO = 'L';
+constexpr char PARTENZA = 'P';
+constexpr char ANGOLARE = ' ';
 
 class Casella{
 public:
@@ -48,7 +48,6 @@ public:
 private:
     int id;
     std::string nome;
-    //int proprietario;
     bool stato; //true = disponibile
     char tipo; // ' '=terreno, '*'=casa, '^'=albergo
     char categoria; // ' '-> angolare, P->partenza, E->economica, S->standard, L->lusso

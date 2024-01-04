@@ -10,7 +10,12 @@ PartitaComputer::PartitaComputer() {
 void PartitaComputer::run() {
     t.printTabellone(giocatori);
     Casella* caselle = t.getTabellone();
-    for(int i=0;i<200;i++){
+
+    bool is_run_alive = true;
+    int n_giocatori = giocatori.size();
+
+    for(int i=0; is_run_alive; i++){ //altrimenti max turni 500 && is_run_alive
+
         std::cout << "Turno: " << i+1 <<"!\n";
 
         for(int j=0;j<giocatori.size();j++){
@@ -116,10 +121,13 @@ void PartitaComputer::run() {
                             }
                             catch(Giocatore::BudgetInsufficiente){
                                 int id = giocatori[j]->getId();
-                                std::cout<<"----------------Gicoatore "<<id<<" e' stato eliminato------------------------------------------------------------------------\n";
+                                std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
                                 //t.resetCaselle(giocatori[j]);
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
+                                n_giocatori--;
+                                if( n_giocatori==1 )
+                                    is_run_alive = false;
                             }
                         }
                     }
@@ -129,9 +137,10 @@ void PartitaComputer::run() {
         t.printTabellone(giocatori);
         listaPossedimenti();
     }
-    std::cout<<"\n";
-    for (Giocatore* giocatore : giocatori) {
-        delete giocatore;
+    //winner
+    for (int i=0; i<giocatori.size(); i++) {
+        if(giocatori[i]->getProprietaPossedute().size()!=0)
+            std::cout <<"\n\x1b[38;5;46mGIOCATORE "<< giocatori[i]->getId() << " HA VINTO LA PARTITA\x1b[0m\n";
     }
-    giocatori.clear();
+    std::cout<<"\n";
 }

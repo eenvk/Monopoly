@@ -1,9 +1,10 @@
 #ifndef MONOPOLY_TABELLONE_H
 #define MONOPOLY_TABELLONE_H
-#define NUMERO_GIOCATORI 4
 #include "Casella.h"
 #include "Giocatore.h"
-#include <random>
+#include <ctime>
+
+constexpr int  NUMERO_GIOCATORI = 4;
 
 class Tabellone{
 public:

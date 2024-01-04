@@ -4,11 +4,12 @@
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
 #include <map>
-#include <memory>
+constexpr int MAX_TURNI = 500;
 
 class Partita {
 protected:
     Partita();
+    ~Partita();
     void ordinaGiocatori();
     Tabellone t = Tabellone();
     std::vector<Giocatore*> giocatori;

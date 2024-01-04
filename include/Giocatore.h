@@ -3,11 +3,11 @@
 #include <iostream>
 #include <vector>
 #include "../include/Casella.h"
-#define BUDGET_INIZIALE 100
+
+constexpr int BUDGET_INIZIALE = 100;
 
 class Giocatore{
 protected:
-    //Giocatore();
     int id;
     std::vector<Casella*> proprieta_possedute;
     bool is_alive; //il giocatore è ancora in gioco?

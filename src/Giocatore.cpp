@@ -1,9 +1,5 @@
 #include "../include/Giocatore.h"
 
-//Giocatore::Giocatore() {
-
-//}
-
 int Giocatore::getId() const{
     return id;
 }
