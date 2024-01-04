@@ -136,11 +136,12 @@ void PartitaComputer::run() {
         }
         t.printTabellone(giocatori);
         listaPossedimenti();
+        std::cout<<"\n";
     }
     //winner
     for (int i=0; i<giocatori.size(); i++) {
         if(giocatori[i]->getProprietaPossedute().size()!=0)
-            std::cout <<"\n\x1b[38;5;46mGIOCATORE "<< giocatori[i]->getId() << " HA VINTO LA PARTITA\x1b[0m\n";
+            std::cout <<"\x1b[38;5;46mGIOCATORE "<< giocatori[i]->getId() << " HA VINTO LA PARTITA\x1b[0m\n";
     }
     std::cout<<"\n";
 }

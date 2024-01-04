@@ -33,6 +33,7 @@ void PartitaUmano::run() {
         }
         t.printTabellone(giocatori);
         listaPossedimenti();
+        std::cout<<"\n";
     }
     //winner
     for (int i=0; i<giocatori.size(); i++) {
