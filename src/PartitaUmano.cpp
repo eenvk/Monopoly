@@ -24,7 +24,7 @@ void PartitaUmano::run() {
             if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
                 std::cout << "E' umano \n";
                 giocatori[j]->setDead(); //intanto cosi per vedere che funziona
-                if(n_giocatori>3) //solo perchè se no si ripete da elinimare ovviamente
+                if(n_giocatori>3) //solo perchè se no si ripete da, eliminare ovviamente
                     n_giocatori--;
             }else{
                 HandleComputerCase(j, n_giocatori, is_run_alive, caselle);
