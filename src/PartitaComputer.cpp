@@ -64,6 +64,7 @@ void PartitaComputer::run() {
                                         for(int k=0;k<giocatori.size();k++){
                                             if(giocatori[k]->getId() == whose){
                                                 giocatori[k]->incassa(PERNOTTAMENTO_CASA_ECO);
+                                                std::cout<<"Giocatore "<<giocatori[j]->getId()<<" ha pagato "<<PERNOTTAMENTO_CASA_ECO<<" fiorini a giocatore "<<giocatori[k]->getId()<<" per pernottamento nella casella "<<pos.getNome()<<"\n";
                                                 break;
                                             }
                                         }
