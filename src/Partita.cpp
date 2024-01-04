@@ -1,4 +1,19 @@
 #include "../include/Partita.h"
+/*Partita::Partita(std::string arg) {
+    if(arg=="human"){
+        this->giocatori.push_back(new GiocatoreUmano());
+        for(int i=1;i<NUMERO_GIOCATORI;i++){
+            this->giocatori.push_back(new GiocatoreComputer());
+        }
+    }
+    else{
+        for(int i=0;i<NUMERO_GIOCATORI;i++){
+            this->giocatori.push_back(new GiocatoreComputer());
+        }
+    }
+    ordinaGiocatori();
+}*/
+
 Partita::Partita() {
 
 }
@@ -35,28 +50,158 @@ void Partita::ordinaGiocatori() {
     std::cout<<"\n";
 }
 
-std::vector<Giocatore*> Partita::getGiocatori() const{
-    return giocatori;
-}
-
 void Partita::listaPossedimenti() const{
     for(int i=0;i<giocatori.size();i++){
         if(!giocatori[i]->isAlive())
-            std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<"Giocatore e' stato eliminato\n";
+            std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<"eliminato\n";
         else
             std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<giocatori[i]->getProprietaPossedute()<<"\n";
     }
 }
 
-int Partita::whose(const Casella& c) const{
+Giocatore* Partita::whose(const Casella& c) const{
     for(int i=0;i<giocatori.size();i++){
         for(int j=0;j<giocatori[i]->proprietaPossedute().size();j++){
             if(giocatori[i]->proprietaPossedute()[j]->getId() == c.getId()){
-                return giocatori[i]->getId();
+                return giocatori[i];
             }
         }
     }
-    return 0;//non è di nessuno
+    return nullptr;//non è di nessuno
+}
+
+void Partita::run() {
+    t.printTabellone(giocatori);
+    Casella* caselle = t.getTabellone();
+
+    bool is_running = true;
+    int n_giocatori = giocatori.size();
+
+    for(int i=0; is_running && i < MAX_TURNI; i++){ //altrimenti max turni 500 && is_running
+
+        std::cout << "Turno: " << i+1 <<"!\n";
+
+        for(int j=0;j<giocatori.size();j++){
+
+            if(giocatori[j]->isAlive()){
+
+                int n = giocatori[j]->tiroDadi();
+                giocatori[j]->muovi(n);
+                Casella& pos = caselle[giocatori[j]->getPosizione()];
+                std::cout<<"Giocatore "<<giocatori[j]->getId()<<" e' arrivato alla casella "<<pos.getNome()<<"\n";
+                if(pos.getCategoria()==ANGOLARE || pos.getCategoria()==PARTENZA){
+                    std::cout<<"Giocatore "<<giocatori[j]->getId()<<" ha finito il turno"<<"\n";
+                }
+                else{
+                    Giocatore* whose = Partita::whose(pos);
+                    if(whose == nullptr){
+                        try {
+                            if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
+                                if(handleHumanInteraction("Vuoi acquistare la casella" + pos.getNome() + "?")){
+                                    giocatori[j]->acquistaCasella(pos);
+                                }
+                            }else{
+                                giocatori[j]->acquistaCasella(pos);
+                            }
+                        }catch (Giocatore::BudgetInsufficiente){
+                            std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non ha abbastanza soldi per comprare il terreno "<<pos.getNome()<<"\n";
+                        }
+                    }
+                    else{
+                        if(whose == giocatori[j]){
+                            if(pos.getTipo() == TERRENO){
+                                try{
+                                    if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
+                                        if(handleHumanInteraction("Vuoi costruire una casa sulla casella " + pos.getNome() + "?")){
+                                            giocatori[j]->acquistaCasa(pos);
+                                        }
+                                    }else{
+                                        giocatori[j]->acquistaCasa(pos);
+                                    }
+                                }
+                                catch (Giocatore::BudgetInsufficiente){
+                                    std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non ha abbastanza soldi per costruire una casa sul terreno "<<pos.getNome()<<"\n";
+                                }
+                            }
+                            else if(pos.getTipo() == CASA){
+                                try{
+                                    if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
+                                        if(handleHumanInteraction("Vuoi migliorare la casa in albergo sulla casella " + pos.getNome() + "?")){
+                                            giocatori[j]->miglioraInAlbergo(pos);
+                                        }
+                                    }else{
+                                        giocatori[j]->miglioraInAlbergo(pos);
+                                    }
+                                }
+                                catch (Giocatore::BudgetInsufficiente){
+                                    std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non ha abbastanza soldi per migliorare una casa in albergo sul terreno "<<pos.getNome()<<"\n";
+                                }
+                            }
+                        }
+                        else{
+                            try{
+                                if(pos.getCategoria() == ECONOMICA){
+                                    if(pos.getTipo() == CASA){
+                                        transazione(giocatori[j],whose,PERNOTTAMENTO_CASA_ECO,pos);
+                                    }
+                                    else if(pos.getTipo() == ALBERGO){
+                                        transazione(giocatori[j],whose,PERNOTTAMENTO_ALBERGO_ECO,pos);
+                                    }
+                                }
+                                if(pos.getCategoria() == STANDARD){
+                                    if(pos.getTipo() == CASA){
+                                        transazione(giocatori[j],whose,PERNOTTAMENTO_CASA_STANDARD,pos);
+                                    }
+                                    else if(pos.getTipo() == ALBERGO){
+                                        transazione(giocatori[j],whose,PERNOTTAMENTO_ALBERGO_STANDARD,pos);
+                                    }
+                                }
+                                if(pos.getCategoria() == LUSSO){
+                                    if(pos.getTipo() == CASA){
+                                        transazione(giocatori[j],whose,PERNOTTAMENTO_CASA_LUSSO,pos);
+                                    }
+                                    else if(pos.getTipo() == ALBERGO){
+                                        transazione(giocatori[j],whose,PERNOTTAMENTO_ALBERGO_LUSSO,pos);
+                                    }
+                                }
+                            }
+                            catch(Giocatore::BudgetInsufficiente){
+                                int id = giocatori[j]->getId();
+                                std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
+                                giocatori[j]->eliminaProprieta();
+                                giocatori[j]->setDead();
+                                n_giocatori--;
+                                if(n_giocatori==1) {
+                                    is_running = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        t.printTabellone(giocatori);
+        listaPossedimenti();
+        std::cout<<"\n";
+    }
+}
+
+void Partita::transazione(Giocatore* g, Giocatore* proprietario, int prezzo, Casella& pos) {
+    g->paga(prezzo);
+    proprietario->incassa(prezzo);
+    std::cout<<"Giocatore "<<g->getId()<<" ha pagato "<<prezzo<<" fiorini a giocatore "<<proprietario->getId()<<" per pernottamento nella casella "<<pos.getNome()<<"\n";
+}
+
+bool Partita::handleHumanInteraction(std::string messaggio){
+    std::cout << "E' umano \n";
+    std::cout << messaggio << "\n";
+    //DA FARE
+
+    //se dentro la risposta sarà S restituisce true se no false
+    //messaggio è una string che stampa il tipo di azione (se si tratta di un acquisto casa o terreno ecc)
+    //vedere come fare il cin
+    return true;
 }
 
 Partita::~Partita() {

@@ -5,7 +5,7 @@
 class PartitaComputer: public Partita{
 public:
     PartitaComputer();
-    void run() override;
+    void printWinner() override;
 };
 
 #endif //MONOPOLY_PARTITACOMPUTER_H

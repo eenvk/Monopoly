@@ -1,16 +1,13 @@
-#include "include/PartitaUmano.h"
 #include "include/PartitaComputer.h"
+#include "include/PartitaUmano.h"
 
 using namespace std;
 
 int main(){
 
-    PartitaComputer pc = PartitaComputer();
-    pc.run();
-
-    //PartitaUmano pu = PartitaUmano();
-    //pu.run();
-
+    PartitaUmano p = PartitaUmano();
+    p.run();
+    p.printWinner();
     return 0;
 }
 

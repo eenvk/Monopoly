@@ -4,20 +4,24 @@
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
 #include <map>
-constexpr int MAX_TURNI = 500;
+#include <typeinfo>
+constexpr int MAX_TURNI = 300;
 
 class Partita {
 protected:
     Partita();
-    ~Partita();
     void ordinaGiocatori();
     Tabellone t = Tabellone();
     std::vector<Giocatore*> giocatori;
 public:
-    virtual void run(){}
-    std::vector<Giocatore*> getGiocatori() const;
+    //Partita(std::string);
+    ~Partita();
+    void run();
+    void transazione(Giocatore*, Giocatore*, int, Casella&);
+    bool handleHumanInteraction(std::string);
     void listaPossedimenti() const;
-    int whose(const Casella&) const;
+    Giocatore* whose(const Casella&) const;
+    virtual void printWinner(){}
 };
 
 #endif //MONOPOLY_PARTITA_H
