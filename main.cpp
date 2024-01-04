@@ -5,9 +5,11 @@ using namespace std;
 
 int main(){
 
-    PartitaComputer pc = PartitaComputer();
-    pc.run();
+    //PartitaComputer pc = PartitaComputer();
+    //pc.run();
 
+    PartitaUmano pu = PartitaUmano();
+    pu.run();
     return 0;
 }
 

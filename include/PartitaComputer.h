@@ -8,5 +8,4 @@ public:
     void run() override;
 };
 
-
 #endif //MONOPOLY_PARTITACOMPUTER_H

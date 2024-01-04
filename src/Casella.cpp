@@ -1,10 +1,7 @@
 #include "../include/Casella.h"
 
 Casella::Casella() {
-    /*this->stato = true; //di default una casella è disponibile
-    this->tipo = TERRENO; //è un terreno di default
-    this->categoria = ' ';
-    //this->proprietario = 0;*/
+
 }
 
 Casella::Casella(char categoria) {
