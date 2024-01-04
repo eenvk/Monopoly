@@ -12,7 +12,7 @@ g++ -o monopoly src/Casella.cpp src/Giocatore.cpp src/GiocatoreComputer.cpp src/
 
 Il codice è organizzato nelle seguenti directory:
 
-📦 provaintermedia
+📦 monopoly
 ┣📂 include
 ┃ ┣ 📜 Casella.h
 ┃ ┣ 📜 Giocatore.h
@@ -56,5 +56,3 @@ dove
 
 
 ```
-
-
