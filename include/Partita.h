@@ -4,6 +4,7 @@
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
 #include <map>
+#include <memory>
 
 class Partita {
 protected:

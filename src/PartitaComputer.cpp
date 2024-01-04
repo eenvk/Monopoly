@@ -130,4 +130,8 @@ void PartitaComputer::run() {
         listaPossedimenti();
     }
     std::cout<<"\n";
+    for (Giocatore* giocatore : giocatori) {
+        delete giocatore;
+    }
+    giocatori.clear();
 }
