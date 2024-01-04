@@ -21,15 +21,11 @@ void PartitaUmano::run() {
 
         for(int j=0;j<giocatori.size();j++){
 
-            if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                std::cout << "E' umano \n";
-                giocatori[j]->setDead(); //intanto cosi per vedere che funziona
-                if(n_giocatori>3) //solo perchè se no si ripete da, eliminare ovviamente
-                    n_giocatori--;
+            if( typeid( *giocatori[j] ) == typeid( GiocatoreUmano ) ){
+                HandleHumanCase(j, n_giocatori, is_run_alive, caselle);
             }else{
                 HandleComputerCase(j, n_giocatori, is_run_alive, caselle);
             }
-
         }
         t.printTabellone(giocatori);
         listaPossedimenti();
@@ -43,6 +39,12 @@ void PartitaUmano::run() {
     std::cout<<"\n";
 }
 
+void PartitaUmano::HandleHumanCase(int& j, int& n_giocatori, bool& is_run_alive, Casella* caselle){
+    std::cout << "E' umano \n";
+    giocatori[j]->setDead(); //intanto cosi per vedere che funziona
+    if(n_giocatori>3) //solo perchè se no si ripete da, eliminare ovviamente
+        n_giocatori--;
+}
 
 void PartitaUmano::HandleComputerCase(int& j, int& n_giocatori, bool& is_run_alive, Casella* caselle) {
     if(giocatori[j]->isAlive()){

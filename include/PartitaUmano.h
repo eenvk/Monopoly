@@ -6,6 +6,7 @@ class PartitaUmano : public Partita{
 public:
     PartitaUmano();
     void run() override;
+    void HandleHumanCase(int&, int&, bool&, Casella*);
     void HandleComputerCase(int&, int&, bool&, Casella*);
 };
 
