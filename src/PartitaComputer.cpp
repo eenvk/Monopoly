@@ -11,7 +11,7 @@ void PartitaComputer::run() {
     t.printTabellone(giocatori);
     Casella* caselle = t.getTabellone();
     for(int i=0;i<200;i++){
-        std::cout << "Turno: " << i <<"!\n";
+        std::cout << "Turno: " << i+1 <<"!\n";
 
         for(int j=0;j<giocatori.size();j++){
 
@@ -28,8 +28,8 @@ void PartitaComputer::run() {
                     if(whose == 0){
                         try {
                             giocatori[j]->acquistaCasella(pos);
-                        }catch (Casella::TerrenoNonAcquistabile){
-                            std::cout<< "sbdaobcuyabsduyvcabsudvbauysduyabsdvbausbdvuaybsdunasijjdncouwubecuansdv\n";
+                        }catch (Giocatore::BudgetInsufficiente){
+                            std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non ha abbastanza soldi per comprare il terreno "<<pos.getNome()<<"\n";
                         }
                     }
                     else{
@@ -42,7 +42,7 @@ void PartitaComputer::run() {
                                     std::cout<<"Giocatore "<<giocatori[j]->getId()<<" non ha abbastanza soldi per costruire una casa sul terreno "<<pos.getNome()<<"\n";
                                 }
                             }
-                            if(pos.getTipo() == CASA){
+                            else if(pos.getTipo() == CASA){
                                 try{
                                     giocatori[j]->miglioraInAlbergo(pos);
                                 }
@@ -63,7 +63,7 @@ void PartitaComputer::run() {
                                             }
                                         }
                                     }
-                                    if(pos.getTipo() == ALBERGO){
+                                    else if(pos.getTipo() == ALBERGO){
                                         giocatori[j]->paga(PERNOTTAMENTO_ALBERGO_ECO);
                                         for(int k=0;k<giocatori.size();k++){
                                             if(giocatori[k]->getId() == whose){
@@ -83,7 +83,7 @@ void PartitaComputer::run() {
                                             }
                                         }
                                     }
-                                    if(pos.getTipo() == ALBERGO){
+                                    else if(pos.getTipo() == ALBERGO){
                                         giocatori[j]->paga(PERNOTTAMENTO_ALBERGO_STANDARD);
                                         for(int k=0;k<giocatori.size();k++){
                                             if(giocatori[k]->getId() == whose){
@@ -103,7 +103,7 @@ void PartitaComputer::run() {
                                             }
                                         }
                                     }
-                                    if(pos.getTipo() == ALBERGO){
+                                    else if(pos.getTipo() == ALBERGO){
                                         giocatori[j]->paga(PERNOTTAMENTO_ALBERGO_LUSSO);
                                         for(int k=0;k<giocatori.size();k++){
                                             if(giocatori[k]->getId() == whose){
@@ -116,7 +116,8 @@ void PartitaComputer::run() {
                             }
                             catch(Giocatore::BudgetInsufficiente){
                                 int id = giocatori[j]->getId();
-                                std::cout<<"Gicoatore "<<id<<" e' stato eliminato------------------------------------------------------------------------\n";
+                                std::cout<<"----------------Gicoatore "<<id<<" e' stato eliminato------------------------------------------------------------------------\n";
+                                //t.resetCaselle(giocatori[j]);
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
                             }
@@ -126,7 +127,7 @@ void PartitaComputer::run() {
             }
         }
         t.printTabellone(giocatori);
+        listaPossedimenti();
     }
     std::cout<<"\n";
-    listaPossedimenti();
 }

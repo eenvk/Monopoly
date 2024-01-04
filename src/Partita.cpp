@@ -48,7 +48,7 @@ void Partita::listaPossedimenti() const{
 int Partita::whose(const Casella& c) const{
     for(int i=0;i<giocatori.size();i++){
         for(int j=0;j<giocatori[i]->proprietaPossedute().size();j++){
-            if(giocatori[i]->proprietaPossedute()[j].getId() == c.getId()){
+            if(giocatori[i]->proprietaPossedute()[j]->getId() == c.getId()){
                 return giocatori[i]->getId();
             }
         }

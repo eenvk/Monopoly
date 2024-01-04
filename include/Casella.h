@@ -37,7 +37,6 @@ public:
     void acquistaTerreno();
     void acquistaCasa();
     void miglioraInAlbergo();
-    //void setProprietario(int);
     void reset();
 
     char getCategoria() const;

@@ -11,12 +11,12 @@ int Giocatore::getId() const{
 std::string Giocatore::getProprietaPossedute() const{
     std::string s = "";
     for(int i=0;i<proprieta_possedute.size();i++){
-        s = s + (proprieta_possedute[i].getNome()) + " ";
+        s = s + (proprieta_possedute[i]->getNome()) + " ";
     }
     return s;
 }
 
-std::vector<Casella> Giocatore::proprietaPossedute() const{
+std::vector<Casella*> Giocatore::proprietaPossedute() const{
     return proprieta_possedute;
 }
 
@@ -34,7 +34,7 @@ int Giocatore::getPosizione() const {
 
 void Giocatore::eliminaProprieta() {
     for(int j=0;j<proprieta_possedute.size();j++){
-        proprieta_possedute[j].reset();
+        proprieta_possedute[j]->reset();
     }
     proprieta_possedute.clear();
 }
@@ -64,7 +64,7 @@ void Giocatore::muovi(int spostamento) {
     if(posizione + spostamento > 27){
         int diff = 28-posizione;
         posizione = spostamento-diff;
-        incassa(2);
+        incassa(1);
         std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
     }
     else{

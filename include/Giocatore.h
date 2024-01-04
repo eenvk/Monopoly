@@ -9,7 +9,7 @@ class Giocatore{
 protected:
     //Giocatore();
     int id;
-    std::vector<Casella> proprieta_possedute;
+    std::vector<Casella*> proprieta_possedute;
     bool is_alive; //il giocatore è ancora in gioco?
     int budget;
     int posizione;
@@ -21,7 +21,7 @@ public:
     bool isAlive() const;
     int getBudget() const;
     int getPosizione() const;
-    std::vector<Casella> proprietaPossedute() const;
+    std::vector<Casella*> proprietaPossedute() const;
 
     virtual void acquistaCasella(Casella& c){}
     virtual void acquistaCasa(Casella& c){}
