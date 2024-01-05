@@ -59,7 +59,7 @@ void Partita::listaPossedimenti() const{
     }
 }
 
-Giocatore* Partita::whose(const Casella& c) const{
+Giocatore* Partita::proprietario(const Casella& c) const{
     for(int i=0;i<giocatori.size();i++){
         for(int j=0;j<giocatori[i]->proprietaPossedute().size();j++){
             if(giocatori[i]->proprietaPossedute()[j]->getId() == c.getId()){
@@ -79,7 +79,7 @@ void Partita::run() {
 
     for(int i=0; is_running && i < MAX_TURNI; i++){ //altrimenti max turni 500 && is_running
 
-        std::cout << "Turno: " << i+1 <<"!\n";
+        std::cout << "Turno: " << i+1 <<"\n";
 
         for(int j=0;j<giocatori.size();j++){
 
@@ -93,11 +93,11 @@ void Partita::run() {
                     std::cout<<"Giocatore "<<giocatori[j]->getId()<<" ha finito il turno"<<"\n";
                 }
                 else{
-                    Giocatore* whose = Partita::whose(pos);
-                    if(whose == nullptr){
+                    Giocatore* proprietario = Partita::proprietario(pos);
+                    if(proprietario == nullptr){
                         try {
                             if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                                if(handleHumanInteraction("Vuoi acquistare la casella" + pos.getNome() + "?")){
+                                if(handleHumanInteraction("Vuoi acquistare la casella " + pos.getNome() + "?")){
                                     giocatori[j]->acquistaCasella(pos);
                                 }
                             }else{
@@ -108,7 +108,7 @@ void Partita::run() {
                         }
                     }
                     else{
-                        if(whose == giocatori[j]){
+                        if(proprietario == giocatori[j]){
                             if(pos.getTipo() == TERRENO){
                                 try{
                                     if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
@@ -142,26 +142,26 @@ void Partita::run() {
                             try{
                                 if(pos.getCategoria() == ECONOMICA){
                                     if(pos.getTipo() == CASA){
-                                        transazione(giocatori[j],whose,PERNOTTAMENTO_CASA_ECO,pos);
+                                        transazione(giocatori[j], proprietario, PERNOTTAMENTO_CASA_ECO, pos);
                                     }
                                     else if(pos.getTipo() == ALBERGO){
-                                        transazione(giocatori[j],whose,PERNOTTAMENTO_ALBERGO_ECO,pos);
+                                        transazione(giocatori[j], proprietario, PERNOTTAMENTO_ALBERGO_ECO, pos);
                                     }
                                 }
                                 if(pos.getCategoria() == STANDARD){
                                     if(pos.getTipo() == CASA){
-                                        transazione(giocatori[j],whose,PERNOTTAMENTO_CASA_STANDARD,pos);
+                                        transazione(giocatori[j], proprietario, PERNOTTAMENTO_CASA_STANDARD, pos);
                                     }
                                     else if(pos.getTipo() == ALBERGO){
-                                        transazione(giocatori[j],whose,PERNOTTAMENTO_ALBERGO_STANDARD,pos);
+                                        transazione(giocatori[j], proprietario, PERNOTTAMENTO_ALBERGO_STANDARD, pos);
                                     }
                                 }
                                 if(pos.getCategoria() == LUSSO){
                                     if(pos.getTipo() == CASA){
-                                        transazione(giocatori[j],whose,PERNOTTAMENTO_CASA_LUSSO,pos);
+                                        transazione(giocatori[j], proprietario, PERNOTTAMENTO_CASA_LUSSO, pos);
                                     }
                                     else if(pos.getTipo() == ALBERGO){
-                                        transazione(giocatori[j],whose,PERNOTTAMENTO_ALBERGO_LUSSO,pos);
+                                        transazione(giocatori[j], proprietario, PERNOTTAMENTO_ALBERGO_LUSSO, pos);
                                     }
                                 }
                             }

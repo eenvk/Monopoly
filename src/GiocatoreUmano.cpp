@@ -38,6 +38,7 @@ void GiocatoreUmano::acquistaCasella(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
+    std::cout<<"Giocatore "<<id<<" ha acquistato il terreno "<<c.getNome()<<"\n";
 }
 
 void GiocatoreUmano::acquistaCasa(Casella &c) {
@@ -68,6 +69,7 @@ void GiocatoreUmano::acquistaCasa(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
+    std::cout<<"Giocatore "<<id<<" ha costruito una casa sul terreno "<<c.getNome()<<"\n";
 }
 
 void GiocatoreUmano::miglioraInAlbergo(Casella &c) {
@@ -98,4 +100,5 @@ void GiocatoreUmano::miglioraInAlbergo(Casella &c) {
             throw BudgetInsufficiente();
         }
     }
+    std::cout<<"Giocatore "<<id<<" ha migliorato una casa in albergo sul terreno "<<c.getNome()<<"\n";
 }
