@@ -20,6 +20,7 @@ public:
     void transazione(Giocatore*, Giocatore*, int, Casella&);
     bool handleHumanInteraction(std::string);
     void listaPossedimenti() const;
+    void visualizzaBudgetGiocatori() const;
     Giocatore* proprietario(const Casella&) const;
     virtual void printWinner(){}
 };
