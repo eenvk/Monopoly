@@ -60,7 +60,7 @@ void Giocatore::muovi(int spostamento) {
     if(posizione + spostamento > 27){
         int diff = 28-posizione;
         posizione = spostamento-diff;
-        incassa(1);
+        incassa(20);
         std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
     }
     else{

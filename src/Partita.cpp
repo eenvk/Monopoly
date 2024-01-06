@@ -55,7 +55,7 @@ void Partita::listaPossedimenti() const{
         if(!giocatori[i]->isAlive())
             std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<"eliminato\n";
         else
-            std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<giocatori[i]->getProprietaPossedute()<<"\n";
+            std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<giocatori[i]->getProprietaPossedute()<<" "<<giocatori[i]->getBudget()<<"\n";
     }
 }
 
@@ -194,14 +194,21 @@ void Partita::transazione(Giocatore* g, Giocatore* proprietario, int prezzo, Cas
 }
 
 bool Partita::handleHumanInteraction(std::string messaggio){
-    std::cout << "E' umano \n";
-    std::cout << messaggio << "\n";
+    char risposta;
+    std::cout << messaggio << "[rispondi 'S' per si o 'N' per no]\n";
+    std::cin>>risposta;
+
+    if(tolower(risposta)=='s'){
+        return true;
+    }else return false;
+
+
     //DA FARE
 
     //se dentro la risposta sarà S restituisce true se no false
     //messaggio è una string che stampa il tipo di azione (se si tratta di un acquisto casa o terreno ecc)
     //vedere come fare il cin
-    return true;
+
 }
 
 Partita::~Partita() {
