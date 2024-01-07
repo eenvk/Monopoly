@@ -10,22 +10,16 @@ public:
         std::ofstream logFile;
         if(first_time){
             logFile.open("log_file.txt", std::ios_base::out);
-            if (logFile.is_open()) {
-                logFile << messaggio << std::endl;
-                logFile.close();
-            } else {
-                std::cerr << "errore nell'apertura del file" << std::endl;
-            }
             first_time = false;
         }
         else{
             logFile.open("log_file.txt", std::ios_base::app);
-            if (logFile.is_open()) {
-                logFile << messaggio << std::endl;
-                logFile.close();
-            } else {
-                std::cerr << "errore nell'apertura del file" << std::endl;
-            }
+        }
+        if (logFile.is_open()) {
+            logFile << messaggio << std::endl;
+            logFile.close();
+        } else {
+            std::cerr << "errore nell'apertura del file" << std::endl;
         }
     }
 };
