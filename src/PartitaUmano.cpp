@@ -19,7 +19,7 @@ void PartitaUmano::printWinner() {
     for (int i=0; i<giocatori.size(); i++) {
         if(giocatori[i]->isAlive()) {
             std::cout << "GIOCATORE " << giocatori[i]->getId() << " HA VINTO LA PARTITA\n";
-            //writeLog("GIOCATORE " + std::to_string(giocatori[i]->getId()) + " HA VINTO LA PARTITA");
+            LogManager::log("GIOCATORE " + std::to_string(giocatori[i]->getId()) + " HA VINTO LA PARTITA");
         }
     }
 }

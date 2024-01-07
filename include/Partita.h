@@ -3,6 +3,7 @@
 #include "Tabellone.h"
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
+#include "LogManager.h"
 #include <map>
 #include <typeinfo>
 

@@ -21,7 +21,7 @@ void PartitaComputer::printWinner() {
     for(int i=0;i<giocatori.size();i++){
         if(giocatori[i]->isAlive() && giocatori[i]->getBudget() >= max_budget){
             std::cout << "GIOCATORE " << giocatori[i]->getId() << " HA VINTO LA PARTITA\n";
-            //writeLog("GIOCATORE " + std::to_string(giocatori[i]->getId()) + " HA VINTO LA PARTITA");
+            LogManager::log("GIOCATORE " + std::to_string(giocatori[i]->getId()) + " HA VINTO LA PARTITA");
         }
     }
 }
