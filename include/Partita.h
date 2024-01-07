@@ -5,8 +5,8 @@
 #include "GiocatoreComputer.h"
 #include <map>
 #include <typeinfo>
-#include <fstream>
-constexpr int MAX_TURNI = 70;
+
+constexpr int MAX_TURNI = 200;
 
 class Partita {
 protected:
@@ -17,7 +17,6 @@ protected:
 public:
     //Partita(std::string);
     ~Partita();
-    void writeLog(const std::string messaggio) const;
     void run();
     void transazione(Giocatore*, Giocatore*, int, Casella&);
     bool handleHumanInteraction(const std::string) const;

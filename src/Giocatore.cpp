@@ -61,6 +61,8 @@ void Giocatore::muovi(int spostamento) {
         int diff = 28-posizione;
         posizione = spostamento-diff;
         incassa(20);
+        LogManager::log("Giocatore " + std::to_string(id) + " e' passato dal via e ha ritirato 20 fiorini\n");
+        std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
     }
     else{
         posizione += spostamento;

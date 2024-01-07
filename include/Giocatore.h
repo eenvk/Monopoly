@@ -2,6 +2,7 @@
 #define MONOPOLY_GIOCATORE_H
 #include <iostream>
 #include <vector>
+#include "LogManager.h"
 #include "../include/Casella.h"
 
 constexpr int BUDGET_INIZIALE = 100;
