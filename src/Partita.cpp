@@ -89,7 +89,7 @@ void Partita::run() {
     for(int i=0; is_running && i < MAX_TURNI; i++){ //altrimenti max turni 500 && is_running
 
         std::cout << "Turno: " << i+1 <<"\n";
-        LogManager::log("Turno :" + std::to_string(i+1));
+        LogManager::log("Turno: " + std::to_string(i+1));
 
         for(int j=0;j<giocatori.size();j++){
 
