@@ -197,6 +197,7 @@ void Partita::run() {
             }
         }
         t.printTabellone(giocatori);
+        std::cout<<"Possedimenti del\n";
         listaPossedimenti();
         std::cout<<"\n";
     }

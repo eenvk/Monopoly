@@ -18,6 +18,7 @@ Il codice è organizzato nelle seguenti directory:
 ┃ ┣ 📜 Giocatore.h  
 ┃ ┣ 📜 GiocatoreComputer.h  
 ┃ ┣ 📜 GiocatoreUmano.h  
+┃ ┣ 📜 LogManager.h  
 ┃ ┣ 📜 Partita.h  
 ┃ ┣ 📜 PartitaComputer.h  
 ┃ ┣ 📜 PartitaUmano.h  
