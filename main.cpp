@@ -32,8 +32,7 @@ int main(int argc, char* argv[]){
      } else {
        std::cout << "Il numero di argomenti forniti non e' corretto" << std::endl; //*
      }
-     /*PartitaComputer p = PartitaComputer();
-     p.run();
-     p.printWinner();*/
+
+
      return 0;
 }

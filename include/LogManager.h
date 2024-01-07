@@ -8,13 +8,13 @@ public:
     static void log(const std::string messaggio){
         static bool first_time = true;
         std::ofstream logFile;
-        if(first_time){
+        if(first_time){ //pulisco il file
             logFile.open("log_file.txt", std::ios_base::out);
+            logFile.close();
             first_time = false;
         }
-        else{
-            logFile.open("log_file.txt", std::ios_base::app);
-        }
+
+        logFile.open("log_file.txt", std::ios_base::app);
         if (logFile.is_open()) {
             logFile << messaggio << std::endl;
             logFile.close();

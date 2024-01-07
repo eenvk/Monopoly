@@ -111,7 +111,7 @@ void Partita::run() {
                     if(proprietario == nullptr){
                         try {
                             if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                                if(handleHumanInteraction("Vuoi acquistare la casella " + pos.getNome() + "?")){
+                                if(handleHumanInteraction("\033[34mVuoi acquistare la casella " + pos.getNome() + "?\033[0m")){
                                     giocatori[j]->acquistaCasella(pos);
                                 }
                             }else{
@@ -126,7 +126,7 @@ void Partita::run() {
                             if(pos.getTipo() == TERRENO){
                                 try{
                                     if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                                        if(handleHumanInteraction("Vuoi costruire una casa sulla casella " + pos.getNome() + "?")){
+                                        if(handleHumanInteraction("\033[33mVuoi costruire una casa sulla casella " + pos.getNome() + "?\033[0m")){
                                             giocatori[j]->acquistaCasa(pos);
                                         }
                                     }else{
@@ -140,7 +140,7 @@ void Partita::run() {
                             else if(pos.getTipo() == CASA){
                                 try{
                                     if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                                        if(handleHumanInteraction("Vuoi migliorare la casa in albergo sulla casella " + pos.getNome() + "?")){
+                                        if(handleHumanInteraction("\033[33mVuoi migliorare la casa in albergo sulla casella " + pos.getNome() + "?\033[0m")){
                                             giocatori[j]->miglioraInAlbergo(pos);
                                         }
                                     }else{
@@ -197,7 +197,7 @@ void Partita::run() {
             }
         }
         t.printTabellone(giocatori);
-        std::cout<<"Possedimenti del\n";
+        std::cout<<"Possedimenti di\n";
         listaPossedimenti();
         std::cout<<"\n";
     }
@@ -225,6 +225,7 @@ bool Partita::handleHumanInteraction(const std::string messaggio) const{
         else if(risposta=="show"){
             t.printTabellone(giocatori);
             std::cout<<"-----------\n";
+            std::cout<<"Possedimenti di\n";
             listaPossedimenti();
             std::cout<<"-----------\n";
             visualizzaBudgetGiocatori();
