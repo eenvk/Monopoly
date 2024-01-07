@@ -19,13 +19,13 @@ Partita::Partita() {
 
 }
 
-
-
 void Partita::ordinaGiocatori() {
     std::multimap<int,int,std::greater<int>> ordine;
     std::cout<<"I giocatori tirano i dadi per decidere l'ordine di gioco"<<"\n";
     for(int i=0;i<NUMERO_GIOCATORI;i++){
-        ordine.insert(std::make_pair(giocatori[i]->tiroDadi(), giocatori[i]->getId()));
+        int n = giocatori[i]->tiroDadi();
+        ordine.insert(std::make_pair(n, giocatori[i]->getId()));
+        writeLog("Giocatore " + std::to_string(giocatori[i]->getId()) + " ha tirato i dadi ottenendo " + std::to_string(n));
     }
     std::vector<Giocatore*> temp;
     while(!ordine.empty()){
@@ -35,7 +35,9 @@ void Partita::ordinaGiocatori() {
             for(int i=0;i<count;i++){
                 int id_giocatore = ordine.find(valore)->second;
                 ordine.erase(ordine.find(valore));
-                ordine.insert(std::make_pair(giocatori[id_giocatore-1]->tiroDadi(), id_giocatore));
+                int n = giocatori[id_giocatore-1]->tiroDadi();
+                ordine.insert(std::make_pair(n, id_giocatore));
+                writeLog("Giocatore " + std::to_string(id_giocatore) + " ha tirato i dadi ottenendo " + std::to_string(n));
             }
             valore = ordine.begin()->first;
             count = ordine.count(valore);
@@ -59,8 +61,6 @@ void Partita::listaPossedimenti() const{
             std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<"eliminato\n";
         else
             std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<giocatori[i]->getProprietaPossedute()<<"\n";
-
-
     }
 }
 
@@ -96,14 +96,18 @@ void Partita::run() {
 
             if(giocatori[j]->isAlive()){
 
-                int n = giocatori[j]->tiroDadi();
-                giocatori[j]->muovi(n);
+                int spostamento = giocatori[j]->tiroDadi();
+                writeLog("Giocatore " + std::to_string(giocatori[j]->getId()) + " ha tirato i dadi ottenendo " + std::to_string(spostamento));
+                if(giocatori[j]->getPosizione() + spostamento > 27){
+                    writeLog("Giocatore " + std::to_string(giocatori[j]->getId()) + " e' passato dal via e ha ritirato 20 fiorini");
+                }
+                giocatori[j]->muovi(spostamento);
                 Casella& pos = caselle[giocatori[j]->getPosizione()];
                 std::cout<<"Giocatore "<<giocatori[j]->getId()<<" e' arrivato alla casella "<<pos.getNome()<<"\n";
+                writeLog("Giocatore " + std::to_string(giocatori[j]->getId()) + " e' arrivato alla casella " + pos.getNome());
                 if(pos.getCategoria()==ANGOLARE || pos.getCategoria()==PARTENZA){
-                    std::cout<<"Giocatore "<<giocatori[j]->getId()<<" ha finito il turno"<<"\n";
-                   //writeLog("giocatore ");
-
+                    std::cout<<"Giocatore "<<giocatori[j]->getId()<<" ha finito il turno\n";
+                    writeLog("Giocatore " + std::to_string(giocatori[j]->getId()) + " ha finito il turno");
                 }
                 else{
                     Giocatore* proprietario = Partita::proprietario(pos);
@@ -181,6 +185,7 @@ void Partita::run() {
                             catch(Giocatore::BudgetInsufficiente){
                                 int id = giocatori[j]->getId();
                                 std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
+                                writeLog("Giocatore " + std::to_string(id) + " e' stato eliminato");
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
                                 n_giocatori--;
@@ -204,9 +209,10 @@ void Partita::transazione(Giocatore* g, Giocatore* proprietario, int prezzo, Cas
     g->paga(prezzo);
     proprietario->incassa(prezzo);
     std::cout<<"Giocatore "<<g->getId()<<" ha pagato "<<prezzo<<" fiorini a giocatore "<<proprietario->getId()<<" per pernottamento nella casella "<<pos.getNome()<<"\n";
+    writeLog("Giocatore " + std::to_string(g->getId()) + " ha pagato " + std::to_string(prezzo) + " fiorini a giocatore " + std::to_string(proprietario->getId()) + " per pernottamento nella casella " + pos.getNome());
 }
 
-bool Partita::handleHumanInteraction(std::string messaggio){
+bool Partita::handleHumanInteraction(const std::string messaggio) const{
     std::string risposta;
 
     while(true){
@@ -235,14 +241,13 @@ Partita::~Partita() {
     giocatori.clear();
 }
 
-/*void Partita::writeLog(const char *messaggio) const {
+void Partita::writeLog(const std::string messaggio) const {
     std::ofstream logFile;
-    logFile.open("log_file.txt", std::ios_base::app);
-
+    logFile.open("C:\\Users\\elena\\Documents\\uni\\LabProgrammazione\\Monopoly\\log_file.txt", std::ios_base::app);
     if (logFile.is_open()) {
         logFile << messaggio << std::endl;
         logFile.close();
     } else {
         std::cerr << "errore nell'apertura del file" << std::endl;
     }
-}*/
+}

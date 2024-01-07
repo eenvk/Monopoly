@@ -52,18 +52,7 @@ Casella* Tabellone::getTabellone(){
     return tabellone;
 }
 
-/*void Tabellone::resetCaselle(const Giocatore* g) {
-    //std::vector<Casella> proprieta_possedute = g->proprietaPossedute();
-    for(int j=0;j<g->proprietaPossedute().size();j++){
-        for(int i=0;i<28;i++){
-            if(g->proprietaPossedute()[j].getId()==tabellone[i].getId()){
-                tabellone[i].reset();
-            }
-        }
-    }
-}*/
-
-void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) {
+void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
     char lettera = 'A';
     for (int i = -1; i < 8; i++) {
         for (int j = -1; j < 8; j++) {
