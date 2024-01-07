@@ -16,6 +16,7 @@ protected:
 public:
     //Partita(std::string);
     ~Partita();
+    void writeLog(const char *messaggio) const;
     void run();
     void transazione(Giocatore*, Giocatore*, int, Casella&);
     bool handleHumanInteraction(std::string);

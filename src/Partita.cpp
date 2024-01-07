@@ -1,4 +1,5 @@
 #include "../include/Partita.h"
+#include <fstream>
 /*Partita::Partita(std::string arg) {
     if(arg=="human"){
         this->giocatori.push_back(new GiocatoreUmano());
@@ -17,6 +18,8 @@
 Partita::Partita() {
 
 }
+
+
 
 void Partita::ordinaGiocatori() {
     std::multimap<int,int,std::greater<int>> ordine;
@@ -56,6 +59,8 @@ void Partita::listaPossedimenti() const{
             std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<"eliminato\n";
         else
             std::cout<<"Giocatore "<<giocatori[i]->getId()<<": "<<giocatori[i]->getProprietaPossedute()<<"\n";
+
+
     }
 }
 
@@ -97,6 +102,8 @@ void Partita::run() {
                 std::cout<<"Giocatore "<<giocatori[j]->getId()<<" e' arrivato alla casella "<<pos.getNome()<<"\n";
                 if(pos.getCategoria()==ANGOLARE || pos.getCategoria()==PARTENZA){
                     std::cout<<"Giocatore "<<giocatori[j]->getId()<<" ha finito il turno"<<"\n";
+                   //writeLog("giocatore ");
+
                 }
                 else{
                     Giocatore* proprietario = Partita::proprietario(pos);
@@ -203,7 +210,7 @@ bool Partita::handleHumanInteraction(std::string messaggio){
     std::string risposta;
 
     while(true){
-        std::cout << messaggio << " [rispondi 'S' per si o 'S' per no]\n";
+        std::cout << messaggio << " [rispondi 'S' per si o 'N' per no]\n";
         std::cin >> risposta;
         if(risposta=="S" || risposta=="s"){
             return true;
@@ -227,3 +234,15 @@ Partita::~Partita() {
     }
     giocatori.clear();
 }
+
+/*void Partita::writeLog(const char *messaggio) const {
+    std::ofstream logFile;
+    logFile.open("log_file.txt", std::ios_base::app);
+
+    if (logFile.is_open()) {
+        logFile << messaggio << std::endl;
+        logFile.close();
+    } else {
+        std::cerr << "errore nell'apertura del file" << std::endl;
+    }
+}*/
