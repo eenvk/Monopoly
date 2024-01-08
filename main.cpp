@@ -1,5 +1,4 @@
-#include "include/PartitaComputer.h"
-#include "include/PartitaUmano.h"
+#include "include/Partita.h"
 #include <string>
 
 using namespace std;
@@ -16,23 +15,15 @@ int main(int argc, char* argv[]){
             input += argv[i];
          }
 
-         if(input=="human") { //in questo modo ora posso confrontare se input=human
-             PartitaUmano p = PartitaUmano();
-             p.run();
-             p.printWinner();
-         }else if(input=="computer"){
-             PartitaComputer p = PartitaComputer();
-             p.run();
-             p.printWinner();
-         }
-         else{
+         if(input != "human" && input != "computer"){
              std::cout << "L'argomento fornito non e' valido" << std::endl; //se inserisco qualcosa che non è human o computer
          }
 
      } else {
        std::cout << "Il numero di argomenti forniti non e' corretto" << std::endl; //*
      }
-
-
+     Partita p = Partita(input);
+     p.run();
+     p.printWinner();
      return 0;
 }

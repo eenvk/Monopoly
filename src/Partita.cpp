@@ -1,6 +1,6 @@
 #include "../include/Partita.h"
 #include <fstream>
-/*Partita::Partita(std::string arg) {
+Partita::Partita(std::string arg) {
     if(arg=="human"){
         this->giocatori.push_back(new GiocatoreUmano());
         for(int i=1;i<NUMERO_GIOCATORI;i++){
@@ -13,10 +13,6 @@
         }
     }
     ordinaGiocatori();
-}*/
-
-Partita::Partita() {
-
 }
 
 void Partita::ordinaGiocatori() {
@@ -76,7 +72,7 @@ Giocatore* Partita::proprietario(const Casella& c) const{
             }
         }
     }
-    return nullptr;//non è di nessuno
+    return nullptr;//c non è di nessuno
 }
 
 void Partita::run() {
@@ -229,6 +225,26 @@ bool Partita::handleHumanInteraction(const std::string messaggio) const{
             listaPossedimenti();
             std::cout<<"-----------\n";
             visualizzaBudgetGiocatori();
+        }
+    }
+}
+
+void Partita::printWinner() const{
+    int max_budget = 0;
+    int budget = 0;
+
+    for (int i=0; i<giocatori.size(); i++) {
+        if(giocatori[i]->isAlive()) {
+            budget = giocatori[i]->getBudget();
+            if(budget >= max_budget){
+                max_budget = budget;
+            }
+        }
+    }
+    for(int i=0;i<giocatori.size();i++){
+        if(giocatori[i]->isAlive() && giocatori[i]->getBudget() >= max_budget){
+            std::cout << "GIOCATORE " << giocatori[i]->getId() << " HA VINTO LA PARTITA\n";
+            LogManager::log("GIOCATORE " + std::to_string(giocatori[i]->getId()) + " HA VINTO LA PARTITA");
         }
     }
 }

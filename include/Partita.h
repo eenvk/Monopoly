@@ -10,13 +10,12 @@
 constexpr int MAX_TURNI = 200;
 
 class Partita {
-protected:
-    Partita();
+private:
     void ordinaGiocatori();
     Tabellone t = Tabellone();
     std::vector<Giocatore*> giocatori;
 public:
-    //Partita(std::string);
+    Partita(std::string);
     ~Partita();
     void run();
     void transazione(Giocatore*, Giocatore*, int, Casella&);
@@ -24,7 +23,7 @@ public:
     void listaPossedimenti() const;
     void visualizzaBudgetGiocatori() const;
     Giocatore* proprietario(const Casella&) const;
-    virtual void printWinner(){}
+    void printWinner() const;
 };
 
 #endif //MONOPOLY_PARTITA_H
