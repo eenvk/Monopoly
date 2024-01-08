@@ -4,7 +4,7 @@
 Lo metto qui così per compilarlo fate prima se non usate CMake:
 
 ```
-g++ -o monopoly src/Casella.cpp src/Giocatore.cpp src/GiocatoreComputer.cpp src/GiocatoreUmano.cpp src/Partita.cpp src/PartitaComputer.cpp src/PartitaUmano.cpp src/Tabellone.cpp main.cpp
+g++ -o monopoly src/Casella.cpp src/Giocatore.cpp src/GiocatoreComputer.cpp src/GiocatoreUmano.cpp src/Partita.cpp src/Tabellone.cpp main.cpp
 
 ```
 
