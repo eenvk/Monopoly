@@ -1,5 +1,5 @@
 #include "../include/Partita.h"
-#include <fstream>
+
 Partita::Partita(std::string arg) {
     if(arg=="human"){
         this->giocatori.push_back(new GiocatoreUmano());

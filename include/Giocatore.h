@@ -6,24 +6,28 @@
 #include "Casella.h"
 
 constexpr int BUDGET_INIZIALE = 100;
+constexpr int INCREMENTO_BUDGET = 1;
 
 class Giocatore{
 protected:
     int id;
     std::vector<Casella*> proprieta_possedute;
-    bool is_alive; //il giocatore è ancora in gioco?
+    bool is_alive; //true se il giocatore è vivo
     int budget;
-    int posizione;
+    int posizione; //da 0 a 27 che sono le id delle caselle che compongono il tabellone
 
 public:
     class BudgetInsufficiente{};
+
+    //getter
     int getId() const;
-    std::string getProprietaPossedute() const;
+    std::vector<Casella*> proprietaPossedute() const;
+    std::string getProprietaPossedute() const; //restituisce l'elenco dei nomi delle caselle possedute sotto forma di stringa
     bool isAlive() const;
     int getBudget() const;
     int getPosizione() const;
-    std::vector<Casella*> proprietaPossedute() const;
 
+    //questi 3 metodi sono diversi per giocatore umano e giocatore pc dunque si adotta l'ereditarieta
     virtual void acquistaCasella(Casella& c){}
     virtual void acquistaCasa(Casella& c){}
     virtual void miglioraInAlbergo(Casella& c){}

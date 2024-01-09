@@ -52,6 +52,8 @@ void Giocatore::setDead() {
 
 int Giocatore::tiroDadi() {
     int numero = rand()%11+2; //con 2 dadi il minimo numero che può uscire è 2 e il massimo è 12
+
+    //quando un giocatore tira i dadi viene scritto ciò sul file di log
     LogManager::log("Giocatore " + std::to_string(id) + " ha tirato i dadi ottenendo " + std::to_string(numero));
     std::cout<<"Giocatore "<<id<<" ha tirato i dadi ottenendo "<<numero<<"\n";
     return numero;
@@ -61,9 +63,9 @@ void Giocatore::muovi(int spostamento) {
     if(posizione + spostamento > 27){
         int diff = 28-posizione;
         posizione = spostamento-diff;
-        incassa(1);
-        LogManager::log("Giocatore " + std::to_string(id) + " e' passato dal via e ha ritirato 20 fiorini");
-        std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato 20 fiorini"<<"\n";
+        incassa(INCREMENTO_BUDGET);
+        LogManager::log("Giocatore " + std::to_string(id) + " e' passato dal via e ha ritirato " + std::to_string(INCREMENTO_BUDGET) + " fiorini");
+        std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato "<<INCREMENTO_BUDGET<<" fiorini"<<"\n";
     }
     else{
         posizione += spostamento;
@@ -74,7 +76,7 @@ std::ostream& operator<<(std::ostream& os, const Giocatore& g) {
     return os<<"Id: "<<g.getId()<<", Budget: "<<g.getBudget()<<", Pos: "<<g.getPosizione();
 }
 
-int callCounter2() {
+int callCounter2() { //assegna a ogni giocatore il proprio id
     static int count = 1;
     return count++;
 }
