@@ -7,7 +7,7 @@
 #include <map>
 #include <typeinfo>
 
-constexpr int MAX_TURNI = 200;
+constexpr int MAX_TURNI = 100;
 
 class Partita {
 private:

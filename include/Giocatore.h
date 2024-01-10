@@ -6,7 +6,7 @@
 #include "Casella.h"
 
 constexpr int BUDGET_INIZIALE = 100;
-constexpr int INCREMENTO_BUDGET = 1;
+constexpr int INCREMENTO_BUDGET = 20;
 
 class Giocatore{
 protected:

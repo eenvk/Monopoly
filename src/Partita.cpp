@@ -85,7 +85,6 @@ void Partita::run() {
     for(int i=0; is_running && i < MAX_TURNI; i++){ //altrimenti max turni 500 && is_running
 
         std::cout << "Turno: " << i+1 <<"\n";
-        LogManager::log("Turno: " + std::to_string(i+1));
 
         for(int j=0;j<giocatori.size();j++){
 
@@ -177,10 +176,10 @@ void Partita::run() {
                             }
                             catch(Giocatore::BudgetInsufficiente){
                                 int id = giocatori[j]->getId();
-                                std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
-                                LogManager::log("Giocatore " + std::to_string(id) + " e' stato eliminato");
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
+                                std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
+                                LogManager::log("Giocatore " + std::to_string(id) + " e' stato eliminato");
                                 n_giocatori--;
                                 if(n_giocatori==1) {
                                     is_running = false;
