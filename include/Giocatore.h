@@ -1,3 +1,5 @@
+//Elena
+
 #ifndef MONOPOLY_GIOCATORE_H
 #define MONOPOLY_GIOCATORE_H
 #include <iostream>

@@ -1,3 +1,5 @@
+//Elena
+
 #ifndef MONOPOLY_PARTITA_H
 #define MONOPOLY_PARTITA_H
 #include "Tabellone.h"
@@ -18,7 +20,7 @@ public:
     Partita(std::string);
     ~Partita();
     void run();
-    void transazione(Giocatore*, Giocatore*, int, Casella&);
+    void transazione(Giocatore*, Giocatore*, const int, const Casella&);
     bool handleHumanInteraction(const std::string) const;
     void listaPossedimenti() const;
     void visualizzaBudgetGiocatori() const;

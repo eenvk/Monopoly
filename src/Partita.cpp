@@ -58,7 +58,7 @@ void Partita::listaPossedimenti() const{
     }
 }
 
-void Partita::visualizzaBudgetGiocatori() const {
+void Partita::visualizzaBudgetGiocatori() const{
     for(int i=0;i<giocatori.size();i++){
         std::cout<<"Giocatore "<<giocatori[i]->getId()<<" ha "<<giocatori[i]->getBudget()<<" fiorini\n";
     }
@@ -198,7 +198,7 @@ void Partita::run() {
     }
 }
 
-void Partita::transazione(Giocatore* g, Giocatore* proprietario, int prezzo, Casella& pos) {
+void Partita::transazione(Giocatore* g, Giocatore* proprietario, const int prezzo, const Casella& pos) {
     g->paga(prezzo);
     proprietario->incassa(prezzo);
     std::cout<<"Giocatore "<<g->getId()<<" ha pagato "<<prezzo<<" fiorini a giocatore "<<proprietario->getId()<<" per pernottamento nella casella "<<pos.getNome()<<"\n";

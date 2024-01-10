@@ -1,3 +1,5 @@
+//Giada Zago
+
 #ifndef MONOPOLY_GIOCATORECOMPUTER_H
 #define MONOPOLY_GIOCATORECOMPUTER_H
 #include "Giocatore.h"

@@ -1,3 +1,5 @@
+//Giada Zago
+
 #include "include/Partita.h"
 #include <string>
 
@@ -7,9 +9,7 @@ int main(int argc, char* argv[]){
 
      std::string input; //ciò che leggerò da console
 
-     if(argc == 2) { // controllo se almeno ho inserito un argomento a linea di comando, altrimenti *
-
-         std::cout << "Primo argomento: " << argv[1] << std::endl; //stampo l'argomento scritto
+     if(argc == 2) {
 
          for (int i = 1; i < argc; i++) { //leggo la stringa da console che viene inserita nella variabile input
             input += argv[i];
@@ -22,6 +22,9 @@ int main(int argc, char* argv[]){
      } else {
        std::cout << "Il numero di argomenti forniti non e' corretto" << std::endl; //*
      }
+
+     cout<<"Questa e' una partita di tipo "<<input<<endl;
+
      Partita p = Partita(input);
      p.run();
      p.printWinner();

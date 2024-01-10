@@ -1,3 +1,5 @@
+//Giada Zago
+
 #ifndef MONOPOLY_LOGMANAGER_H
 #define MONOPOLY_LOGMANAGER_H
 #include <iostream>
