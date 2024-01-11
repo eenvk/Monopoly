@@ -1,3 +1,5 @@
+//Edoardo Renzi
+
 #include "../include/GiocatoreUmano.h"
 
 GiocatoreUmano::GiocatoreUmano() {

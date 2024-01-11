@@ -1,3 +1,5 @@
+//Elena Novkovic
+
 #include "../include/Partita.h"
 
 Partita::Partita(std::string arg) {
@@ -12,7 +14,7 @@ Partita::Partita(std::string arg) {
             this->giocatori.push_back(new GiocatoreComputer());
         }
     }
-    ordinaGiocatori();
+    ordinaGiocatori(); //ordino il vector di giocatori in modo che siano disposti in ordine decrescente in base al numero uscito nel tiro dei dadi
 }
 
 void Partita::ordinaGiocatori() {
@@ -24,13 +26,13 @@ void Partita::ordinaGiocatori() {
     }
     std::vector<Giocatore*> temp;
     while(!ordine.empty()){
-        int valore = ordine.begin()->first;
-        int count = ordine.count(valore);
+        int valore = ordine.begin()->first; //lancio col valore piu alto
+        int count = ordine.count(valore); //conto il numero di tiri uguali
         while(count>=2){
             for(int i=0;i<count;i++){
                 int id_giocatore = ordine.find(valore)->second;
                 ordine.erase(ordine.find(valore));
-                int n = giocatori[id_giocatore-1]->tiroDadi();
+                int n = giocatori[id_giocatore-1]->tiroDadi(); //faccio ritirare i dadi al giocatore che ha avuto il numero uguale a quello di un altro giocatore
                 ordine.insert(std::make_pair(n, id_giocatore));
             }
             valore = ordine.begin()->first;
@@ -82,7 +84,7 @@ void Partita::run() {
     bool is_running = true;
     int n_giocatori = giocatori.size();
 
-    for(int i=0; is_running && i < MAX_TURNI; i++){ //altrimenti max turni 500 && is_running
+    for(int i=0; is_running && i < MAX_TURNI; i++){
 
         std::cout << "Turno: " << i+1 <<"\n";
 

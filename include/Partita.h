@@ -1,4 +1,4 @@
-//Elena
+//Elena Novkovic
 
 #ifndef MONOPOLY_PARTITA_H
 #define MONOPOLY_PARTITA_H
@@ -9,7 +9,7 @@
 #include <map>
 #include <typeinfo>
 
-constexpr int MAX_TURNI = 100;
+constexpr int MAX_TURNI = 10;
 
 class Partita {
 private:

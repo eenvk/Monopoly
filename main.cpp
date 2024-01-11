@@ -1,7 +1,6 @@
 //Giada Zago
 
 #include "include/Partita.h"
-#include <string>
 
 using namespace std;
 
@@ -28,5 +27,6 @@ int main(int argc, char* argv[]){
      Partita p = Partita(input);
      p.run();
      p.printWinner();
+
      return 0;
 }

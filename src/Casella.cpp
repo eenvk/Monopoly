@@ -1,3 +1,5 @@
+//Edoardo Renzi
+
 #include "../include/Casella.h"
 
 Casella::Casella() {

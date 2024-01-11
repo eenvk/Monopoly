@@ -1,4 +1,4 @@
-//Elena
+//Elena Novkovic
 
 #ifndef MONOPOLY_GIOCATORE_H
 #define MONOPOLY_GIOCATORE_H
@@ -13,7 +13,7 @@ constexpr int INCREMENTO_BUDGET = 20;
 class Giocatore{
 protected:
     int id;
-    std::vector<Casella*> proprieta_possedute;
+    std::vector<Casella*> proprieta_possedute; //vector di proprieta
     bool is_alive; //true se il giocatore è vivo
     int budget;
     int posizione; //da 0 a 27 che sono le id delle caselle che compongono il tabellone

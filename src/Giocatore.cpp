@@ -1,3 +1,5 @@
+//Elena Novkovic
+
 #include "../include/Giocatore.h"
 
 int Giocatore::getId() const{

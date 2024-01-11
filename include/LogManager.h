@@ -17,6 +17,7 @@ public:
         else{
             logFile.open("log_file.txt", std::ios_base::app);
         }
+
         if (logFile.is_open()) {
             logFile << messaggio << std::endl;
             logFile.close();

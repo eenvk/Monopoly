@@ -1,3 +1,5 @@
+//Edoardo Renzi
+
 #ifndef MONOPOLY_GIOCATOREUMANO_H
 #define MONOPOLY_GIOCATOREUMANO_H
 #include "Giocatore.h"

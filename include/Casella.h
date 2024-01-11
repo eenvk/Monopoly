@@ -1,9 +1,8 @@
-//Edoardo
+//Edoardo Renzi
 
 #ifndef MONOPOLY_CASELLA_H
 #define MONOPOLY_CASELLA_H
 #include <iostream>
-#include <stdexcept>
 
 constexpr int PREZZO_ECO_TERRENO = 6;
 constexpr int PREZZO_ECO_CASA = 3;

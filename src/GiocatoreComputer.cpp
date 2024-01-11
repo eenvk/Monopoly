@@ -1,3 +1,5 @@
+//Giada Zago
+
 #include "../include/GiocatoreComputer.h"
 
 GiocatoreComputer::GiocatoreComputer() {
