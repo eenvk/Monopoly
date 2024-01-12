@@ -51,7 +51,7 @@ public:
 
 private:
     int id;
-    std::string nome;
+    std::string nome; //coordinata all'interno del tabellone
     bool stato; //true = disponibile
     char tipo; // ' '=terreno, '*'=casa, '^'=albergo
     char categoria; // ' '-> angolare, P->partenza, E->economica, S->standard, L->lusso

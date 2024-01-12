@@ -15,11 +15,11 @@ void Tabellone::setCaselle(){
     //seme sempre diverso per evitare di avere tabelloni sempre uguali
     srand(static_cast<unsigned int>(time(0)));
 
-    for (int i = 0; i < 28; i++) {
+    for (int i = 0; i < NUMERO_CASELLE; i++) {
         //Caselle angolari
         if (i == 0) {
             tabellone[i] = Casella(PARTENZA);
-        } else if (i % 7 == 0) {
+        } else if (i % (BASE-1) == 0) {
             tabellone[i] = Casella(ANGOLARE);
         } else {
             // Caselle laterali
@@ -53,8 +53,8 @@ void Tabellone::setCaselle(){
 
 void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
     char lettera = 'A';
-    for (int i = -1; i < 8; i++) {
-        for (int j = -1; j < 8; j++) {
+    for (int i = -1; i < ALTEZZA; i++) {
+        for (int j = -1; j < BASE; j++) {
             if(i == -1){
                 if(j==-1){
                     std::cout << "      ";
@@ -65,77 +65,63 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
             }
             else if(i == 0){
                 std::string s;
-                for(int k=0; k<giocatori.size(); k++){
-                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14+j]){
-                        s = s+std::to_string(giocatori[k]->getId());
-                    }
-                    else{
-                        s = s+" ";
-                    }
-                }
                 if(j==-1){
                     std::cout << lettera++ << "  ";
                 }
                 else {
-                    std::cout << "|" << tabellone[14 + j] << s << "|" << "  ";
+                    for(int k=0; k<giocatori.size(); k++){
+                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[(BASE+ALTEZZA-2)+j]){
+                            s = s+std::to_string(giocatori[k]->getId());
+                        }
+                        else{
+                            s = s+" ";
+                        }
+                    }
+                    std::cout << "|" << tabellone[(BASE+ALTEZZA-2)+j] << s << "|" << "  ";
                 }
             }
-            else if(i == 7){
+            else if(i == ALTEZZA-1){
                 std::string s;
-                for(int k=0; k<giocatori.size(); k++){
-                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[7-j]){
-                        s = s+std::to_string(giocatori[k]->getId());
-                    }
-                    else{
-                        s = s+" ";
-                    }
-                }
                 if(j==-1){
                     std::cout << lettera << "  ";
                 }
                 else {
-                    std::cout << "|" << tabellone[7 - j] << s << "|" << "  ";
+                    for(int k=0; k<giocatori.size(); k++){
+                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[(BASE-1)-j]){
+                            s = s+std::to_string(giocatori[k]->getId());
+                        }
+                        else{
+                            s = s+" ";
+                        }
+                    }
+                    std::cout << "|" << tabellone[(BASE-1)-j] << s << "|" << "  ";
                 }
             }
             else if(j==-1){
                 std::cout << lettera++ << "  ";
             }
             else if(j == 0) {
-                if(i==6){
-                    std::string s;
-                    for(int k=0; k<giocatori.size(); k++){
-                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14-i]){
-                            s = s+std::to_string(giocatori[k]->getId());
-                        }
-                        else{
-                            s = s+" ";
-                        }
+                std::string s;
+                for(int k=0; k<giocatori.size(); k++){
+                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[BASE+ALTEZZA-2 - i]){
+                        s = s+std::to_string(giocatori[k]->getId());
                     }
-                    std::cout << "|" << tabellone[14 - i] << s << "|" << "  ";
-                }
-                else{
-                    std::string s;
-                    for(int k=0; k<giocatori.size(); k++){
-                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14-i]){
-                            s = s+std::to_string(giocatori[k]->getId());
-                        }
-                        else{
-                            s = s+" ";
-                        }
+                    else{
+                        s = s+" ";
                     }
-                    std::cout << "|" << tabellone[14 - i] << s << "|" << "  ";
                 }
+                std::cout << "|" << tabellone[BASE+ALTEZZA-2 - i] << s << "|" << "  ";
             }
-            else if (j == 7) {
+            else if (j == BASE-1) {
                 std::string s;
                 for (int k = 0; k < giocatori.size(); k++) {
-                    if (giocatori[k]->isAlive() && giocatori[k]->getPosizione() == tabellone[21 + i]) {
+                    if (giocatori[k]->isAlive() && giocatori[k]->getPosizione() == tabellone[((BASE*2)+ALTEZZA-3) + i]) {
                         s = s + std::to_string(giocatori[k]->getId());
                     } else {
                         s = s + " ";
                     }
                 }
-                std::cout << "|" << tabellone[21 + i] << s << "|";
+                std::cout << "|" << tabellone[((BASE*2)+ALTEZZA-3) + i] << s << "|";
             }
             else{
                 std::cout << "          ";

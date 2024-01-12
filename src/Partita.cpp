@@ -177,7 +177,6 @@ void Partita::run() {
                             }
                             catch(Giocatore::BudgetInsufficiente){
                                 int id = giocatori[j]->getId();
-                                std::cout<<"BUDGET "<<giocatori[j]->getBudget()<<"\n";
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
                                 std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
