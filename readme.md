@@ -1,14 +1,19 @@
 
 # MONOPOLY
+## Scelte di programmazione
 
-Lo metto qui così per compilarlo fate prima se non usate CMake:
+Per giocatore abbiamo adottato l'ereditarietà in quanto ci sono due tipi  
+di giocatori che hanno due comportamenti diversi in alcune funzionalità   
+(acquisto di terreni/case/alberghi).  
 
-```
-g++ -o monopoly src/Casella.cpp src/Giocatore.cpp src/GiocatoreComputer.cpp src/GiocatoreUmano.cpp src/Partita.cpp src/Tabellone.cpp main.cpp
+Qualsiasi partita venga giocata essa ha la stessa struttura indipendentemente  
+dal numero/varietà di giocatori, semplicemente quando viene incontrato un giocatore che è umano
+si interagisce con quest'ultimo facendogli la domanda appropriata.  
+Quindi l'unica cosa che differenzia le partite è il vector di giocatori:  
+1. vector con un GiocatoreUmano e tre GiocoatoreComputer;
+2. vector con quattro GiocatoreComputer;
 
-```
-
-## Struttura del codice
+## Struttura del progetto
 
 Il codice è organizzato nelle seguenti directory:
 
@@ -20,8 +25,6 @@ Il codice è organizzato nelle seguenti directory:
 ┃ ┣ 📜 GiocatoreUmano.h  
 ┃ ┣ 📜 LogManager.h  
 ┃ ┣ 📜 Partita.h  
-┃ ┣ 📜 PartitaComputer.h  
-┃ ┣ 📜 PartitaUmano.h  
 ┃ ┣ 📜 Tabellone.h  
 ┣📂 src  
 ┃ ┣ 📜 Casella.cpp  
@@ -29,31 +32,8 @@ Il codice è organizzato nelle seguenti directory:
 ┃ ┣ 📜 GiocatoreComputer.cpp  
 ┃ ┣ 📜 GiocatoreUmano.cpp  
 ┃ ┣ 📜 Partita.cpp  
-┃ ┣ 📜 PartitaComputer.cpp  
-┃ ┣ 📜 PartitaUmano.cpp  
 ┃ ┣ 📜 Tabellone.cpp   
-┃ ┣ 📜 main.cpp  
+┣📜 main.cpp  
 ┣📜 CMakeLists.txt  
 ┣📜 README.md   
 ┣📜 README.txt
-
-dove
-
-1. **`include`**: Contiene i file header.
-
-
-2. **`src`**: Contiene i file sorgente.
-
-    - `main.cpp`: Un file sorgente di esempio che illustra come utilizzare le classi nel tuo progetto.
-
-3. `CMakeLists.txt`: Gestisce i file nella compilazione del programma
-
-## Scelte progettuali
-
-
-## Esempio d'utilizzo del codice
-
-```cpp
-
-
-```
