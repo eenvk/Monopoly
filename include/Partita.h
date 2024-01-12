@@ -2,7 +2,9 @@
 
 #ifndef MONOPOLY_PARTITA_H
 #define MONOPOLY_PARTITA_H
+#include "Casella.h"
 #include "Tabellone.h"
+#include "Giocatore.h"
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
 #include "LogManager.h"

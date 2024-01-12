@@ -192,9 +192,9 @@ void Partita::run() {
                 }
             }
         }
-        t.printTabellone(giocatori);
+        /*t.printTabellone(giocatori);
         std::cout<<"Possedimenti di\n";
-        listaPossedimenti();
+        listaPossedimenti();*/
         std::cout<<"\n";
     }
 }
@@ -222,7 +222,7 @@ bool Partita::handleHumanInteraction(const std::string messaggio) const{
     std::string risposta;
 
     while(true){
-        std::cout << messaggio << " [rispondi 'S' per si o 'N' per no]\n";
+        std::cout << messaggio << " [rispondi 'S' per si, 'N' per no, 'show' per visualizzare lo stato della partita]\n";
         std::cin >> risposta;
         if(risposta=="S" || risposta=="s"){
             return true;
