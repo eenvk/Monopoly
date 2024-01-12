@@ -6,7 +6,7 @@
 
 class GiocatoreComputer: public Giocatore{
 public:
-    GiocatoreComputer();
+    GiocatoreComputer(Casella*);
     void acquistaCasella(Casella&) override;
     void acquistaCasa(Casella&) override;
     void miglioraInAlbergo(Casella&) override;

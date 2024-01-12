@@ -9,7 +9,7 @@
 #include <map>
 #include <typeinfo>
 
-constexpr int MAX_TURNI = 10;
+constexpr int MAX_TURNI = 250;
 
 class Partita {
 private:
@@ -21,6 +21,7 @@ public:
     ~Partita();
     void run();
     void transazione(Giocatore*, Giocatore*, const int, const Casella&);
+    void muoviGiocatore(Giocatore*, const int);
     bool handleHumanInteraction(const std::string) const;
     void listaPossedimenti() const;
     void visualizzaBudgetGiocatori() const;

@@ -35,7 +35,7 @@ public:
     class CasaNonMigliorabileInAlbergo{};
 
     Casella();
-    Casella(char);
+    Casella(const char);
     void acquistaTerreno();
     void acquistaCasa();
     void miglioraInAlbergo();
@@ -46,6 +46,7 @@ public:
     int getId() const;
     bool getStato() const;
     std::string getNome()const;
+    bool operator==(const Casella&) const;
 
 private:
     int id;

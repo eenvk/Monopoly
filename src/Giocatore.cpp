@@ -26,8 +26,8 @@ bool Giocatore::isAlive() const{
     return is_alive;
 }
 
-int Giocatore::getPosizione() const {
-    return posizione;
+Casella& Giocatore::getPosizione() const {
+    return *posizione;
 }
 
 void Giocatore::eliminaProprieta() {
@@ -37,14 +37,14 @@ void Giocatore::eliminaProprieta() {
     proprieta_possedute.clear();
 }
 
-void Giocatore::paga(int quantita) {
+void Giocatore::paga(const int quantita) {
     if(quantita>budget){
         throw BudgetInsufficiente();
     }
     budget -= quantita;
 }
 
-void Giocatore::incassa(int quantita) {
+void Giocatore::incassa(const int quantita) {
     budget += quantita;
 }
 
@@ -61,16 +61,9 @@ int Giocatore::tiroDadi() {
     return numero;
 }
 
-void Giocatore::muovi(int spostamento) {
-    if(posizione + spostamento > 27){
-        int diff = 28-posizione;
-        posizione = spostamento-diff;
-        incassa(INCREMENTO_BUDGET);
-        LogManager::log("Giocatore " + std::to_string(id) + " e' passato dal via e ha ritirato " + std::to_string(INCREMENTO_BUDGET) + " fiorini");
-        std::cout<<"Giocatore "<<id<<" e' passato dal via e ha ritirato "<<INCREMENTO_BUDGET<<" fiorini"<<"\n";
-    }
-    else{
-        posizione += spostamento;
+void Giocatore::setPosizione(Casella* newPosition) {
+    if(posizione != nullptr) {
+        posizione = newPosition;
     }
 }
 

@@ -2,11 +2,13 @@
 
 #include "../include/GiocatoreUmano.h"
 
-GiocatoreUmano::GiocatoreUmano() {
+GiocatoreUmano::GiocatoreUmano(Casella* c) {
     this->id = callCounter2();
     this->budget = BUDGET_INIZIALE;
     this->is_alive = true;
-    this->posizione = 0;
+    if(c != nullptr){
+        this->posizione = c;
+    }
 }
 
 void GiocatoreUmano::acquistaCasella(Casella &c) {

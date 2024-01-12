@@ -7,7 +7,7 @@ Casella::Casella() {
     //ma non dovrebbe essere usato come metodo per la creazione di oggetti casella
 }
 
-Casella::Casella(char categoria) {
+Casella::Casella(const char categoria) {
     this->stato = true; //all'inizio una casella è disponibile
     this->tipo = TERRENO; //all'inizio è un terreno
     this->categoria = categoria;
@@ -42,6 +42,11 @@ void Casella::miglioraInAlbergo() {
     }
 }
 
+void Casella::reset() {
+    tipo = TERRENO;
+    stato = true;
+}
+
 char Casella::getCategoria() const{
     return categoria;
 }
@@ -62,9 +67,8 @@ bool Casella::getStato() const {
     return stato;
 }
 
-void Casella::reset() {
-    tipo = TERRENO;
-    stato = true;
+bool Casella::operator==(const Casella &c) const {
+    return this->id == c.getId();
 }
 
 std::ostream& operator<<(std::ostream& os, const Casella& c) {

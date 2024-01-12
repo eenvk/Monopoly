@@ -4,14 +4,14 @@
 
 Partita::Partita(std::string arg) {
     if(arg=="human"){
-        this->giocatori.push_back(new GiocatoreUmano());
+        this->giocatori.push_back(new GiocatoreUmano(&t.getTabellone()[0]));
         for(int i=1;i<NUMERO_GIOCATORI;i++){
-            this->giocatori.push_back(new GiocatoreComputer());
+            this->giocatori.push_back(new GiocatoreComputer(&t.getTabellone()[0]));
         }
     }
     else{
         for(int i=0;i<NUMERO_GIOCATORI;i++){
-            this->giocatori.push_back(new GiocatoreComputer());
+            this->giocatori.push_back(new GiocatoreComputer(&t.getTabellone()[0]));
         }
     }
     ordinaGiocatori(); //ordino il vector di giocatori in modo che siano disposti in ordine decrescente in base al numero uscito nel tiro dei dadi
@@ -69,7 +69,7 @@ void Partita::visualizzaBudgetGiocatori() const{
 Giocatore* Partita::proprietario(const Casella& c) const{
     for(int i=0;i<giocatori.size();i++){
         for(int j=0;j<giocatori[i]->proprietaPossedute().size();j++){
-            if(giocatori[i]->proprietaPossedute()[j]->getId() == c.getId()){
+            if(*giocatori[i]->proprietaPossedute()[j] == c){
                 return giocatori[i];
             }
         }
@@ -79,7 +79,6 @@ Giocatore* Partita::proprietario(const Casella& c) const{
 
 void Partita::run() {
     t.printTabellone(giocatori);
-    Casella* caselle = t.getTabellone();
 
     bool is_running = true;
     int n_giocatori = giocatori.size();
@@ -93,9 +92,9 @@ void Partita::run() {
             if(giocatori[j]->isAlive()){
 
                 int spostamento = giocatori[j]->tiroDadi();
+                muoviGiocatore(giocatori[j],spostamento);
+                Casella& pos = giocatori[j]->getPosizione();
 
-                giocatori[j]->muovi(spostamento);
-                Casella& pos = caselle[giocatori[j]->getPosizione()];
                 std::cout<<"Giocatore "<<giocatori[j]->getId()<<" e' arrivato alla casella "<<pos.getNome()<<"\n";
                 LogManager::log("Giocatore " + std::to_string(giocatori[j]->getId()) + " e' arrivato alla casella " + pos.getNome());
 
@@ -178,6 +177,7 @@ void Partita::run() {
                             }
                             catch(Giocatore::BudgetInsufficiente){
                                 int id = giocatori[j]->getId();
+                                std::cout<<"BUDGET "<<giocatori[j]->getBudget()<<"\n";
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
                                 std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
@@ -197,6 +197,18 @@ void Partita::run() {
         std::cout<<"Possedimenti di\n";
         listaPossedimenti();
         std::cout<<"\n";
+    }
+}
+
+void Partita::muoviGiocatore(Giocatore *g, const int spostamento) {
+    Casella* caselle = t.getTabellone();
+    int current = g->getPosizione().getId();
+    int newPos = spostamento + current;
+    g->setPosizione(&caselle[newPos % NUMERO_CASELLE]);
+    if(newPos>NUMERO_CASELLE-1){ //e' passato per la partenza
+        g->incassa(INCREMENTO_BUDGET);
+        LogManager::log("Giocatore " + std::to_string(g->getId()) + " e' passato dal via e ha ritirato " + std::to_string(INCREMENTO_BUDGET) + " fiorini");
+        std::cout<<"Giocatore "<<g->getId()<<" e' passato dal via e ha ritirato "<<INCREMENTO_BUDGET<<" fiorini"<<"\n";
     }
 }
 

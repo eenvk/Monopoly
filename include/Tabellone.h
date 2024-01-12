@@ -7,6 +7,7 @@
 #include <ctime>
 
 constexpr int  NUMERO_GIOCATORI = 4;
+constexpr int  NUMERO_CASELLE = 28;
 
 class Tabellone{
 public:
@@ -15,7 +16,7 @@ public:
     void printTabellone(const std::vector<Giocatore*> giocatori) const;
 private:
     void setCaselle();
-    Casella tabellone[28];
+    Casella tabellone[NUMERO_CASELLE];
 };
 
 #endif //MONOPOLY_TABELLONE_H

@@ -69,7 +69,7 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
             else if(i == 0){
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
-                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14+j].getId()){
+                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14+j]){
                         s = s+std::to_string(giocatori[k]->getId());
                     }
                     else{
@@ -86,7 +86,7 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
             else if(i == 7){
                 std::string s;
                 for(int k=0; k<giocatori.size(); k++){
-                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[7-j].getId()){
+                    if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[7-j]){
                         s = s+std::to_string(giocatori[k]->getId());
                     }
                     else{
@@ -107,7 +107,7 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
                 if(i==6){
                     std::string s;
                     for(int k=0; k<giocatori.size(); k++){
-                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14-i].getId()){
+                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14-i]){
                             s = s+std::to_string(giocatori[k]->getId());
                         }
                         else{
@@ -119,7 +119,7 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
                 else{
                     std::string s;
                     for(int k=0; k<giocatori.size(); k++){
-                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14-i].getId()){
+                        if(giocatori[k]->isAlive() && giocatori[k]->getPosizione()==tabellone[14-i]){
                             s = s+std::to_string(giocatori[k]->getId());
                         }
                         else{
@@ -132,7 +132,7 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
             else if (j == 7) {
                 std::string s;
                 for (int k = 0; k < giocatori.size(); k++) {
-                    if (giocatori[k]->isAlive() && giocatori[k]->getPosizione() == tabellone[21 + i].getId()) {
+                    if (giocatori[k]->isAlive() && giocatori[k]->getPosizione() == tabellone[21 + i]) {
                         s = s + std::to_string(giocatori[k]->getId());
                     } else {
                         s = s + " ";
