@@ -12,7 +12,7 @@ Casella::Casella(const char categoria) {
     this->tipo = TERRENO; //all'inizio è un terreno
     this->categoria = categoria;
     this->id = callCounter();
-    this->nome = setNome();
+    this->nome = "";
 }
 
 void Casella::acquistaTerreno() {
@@ -47,6 +47,10 @@ void Casella::reset() {
     stato = true;
 }
 
+void Casella::setNome(const std::string nome) {
+    this->nome = nome;
+}
+
 char Casella::getCategoria() const{
     return categoria;
 }
@@ -78,26 +82,4 @@ std::ostream& operator<<(std::ostream& os, const Casella& c) {
 int callCounter() { //assegna a ogni casella il proprio id
     static int count = 0;
     return count++;
-}
-
-std::string setNome(){ //assegna a ogni casella la coordinata che assumerebbe in un tabellone 8x8
-    static char lettera = 72;
-    static int numero = 9;
-    static int i = 0;
-    if(i<8){
-        i++;
-        return lettera+std::to_string(--numero);
-    }
-    else if(i<15){
-        i++;
-        return (--lettera)+std::to_string(numero);
-    }
-    else if(i<22){
-        i++;
-        return lettera+std::to_string(++numero);
-    }
-    else {
-        i++;
-        return (++lettera) + std::to_string(numero);
-    }
 }

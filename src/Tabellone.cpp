@@ -4,6 +4,7 @@
 
 Tabellone::Tabellone() {
     setCaselle();
+    nominaCaselle();
 }
 
 void Tabellone::setCaselle(){
@@ -48,10 +49,6 @@ void Tabellone::setCaselle(){
             }
         }
     }
-}
-
-Casella* Tabellone::getTabellone(){
-    return tabellone;
 }
 
 void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
@@ -146,4 +143,32 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
         }
         std::cout << std::endl;
     }
+}
+
+void Tabellone::nominaCaselle() {
+    for(int j=0;j<NUMERO_CASELLE;j++){
+        static char lettera = 72;
+        static int numero = 9;
+        static int i = 0;
+        if(i<BASE){
+            i++;
+            tabellone[j].setNome(lettera+std::to_string(--numero));
+        }
+        else if(i<BASE+ALTEZZA-1){
+            i++;
+            tabellone[j].setNome((--lettera)+std::to_string(numero));
+        }
+        else if(i<(BASE*2)+ALTEZZA-2){
+            i++;
+            tabellone[j].setNome(lettera+std::to_string(++numero));
+        }
+        else {
+            i++;
+            tabellone[j].setNome((++lettera) + std::to_string(numero));
+        }
+    }
+}
+
+Casella* Tabellone::getTabellone(){
+    return tabellone;
 }

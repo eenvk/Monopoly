@@ -46,6 +46,7 @@ public:
     int getId() const;
     bool getStato() const;
     std::string getNome()const;
+    void setNome(const std::string);
     bool operator==(const Casella&) const;
 
 private:
@@ -58,6 +59,5 @@ private:
 std::ostream& operator<<(std::ostream&, const Casella&);
 
 int callCounter();
-std::string setNome();
 
 #endif //MONOPOLY_CASELLA_H
