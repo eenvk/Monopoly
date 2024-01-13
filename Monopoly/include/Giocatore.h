@@ -15,7 +15,7 @@ protected:
     int id;
     std::vector<Casella*> proprieta_possedute; //vector di proprieta
     bool is_alive; //true se il giocatore è vivo
-    int budget;
+    int budget; //visto che non ci sono i centesimi non serve float
     Casella* posizione;
 
 public:
@@ -37,7 +37,7 @@ public:
     void eliminaProprieta();
     void paga(const int); //Il giocatore paga tot soldi
     void incassa(const int); //Il giocatore riceve tot soldi
-    void setDead();
+    void setDead(); //quando il giocatore viene eliminato
     int tiroDadi();
     void setPosizione(Casella*);
 };
