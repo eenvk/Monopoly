@@ -16,7 +16,7 @@ Casella::Casella(const char categoria) {
 }
 
 void Casella::acquistaTerreno() {
-    if(stato && (categoria != ANGOLARE && categoria != PARTENZA)){ //una casella angolare e la partenza non si possono acquistare
+    if(stato && (categoria != ANGOLARE && categoria != PARTENZA)){ //una casella cangolare e la partenza non si possono acquistare
         stato = false;
     }
     else{

@@ -17,10 +17,8 @@ Partita::Partita(std::string arg) {
     ordinaGiocatori(); //ordino il vector di giocatori in modo che siano disposti in ordine decrescente in base al numero uscito nel tiro dei dadi
 }
 
-//se il numero più alto che e' uscito nei tiri e' uno solo (cioe non ci sono 2 o piu giocatori che hanno avuto lo stesso esito nel lancio) questo viene pushato nel vector,
-//se no quelli che hanno avuto lo stesso esito ritirano i dadi finche di nuovo non si riesce a stabilire un unico massimo nella multimappa che deve essere pushato nel vector
 void Partita::ordinaGiocatori() {
-    std::multimap<int,int,std::greater<int>> ordine; //multimappa che mette in ordine decrescente rispetto al numero uscito nei lanci
+    std::multimap<int,int,std::greater<int>> ordine;
     std::cout<<"I giocatori tirano i dadi per decidere l'ordine di gioco"<<"\n";
     for(int i=0;i<NUMERO_GIOCATORI;i++){
         int n = giocatori[i]->tiroDadi();
@@ -28,8 +26,8 @@ void Partita::ordinaGiocatori() {
     }
     std::vector<Giocatore*> temp;
     while(!ordine.empty()){
-        int valore = ordine.begin()->first; //lancio con il valore piu alto
-        int count = ordine.count(valore); //conto il numero di tiri che hanno avuto lo stesso esito
+        int valore = ordine.begin()->first; //lancio col valore piu alto
+        int count = ordine.count(valore); //conto il numero di tiri uguali
         while(count>=2){
             for(int i=0;i<count;i++){
                 int id_giocatore = ordine.find(valore)->second;
@@ -68,7 +66,7 @@ void Partita::visualizzaBudgetGiocatori() const{
     }
 }
 
-Giocatore* Partita::getProprietario(const Casella& c) const{
+Giocatore* Partita::proprietario(const Casella& c) const{
     for(int i=0;i<giocatori.size();i++){
         for(int j=0;j<giocatori[i]->proprietaPossedute().size();j++){
             if(*giocatori[i]->proprietaPossedute()[j] == c){
@@ -80,7 +78,7 @@ Giocatore* Partita::getProprietario(const Casella& c) const{
 }
 
 void Partita::run() {
-    //t.printTabellone(giocatori);
+    t.printTabellone(giocatori);
 
     bool is_running = true;
     int n_giocatori = giocatori.size();
@@ -105,11 +103,11 @@ void Partita::run() {
                     LogManager::log("Giocatore " + std::to_string(giocatori[j]->getId()) + " ha finito il turno");
                 }
                 else{
-                    Giocatore* proprietario = Partita::getProprietario(pos);
-                    if(proprietario == nullptr){ //la casella non è di nessuno
+                    Giocatore* proprietario = Partita::proprietario(pos);
+                    if(proprietario == nullptr){
                         try {
                             if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                                if(handleHumanInteraction("Vuoi acquistare il terreno " + pos.getNome() + "?")){
+                                if(handleHumanInteraction("\033[34mVuoi acquistare la casella " + pos.getNome() + "?\033[0m")){
                                     giocatori[j]->acquistaCasella(pos);
                                 }
                             }else{
@@ -124,7 +122,7 @@ void Partita::run() {
                             if(pos.getTipo() == TERRENO){
                                 try{
                                     if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                                        if(handleHumanInteraction("Vuoi costruire una casa sulla casella " + pos.getNome() + "?")){
+                                        if(handleHumanInteraction("\033[33mVuoi costruire una casa sulla casella " + pos.getNome() + "?\033[0m")){
                                             giocatori[j]->acquistaCasa(pos);
                                         }
                                     }else{
@@ -138,7 +136,7 @@ void Partita::run() {
                             else if(pos.getTipo() == CASA){
                                 try{
                                     if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
-                                        if(handleHumanInteraction("Vuoi migliorare la casa in albergo sulla casella " + pos.getNome() + "?")){
+                                        if(handleHumanInteraction("\033[33mVuoi migliorare la casa in albergo sulla casella " + pos.getNome() + "?\033[0m")){
                                             giocatori[j]->miglioraInAlbergo(pos);
                                         }
                                     }else{
@@ -181,7 +179,7 @@ void Partita::run() {
                                 int id = giocatori[j]->getId();
                                 giocatori[j]->eliminaProprieta();
                                 giocatori[j]->setDead();
-                                std::cout<<"Gicoatore "<<id<<" e' stato eliminato\n";
+                                std::cout<<"\033[31mGicoatore "<<id<<" e' stato eliminato\033[0m\n";
                                 LogManager::log("Giocatore " + std::to_string(id) + " e' stato eliminato");
                                 n_giocatori--;
                                 if(n_giocatori==1) {

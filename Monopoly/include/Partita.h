@@ -27,7 +27,7 @@ public:
     bool handleHumanInteraction(const std::string) const;
     void listaPossedimenti() const;
     void visualizzaBudgetGiocatori() const;
-    Giocatore* getProprietario(const Casella&) const;
+    Giocatore* proprietario(const Casella&) const;
     void printWinner() const;
 };
 
