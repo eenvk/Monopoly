@@ -132,10 +132,10 @@ void Tabellone::printTabellone(const std::vector<Giocatore*> giocatori) const{
 }
 
 void Tabellone::nominaCaselle() {
-    static char lettera = 72;
-    static int numero = 9;
-    static int i = 0;
     for(int j=0;j<NUMERO_CASELLE;j++){
+        static char lettera = 72;
+        static int numero = 9;
+        static int i = 0;
         if(i<BASE){
             i++;
             tabellone[j].setNome(lettera+std::to_string(--numero));

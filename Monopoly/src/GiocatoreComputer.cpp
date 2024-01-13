@@ -51,7 +51,6 @@ void GiocatoreComputer::acquistaCasella(Casella &c){
 
 void GiocatoreComputer::acquistaCasa(Casella &c) {
     int probabilita = rand()%4+1;
-    //il fatto che esca 1 su 4 rappresenta la probabilita del 25%
     if(probabilita == 1){
         if(c.getCategoria()==ECONOMICA){
             if(budget>=PREZZO_ECO_CASA){
@@ -83,12 +82,10 @@ void GiocatoreComputer::acquistaCasa(Casella &c) {
         LogManager::log("Giocatore " + std::to_string(id) + " ha costruito una casa sul terreno " + c.getNome());
         std::cout<<"Giocatore "<<id<<" ha costruito una casa sul terreno "<<c.getNome()<<"\n";
     }
-    //else vuol dire che non l'ha acquistata che e' diverso dal non poterla acquistare (cioe che non si hanno abbastanza soldi)
 }
 
 void GiocatoreComputer::miglioraInAlbergo(Casella &c) {
     int probabilita = rand()%4+1;
-    //il fatto che esca 1 su 4 rappresenta la probabilita del 25%
     if(probabilita == 1){
         if(c.getCategoria()==ECONOMICA){
             if(budget>=PREZZO_ECO_ALBERGO){
