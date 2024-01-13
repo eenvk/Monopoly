@@ -24,3 +24,4 @@ add_executable(monopoly main.cpp)
 
 # Collega l'eseguibile alla libreria MonopolyLib
 target_link_libraries(monopoly PRIVATE MonopolyLib)
+
