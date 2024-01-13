@@ -11,6 +11,11 @@ Quindi l'unica cosa che differenzia le partite è il vector di giocatori:
 1. vector con un GiocatoreUmano e tre GiocoatoreComputer;
 2. vector con quattro GiocatoreComputer;
 
+Note
+Tenendo "20 fiorini" come quantità che ogni giocatore riceve ogni volta che passa per la partenza, nessun giocatore riesce a essere eliminato,
+affinché succeda ciò servirebbe un numero davvero molto elevato di turni.
+Dunque conviene abbassare la quantità di fiorini da 20 a 1 o 2 così che almeno un giocatore riesca a essere eliminato tenendo un numero ragionevole di turni.
+
 Struttura del progetto
 
 Il codice è organizzato nelle seguenti directory:

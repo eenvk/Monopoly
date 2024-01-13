@@ -5,9 +5,11 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Monopoly
         main.cpp
+        include/Casella.h
         src/Casella.cpp
         include/Giocatore.h
         src/Giocatore.cpp
+        include/Tabellone.h
         src/Tabellone.cpp
         include/Partita.h
         src/Partita.cpp
