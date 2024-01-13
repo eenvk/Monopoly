@@ -6,7 +6,6 @@
 #include "Giocatore.h"
 #include <ctime>
 
-constexpr int  NUMERO_GIOCATORI = 4;
 constexpr int  NUMERO_CASELLE = 28;
 constexpr int  BASE = 8;
 constexpr int  ALTEZZA = 8;

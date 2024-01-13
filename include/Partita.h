@@ -12,6 +12,7 @@
 #include <typeinfo>
 
 constexpr int MAX_TURNI = 250;
+constexpr int  NUMERO_GIOCATORI = 4;
 
 class Partita {
 private:
