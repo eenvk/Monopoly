@@ -7,6 +7,9 @@ project(Monopoly VERSION 1.0)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Imposta l'ottimizzazione
+set(CMAKE_CXX_FLAGS "-O2")
+
 # Aggiunge la directory degli header
 include_directories(include)
 
