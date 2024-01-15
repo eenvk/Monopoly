@@ -2,7 +2,7 @@
 
 #include "../include/Partita.h"
 
-Partita::Partita(std::string arg) {
+Partita::Partita(const std::string arg) {
     if(arg=="human"){
         this->giocatori.push_back(new GiocatoreUmano(&t.getTabellone()[0]));
         for(int i=1;i<NUMERO_GIOCATORI;i++){

@@ -21,7 +21,7 @@ private:
     Tabellone t = Tabellone();
     std::vector<Giocatore*> giocatori;
 public:
-    Partita(std::string);
+    Partita(const std::string);
     ~Partita();
     void run();
     void transazione(Giocatore*, Giocatore*, const int, const Casella&);
