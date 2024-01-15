@@ -1,4 +1,4 @@
-//Giada Zago
+//Edoardo Renzi
 
 #ifndef MONOPOLY_LOGMANAGER_H
 #define MONOPOLY_LOGMANAGER_H

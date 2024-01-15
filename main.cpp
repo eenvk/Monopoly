@@ -1,4 +1,4 @@
-//Giada Zago
+//tutti
 
 #include "include/Partita.h"
 

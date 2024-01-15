@@ -1,4 +1,4 @@
-//Edoardo Renzi
+//Giada Zago
 
 #ifndef MONOPOLY_GIOCATOREUMANO_H
 #define MONOPOLY_GIOCATOREUMANO_H

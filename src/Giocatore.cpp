@@ -68,7 +68,14 @@ void Giocatore::setPosizione(Casella* newPosition) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Giocatore& g) {
-    return os<<"Id: "<<g.getId()<<", Budget: "<<g.getBudget()<<", Pos: "<<g.getPosizione();
+    std::string is_alive;
+    if(g.isAlive()){
+        is_alive = "In gioco";
+    }
+    else{
+        is_alive = "Eliminato";
+    }
+    return os<<"Id: "<<g.getId()<<", "<<is_alive<<", Budget: "<<g.getBudget()<<", Casella posizione: "<<g.getPosizione().getNome();
 }
 
 int callCounter2() { //assegna a ogni giocatore il proprio id

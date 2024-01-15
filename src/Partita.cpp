@@ -33,13 +33,15 @@ void Partita::ordinaGiocatori() {
         while(count>=2){
             for(int i=0;i<count;i++){
                 int id_giocatore = ordine.find(valore)->second;
-                ordine.erase(ordine.find(valore));
+                ordine.erase(ordine.find(valore)); //tolgo dalla multimappa il primo "doppione" che incontra
                 int n = giocatori[id_giocatore-1]->tiroDadi(); //faccio ritirare i dadi al giocatore che ha avuto il numero uguale a quello di un altro giocatore
-                ordine.insert(std::make_pair(n, id_giocatore));
+                ordine.insert(std::make_pair(n, id_giocatore)); //e lo reinserisco nella multimappa
             }
             valore = ordine.begin()->first;
             count = ordine.count(valore);
         }
+        // a questo punto in prima posizione nella multimappa si trova il giocatore a cui nel tiro è uscito il numero maggiore, e non ci sono altri che hanno lo stesso numero
+        // quindi pusho in temp il giocatore con l'id corrispondente al valore corrispondente alla prima key della multimappa
         temp.push_back(giocatori[ordine.begin()->second - 1]);
         ordine.erase(ordine.begin());
     }
@@ -106,7 +108,7 @@ void Partita::run() {
                 }
                 else{
                     Giocatore* proprietario = Partita::getProprietario(pos);
-                    if(proprietario == nullptr){ //la casella non è di nessuno
+                    if(proprietario == nullptr){ //la casella non è di nessuno oppure potevo anche usare getStato() di Casella
                         try {
                             if(typeid(*giocatori[j]) == typeid(GiocatoreUmano)){
                                 if(handleHumanInteraction("Vuoi acquistare il terreno " + pos.getNome() + "?")){
@@ -184,9 +186,9 @@ void Partita::run() {
                                 std::cout<<"Gicoatore "<<id<<" e' stato eliminato\n";
                                 LogManager::log("Giocatore " + std::to_string(id) + " e' stato eliminato");
                                 n_giocatori--;
-                                if(n_giocatori==1) {
+                                if(n_giocatori==1){ // vuol dire che ho un vincitore
                                     is_running = false;
-                                    break;
+                                    break; //e quindi interrompo
                                 }
                             }
                         }

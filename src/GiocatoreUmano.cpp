@@ -1,4 +1,4 @@
-//Edoardo Renzi
+//Giada Zago
 
 #include "../include/GiocatoreUmano.h"
 

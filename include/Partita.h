@@ -8,11 +8,12 @@
 #include "GiocatoreUmano.h"
 #include "GiocatoreComputer.h"
 #include "LogManager.h"
+#include <vector>
 #include <map>
-#include <typeinfo>
+#include <typeinfo> //rappresenta informazioni sul tipo di un oggetto
 
 constexpr int MAX_TURNI = 250;
-constexpr int  NUMERO_GIOCATORI = 4;
+constexpr int NUMERO_GIOCATORI = 4;
 
 class Partita {
 private:

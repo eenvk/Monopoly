@@ -8,15 +8,20 @@ Casella::Casella() {
 }
 
 Casella::Casella(const char categoria) {
-    this->stato = true; //all'inizio una casella è disponibile
     this->tipo = TERRENO; //all'inizio è un terreno
     this->categoria = categoria;
     this->id = callCounter();
     this->nome = "";
+    if(categoria==ANGOLARE || categoria==PARTENZA){ //queste non sono disponibili per l'acquisto
+        this->stato = false;
+    }
+    else{
+        this->stato = true;
+    }
 }
 
 void Casella::acquistaTerreno() {
-    if(stato && (categoria != ANGOLARE && categoria != PARTENZA)){ //una casella angolare e la partenza non si possono acquistare
+    if(stato){
         stato = false;
     }
     else{
